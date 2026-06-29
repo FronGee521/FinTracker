@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>FinTracker</title>
+    <title>MoneyKo</title>
     
-    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIkZpblRyYWNrZXIiLAogICJzaG9ydF9uYW1lIjogIkZpblRyYWNrZXIiLAogICJzdGFydF91cmwiOiAiLiIsCiAgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsCiAgImJhY2tncm91bmRfY29sb3IiOiAiI2YyZjJmMiIsCiAgInRoZW1lX2NvbG9yIjogIiMzNjg1NUIiLAogICJpY29ucyI6IFt7CiAgICAic3JjIjogImRhdGE6aW1hZ2Uvc3ZnK3htbCwlM0NzdmcgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJyB2aWV3Qm94PScwIDAgMTAwIDEwMCclM0UlM0NjaXJjbGUgY3g9JzUwJyBjeT0nNTAnIHI9JzUwJyBmaWxsPSclMjMzNjg1NUInLyUzRSUzQ3RleHQgeD0nNTAnIHk9JzY1JyBmb250LXNpemU9JzQwJyB0ZXh0LWFuY2hvcj0nbWlkZGxlJyBmaWxsPSd3aGl0ZScgZm9udC1mYW1pbHk9J0FyaWFsJyUzRUYlM0MvdGV4dCUzRSUzQy9zdmclM0UiLAogICAgInNpemVzIjogIjE5MngxOTIiLAogICAgInR5cGUiOiAiaW1hZ2Uvc3ZnK3htbCIKICB9XX0=">
+    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIk1vbmV5S28iLAogICJzaG9ydF9uYW1lIjogIk1vbmV5S28iLAogICJzdGFydF91cmwiOiAiLiIsCiAgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsCiAgImJhY2tncm91bmRfY29sb3IiOiAiI2YyZjJmMiIsCiAgInRoZW1lX2NvbG9yIjogIiMzNjg1NUIiLAogICJpY29ucyI6IFt7CiAgICAic3JjIjogImRhdGE6aW1hZ2Uvc3ZnK3htbCwlM0NzdmcgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJyB2aWV3Qm94PScwIDAgMTAwIDEwMCclM0UlM0NjaXJjbGUgY3g9JzUwJyBjeT0nNTAnIHI9JzUwJyBmaWxsPSclMjMzNjg1NUInLyUzRSUzQ3RleHQgeD0nNTAnIHk9JzY1JyBmb250LXNpemU9JzM4JyB0ZXh0LWFuY2hvcj0nbWlkZGxlJyBmaWxsPSd3aGl0ZScgZm9udC1mYW1pbHk9J0FyaWFsJyBmb250LXdlaWdodD0nYm9sZCclM0VNSyUzQy90ZXh0JTNFJTNDL3N2ZyUzRSIsCiAgICAic2l6ZXMiOiAiMTkyeDE5MiIsCiAgICAidHlwZSI6ICJpbWFnZS9zdmcreG1sIgogIH1dfQ==">
     
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="FinTracker">
+    <meta name="apple-mobile-web-app-title" content="MoneyKo">
     <meta name="theme-color" content="#36855B">
     
     <style>
@@ -245,7 +245,7 @@
 <body>
 
     <div class="install-banner" id="installBanner" onclick="installApp()">
-        <span style="flex:1;">Установить как приложение</span>
+        <span style="flex:1;">Установить MoneyKo</span>
         <span style="font-size:20px;">&rarr;</span>
     </div>
 
@@ -255,7 +255,7 @@
     <div class="modal-overlay" id="profileModal" onclick="if(event.target===this)closeProfile()">
         <div class="modal-content">
             <div class="modal-header">
-                <span class="title">Настройки</span>
+                <span class="title">MoneyKo</span>
                 <button class="modal-close" onclick="closeProfile()">&times;</button>
             </div>
             <div class="block">
@@ -951,7 +951,6 @@
                 monthlyBudget, categoryLimits, goals
             });
             
-            // Если данные слишком большие — сжимаем через LZString или разбиваем
             if (data.length > 2000) {
                 showToast('Данных много, создаю компактный QR...');
             }
@@ -960,7 +959,6 @@
             const qrDiv = document.getElementById('qrDisplay');
             qrDiv.innerHTML = '';
             
-            // Используем несколько сервисов с fallback
             const encoded = encodeURIComponent(data);
             const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encoded}`;
             
@@ -969,7 +967,6 @@
             img.style.maxWidth = '100%';
             img.style.borderRadius = '8px';
             img.onerror = function() {
-                // Fallback: локальная генерация через canvas (если подключена библиотека)
                 qrDiv.innerHTML = '<div class="text-muted">Не удалось загрузить QR. Попробуйте другой метод.</div>';
                 showToast('Ошибка генерации QR');
             };
@@ -1024,7 +1021,7 @@
                 } catch(e) {}
                 isImporting = false;
                 document.getElementById('scannerTitle').textContent = 'Сканер штрихкодов';
-                showToast('QR-код не распознан как данные FinTracker');
+                showToast('QR-код не распознан как данные MoneyKo');
                 return;
             }
             
