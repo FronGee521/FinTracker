@@ -39,8 +39,6 @@
         .btn-green { background: #36855B; color: #fff; }
         .btn-red { background: #dc3545; color: #fff; }
         .btn-gray { background: #e9ecef; }
-        .btn-orange { background: #e67e22; color: #fff; }
-        .btn-blue { background: #2980b9; color: #fff; }
         input, select {
             border: 1px solid #ccc; border-radius: 10px;
             padding: 12px 14px; font-size: 16px; width: 100%;
@@ -69,18 +67,19 @@
             align-items: center; padding: 10px 0; border-bottom: 1px solid #eee;
         }
         .row .price { color: #dc3545; font-weight: 600; }
+        .row .price.green { color: #36855B; }
         .total {
             text-align: right; font-size: 20px; font-weight: bold;
             padding-top: 12px; border-top: 2px solid #eee; margin-top: 8px;
         }
         .tabs {
-            display: flex; gap: 4px; background: #fff; border-radius: 12px;
+            display: flex; gap: 2px; background: #fff; border-radius: 12px;
             padding: 4px; border: 1px solid #ddd; margin-bottom: 12px;
-            position: sticky; top: 0; z-index: 10;
+            position: sticky; top: 0; z-index: 10; flex-wrap: wrap;
         }
         .tab {
-            flex: 1; padding: 12px 4px; text-align: center;
-            border-radius: 10px; cursor: pointer; font-size: 12px;
+            flex: 1; min-width: 50px; padding: 10px 2px; text-align: center;
+            border-radius: 10px; cursor: pointer; font-size: 11px;
             font-weight: 500; color: #666; transition: all 0.15s; white-space: nowrap;
         }
         .tab:active { transform: scale(0.95); }
@@ -100,10 +99,6 @@
             background: #f8f8f8; padding: 12px 14px; border-radius: 10px;
             margin-bottom: 6px;
         }
-        .product-card .name { font-weight: 500; }
-        .product-card .barcodes-list {
-            font-size: 10px; color: #aaa; margin-top: 4px; word-break: break-all;
-        }
         .badge {
             background: #e9ecef; padding: 4px 14px; border-radius: 20px;
             font-size: 13px; font-weight: 500;
@@ -120,63 +115,122 @@
             align-items: center; gap: 12px; cursor: pointer; font-weight: 500;
         }
         .install-banner.show { display: flex; }
-        .currency-selector {
-            display: flex; align-items: center; gap: 8px;
-        }
-        .currency-selector label { font-size: 13px; color: #888; white-space: nowrap; }
-        .currency-selector select {
-            width: auto; margin-bottom: 0; padding: 6px 28px 6px 10px;
-            font-size: 14px; background-position: right 8px center;
-        }
         .tag {
             display: inline-block; background: #e8f5e9; color: #36855B;
             padding: 2px 8px; border-radius: 12px; font-size: 11px;
             margin: 2px; font-family: monospace;
         }
         .match-box {
-            background: #fff3cd; padding: 12px; border-radius: 10px;
-            margin: 10px 0; border: 1px solid #ffc107;
+            background: #f8f8f8; padding: 12px; border-radius: 10px;
+            margin: 10px 0; border: 1px solid #ddd;
         }
-        .match-box .match-title {
-            font-weight: bold; color: #856404; margin-bottom: 6px;
+        .quick-btn {
+            padding: 14px 8px; border-radius: 10px; text-align: center;
+            cursor: pointer; font-weight: 500; font-size: 14px;
+            transition: opacity 0.15s; background: #f0f0f0;
+            border: 2px solid transparent; position: relative;
         }
-        .match-box .match-name {
-            font-size: 18px; font-weight: bold; color: #333; margin-bottom: 8px;
+        .quick-btn:active { opacity: 0.8; border-color: #36855B; }
+        .quick-btn .delete-quick {
+            position: absolute; top: 2px; right: 4px;
+            width: 20px; height: 20px; border-radius: 50%;
+            background: #dc3545; color: #fff; border: none;
+            font-size: 12px; cursor: pointer;
+            align-items: center; justify-content: center;
+            display: none;
+        }
+        .quick-btn.show-delete .delete-quick {
+            display: flex;
+        }
+        .quick-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+        .setting-row {
+            display: flex; justify-content: space-between;
+            align-items: center; padding: 12px 0; border-bottom: 1px solid #eee;
+        }
+        .setting-row:last-child { border-bottom: none; }
+        .setting-row .label { font-weight: 500; }
+        .setting-row select { width: auto; min-width: 120px; margin-bottom: 0; }
+        
+        .gear-btn {
+            position: fixed; bottom: 20px; right: 20px;
+            width: 48px; height: 48px; border-radius: 50%;
+            background: #fff; border: 2px solid #ddd;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; z-index: 100; font-size: 24px;
+            transition: all 0.15s; color: #666;
+        }
+        .gear-btn:active { transform: scale(0.9); background: #f0f0f0; }
+        
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5); z-index: 200;
+            display: none; align-items: flex-end; justify-content: center;
+        }
+        .modal-overlay.show { display: flex; }
+        .modal-content {
+            background: #fff; width: 100%; max-width: 480px;
+            max-height: 85vh; border-radius: 20px 20px 0 0;
+            padding: 20px 16px 30px; overflow-y: auto;
+        }
+        .modal-header {
+            display: flex; justify-content: space-between;
+            align-items: center; margin-bottom: 16px;
+        }
+        .modal-header .title { font-size: 20px; font-weight: bold; }
+        .modal-close {
+            width: 36px; height: 36px; border-radius: 50%;
+            border: none; background: #f0f0f0; font-size: 20px;
+            cursor: pointer; display: flex; align-items: center;
+            justify-content: center;
+        }
+        .modal-close:active { background: #e0e0e0; }
+        .edit-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5); z-index: 300;
+            display: none; align-items: center; justify-content: center;
+        }
+        .edit-overlay.show { display: flex; }
+        .edit-dialog {
+            background: #fff; padding: 20px; border-radius: 16px;
+            width: 90%; max-width: 360px;
+        }
+        .edit-dialog input {
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
 
     <div class="install-banner" id="installBanner" onclick="installApp()">
-        <span style="flex:1;" id="installText">Установить как приложение</span>
+        <span style="flex:1;">Установить как приложение</span>
         <span style="font-size:20px;">&rarr;</span>
     </div>
 
-    <div class="block" style="display:flex;justify-content:space-between;align-items:center;">
-        <div style="flex:1;">
-            <div class="text-muted" id="budgetLabel">Бюджет</div>
-            <div style="font-size:28px;font-weight:bold;" id="totalDisplay">0</div>
-        </div>
-        <div style="text-align:right;">
-            <div class="text-muted" id="todayLabel">Сегодня</div>
-            <div style="font-size:18px;font-weight:bold;color:#36855B;" id="todayDisplay">0</div>
-        </div>
-    </div>
+    <div class="gear-btn" onclick="openProfile()">&#9881;</div>
 
-    <div class="tabs">
-        <div class="tab active" onclick="switchTab('main')" id="tabMain">Главная</div>
-        <div class="tab" onclick="switchTab('scan')" id="tabScan">Сканер</div>
-        <div class="tab" onclick="switchTab('regular')" id="tabRegular">Регулярные</div>
-        <div class="tab" onclick="switchTab('products')" id="tabProducts">Товары</div>
-    </div>
-
-    <div id="tab-main">
-        <div class="block">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
-                <span style="font-weight:bold;" id="weeklyStats">Статистика за неделю</span>
-                <div class="currency-selector">
-                    <label for="currencySelect" id="currencyLabel">Валюта:</label>
-                    <select id="currencySelect" onchange="changeCurrency(this.value)">
+    <!-- Модальное окно профиля -->
+    <div class="modal-overlay" id="profileModal" onclick="if(event.target===this)closeProfile()">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="title" id="lblSettings">Настройки</span>
+                <button class="modal-close" onclick="closeProfile()">&times;</button>
+            </div>
+            
+            <div class="block" style="margin-bottom:12px;">
+                <div class="setting-row">
+                    <span class="label" id="lblLang">Язык</span>
+                    <select id="langSelect" onchange="changeLanguage(this.value)">
+                        <option value="ru">Русский</option>
+                        <option value="en">English</option>
+                    </select>
+                </div>
+                <div class="setting-row">
+                    <span class="label" id="lblCurr">Валюта</span>
+                    <select id="profileCurrency" onchange="changeCurrency(this.value)">
                         <option value="₽">₽ (Рубль)</option>
                         <option value="$">$ (Доллар)</option>
                         <option value="€">€ (Евро)</option>
@@ -187,35 +241,93 @@
                     </select>
                 </div>
             </div>
+
+            <div class="block" style="margin-bottom:12px;">
+                <div style="font-weight:bold;margin-bottom:10px;font-size:16px;" id="lblSync">Синхронизация</div>
+                <div class="text-muted mb-8" id="lblSyncDesc">Синхронизация между устройствами через GitHub Gist.</div>
+                <input type="text" id="gistToken" placeholder="GitHub токен (ghp_...)">
+                <input type="text" id="gistId" placeholder="Gist ID">
+                <div class="flex">
+                    <button class="btn btn-green flex-1" onclick="exportToGist()" id="lblExport">Сохранить</button>
+                    <button class="btn btn-gray flex-1" onclick="importFromGist()" id="lblImport">Загрузить</button>
+                </div>
+                <div id="syncStatus" class="text-muted text-center mt-8">Готов к синхронизации</div>
+                <div class="text-muted mt-8" style="font-size:11px;" id="lblSyncHelp">
+                    Токен: github.com/settings/tokens (права "gist")
+                </div>
+            </div>
+
+            <div class="block">
+                <div style="font-weight:bold;margin-bottom:10px;font-size:16px;" id="lblData">Данные</div>
+                <button class="btn btn-red" onclick="clearAll()" id="lblClearData">Очистить все данные</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Диалог редактирования быстрой кнопки -->
+    <div class="edit-overlay" id="quickEditDialog" onclick="if(event.target===this)cancelQuickEdit()">
+        <div class="edit-dialog">
+            <div style="font-weight:bold;margin-bottom:12px;font-size:16px;" id="quickEditTitle">Быстрая кнопка</div>
+            <input type="text" id="quickEditName" placeholder="Название">
+            <input type="number" id="quickEditPrice" placeholder="Цена" step="0.01" inputmode="decimal">
+            <div class="flex">
+                <button class="btn btn-green flex-1" onclick="saveQuickEdit()">Сохранить</button>
+                <button class="btn btn-gray flex-1" onclick="cancelQuickEdit()">Отмена</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="block" style="display:flex;justify-content:space-between;align-items:center;">
+        <div style="flex:1;">
+            <div class="text-muted" id="lblBalance">Баланс</div>
+            <div style="font-size:28px;font-weight:bold;" id="totalDisplay">0</div>
+        </div>
+        <div style="text-align:right;">
+            <div class="text-muted" id="lblToday">Сегодня</div>
+            <div style="font-size:18px;font-weight:bold;color:#dc3545;" id="todayDisplay">0</div>
+        </div>
+    </div>
+
+    <div class="tabs">
+        <div class="tab active" onclick="switchTab('main')" id="tabMain">Главная</div>
+        <div class="tab" onclick="switchTab('scan')" id="tabScan">Сканер</div>
+        <div class="tab" onclick="switchTab('income')" id="tabIncome">Доходы</div>
+        <div class="tab" onclick="switchTab('regular')" id="tabRegular">Регулярные</div>
+        <div class="tab" onclick="switchTab('products')" id="tabProducts">Товары</div>
+    </div>
+
+    <div id="tab-main">
+        <div class="block">
+            <div style="font-weight:bold;margin-bottom:10px;" id="lblWeekStats">Статистика за неделю</div>
             <div style="display:flex;gap:8px;">
                 <div style="flex:1;background:#f8f8f8;padding:12px;border-radius:10px;text-align:center;">
-                    <div class="text-muted" style="font-size:12px;" id="totalLabel">Всего</div>
-                    <div style="font-weight:bold;font-size:16px;" id="weekTotal">0</div>
+                    <div class="text-muted" style="font-size:12px;" id="lblExpenses">Расходы</div>
+                    <div style="font-weight:bold;font-size:16px;color:#dc3545;" id="weekTotal">0</div>
                 </div>
                 <div style="flex:1;background:#f8f8f8;padding:12px;border-radius:10px;text-align:center;">
-                    <div class="text-muted" style="font-size:12px;" id="daysLabel">Дней</div>
+                    <div class="text-muted" style="font-size:12px;" id="lblIncomes">Доходы</div>
+                    <div style="font-weight:bold;font-size:16px;color:#36855B;" id="weekIncome">0</div>
+                </div>
+                <div style="flex:1;background:#f8f8f8;padding:12px;border-radius:10px;text-align:center;">
+                    <div class="text-muted" style="font-size:12px;" id="lblDays">Дней</div>
                     <div style="font-weight:bold;font-size:16px;" id="weekDays">0</div>
-                </div>
-                <div style="flex:1;background:#f8f8f8;padding:12px;border-radius:10px;text-align:center;">
-                    <div class="text-muted" style="font-size:12px;" id="avgLabel">Среднее</div>
-                    <div style="font-weight:bold;font-size:16px;" id="weekAvg">0</div>
                 </div>
             </div>
         </div>
 
         <div class="block">
             <div style="display:flex;justify-content:space-between;font-weight:bold;margin-bottom:10px;">
-                <span id="recentExpenses">Последние траты</span>
-                <span style="color:#dc3545;font-size:13px;cursor:pointer;" onclick="clearAll()" id="clearBtn">Очистить</span>
+                <span id="lblRecent">Последние операции</span>
+                <span style="color:#dc3545;font-size:13px;cursor:pointer;" onclick="clearAll()" id="lblClear">Очистить</span>
             </div>
             <div id="expenseList">
-                <div class="text-muted text-center" style="padding:20px 0;" id="noExpenses">Пока нет трат</div>
+                <div class="text-muted text-center" style="padding:20px 0;" id="lblNoOps">Пока нет операций</div>
             </div>
-            <div class="total" id="mainTotal">Итого: 0</div>
+            <div class="total" id="mainTotal">Баланс: 0</div>
         </div>
 
         <div class="block">
-            <div style="font-weight:bold;margin-bottom:10px;font-size:16px;" id="quickExpense">Быстрая трата</div>
+            <div style="font-weight:bold;margin-bottom:10px;font-size:16px;" id="lblQuickExp">Быстрая трата</div>
             <input type="number" id="manualAmount" placeholder="Сумма" step="0.01" inputmode="decimal">
             <div class="cat-grid" id="categoryGrid">
                 <div class="cat-item" onclick="selectCategory('food')" data-key="food">Еда</div>
@@ -228,63 +340,72 @@
                 <div class="cat-item" onclick="selectCategory('other')" data-key="other">Другое</div>
             </div>
             <input type="text" id="manualComment" placeholder="Комментарий">
-            <button class="btn btn-green" onclick="addManualExpense()" id="addExpenseBtn">Добавить трату</button>
+            <button class="btn btn-green" onclick="addManualExpense()" id="lblAddExp">Добавить трату</button>
         </div>
     </div>
 
     <div id="tab-scan" class="hidden">
         <div class="block">
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
-                <span style="font-weight:bold;font-size:16px;" id="scannerTitle">Сканер штрихкодов</span>
+                <span style="font-weight:bold;font-size:16px;" id="lblScanner">Сканер штрихкодов</span>
                 <span class="badge" id="scanStatus" style="background:#f0f0f0;">Остановлен</span>
             </div>
-            <div class="scanner-box" id="scannerBox">
-                <div id="reader"></div>
-            </div>
+            <div class="scanner-box"><div id="reader"></div></div>
             <div class="flex" style="margin-top:10px;">
-                <button class="btn btn-green" onclick="startScanner()" style="flex:1;" id="startScanBtn">Запустить</button>
-                <button class="btn btn-red" onclick="stopScanner()" style="flex:1;" id="stopScanBtn">Остановить</button>
+                <button class="btn btn-green" onclick="startScanner()" style="flex:1;" id="lblStart">Запустить</button>
+                <button class="btn btn-red" onclick="stopScanner()" style="flex:1;" id="lblStop">Остановить</button>
             </div>
         </div>
-
-        <div class="block" id="scannedProduct" style="display:none;">
-            <div id="scanResult"></div>
-        </div>
-
+        <div class="block" id="scannedProduct" style="display:none;"><div id="scanResult"></div></div>
         <div class="block">
             <div style="display:flex;justify-content:space-between;font-weight:bold;margin-bottom:10px;font-size:16px;">
-                <span id="cartTitle">Корзина</span>
-                <span style="color:#36855B;" id="cartCount">0 товаров</span>
+                <span id="lblCart">Корзина</span><span style="color:#36855B;" id="cartCount">0 товаров</span>
             </div>
-            <div id="cartList">
-                <div class="text-muted text-center" style="padding:15px 0;" id="emptyCart">Корзина пуста</div>
-            </div>
+            <div id="cartList"><div class="text-muted text-center" style="padding:15px 0;" id="lblCartEmpty">Корзина пуста</div></div>
             <div class="total" id="cartTotal">Итого: 0</div>
-            <button class="btn btn-green mt-8" onclick="saveCart()" id="saveCartBtn">Сохранить покупку</button>
+            <button class="btn btn-green mt-8" onclick="saveCart()" id="lblSaveCart">Сохранить покупку</button>
+        </div>
+    </div>
+
+    <div id="tab-income" class="hidden">
+        <div class="block">
+            <div style="font-weight:bold;margin-bottom:10px;font-size:16px;" id="lblAddInc">Добавить доход</div>
+            <input type="number" id="incomeAmount" placeholder="Сумма" step="0.01" inputmode="decimal">
+            <input type="text" id="incomeSource" placeholder="Источник (зарплата, подарок...)">
+            <button class="btn btn-green" onclick="addIncome()" id="lblAddIncBtn">Добавить доход</button>
+        </div>
+        <div class="block">
+            <div style="font-weight:bold;margin-bottom:10px;font-size:16px;" id="lblIncHist">История доходов</div>
+            <div id="incomeList"><div class="text-muted text-center" style="padding:20px 0;" id="lblNoInc">Нет доходов</div></div>
+            <div class="total" style="color:#36855B;" id="incomeTotal">Всего доходов: 0</div>
         </div>
     </div>
 
     <div id="tab-regular" class="hidden">
         <div class="block">
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
-                <span style="font-weight:bold;font-size:16px;" id="regularTitle">Регулярные платежи</span>
-                <button class="btn btn-green" onclick="toggleRegularForm()" style="width:auto;padding:10px 16px;font-size:14px;" id="addRegularBtn">+ Добавить</button>
+                <span style="font-weight:bold;font-size:16px;" id="lblQuickActions">Быстрые действия</span>
+                <button class="btn btn-green" onclick="addQuickBtn()" style="width:auto;padding:8px 16px;font-size:18px;">+</button>
             </div>
-            <div id="regularList">
-                <div class="text-muted text-center" style="padding:20px 0;" id="noRegular">Нет платежей</div>
-            </div>
+            <div class="quick-grid" id="quickButtonsGrid"></div>
         </div>
-
+        <div class="block">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+                <span style="font-weight:bold;font-size:16px;" id="lblRegPay">Регулярные платежи</span>
+                <button class="btn btn-green" onclick="toggleRegularForm()" style="width:auto;padding:10px 16px;font-size:14px;" id="lblAddReg">+ Добавить</button>
+            </div>
+            <div id="regularList"><div class="text-muted text-center" style="padding:20px 0;" id="lblNoReg">Нет платежей</div></div>
+        </div>
         <div class="block" id="regularAddForm" style="display:none;">
-            <div style="font-weight:bold;margin-bottom:10px;font-size:16px;" id="newPaymentTitle">Новый платёж</div>
+            <div style="font-weight:bold;margin-bottom:10px;font-size:16px;" id="lblNewPay">Новый платёж</div>
             <input type="text" id="regularName" placeholder="Название">
             <div class="flex">
                 <input type="number" id="regularAmount" placeholder="Сумма" step="0.01" inputmode="decimal" class="flex-1">
-                <input type="number" id="regularDay" placeholder="День" min="1" max="31" inputmode="numeric" class="flex-1" style="max-width:80px;">
+                <input type="number" id="regularDay" placeholder="День" min="1" max="31" inputmode="numeric" style="max-width:80px;">
             </div>
             <div class="flex mt-8">
-                <button class="btn btn-green flex-1" onclick="saveRegularPayment()" id="saveRegularBtn">Сохранить</button>
-                <button class="btn btn-gray flex-1" onclick="cancelRegularPayment()" id="cancelRegularBtn">Отмена</button>
+                <button class="btn btn-green flex-1" onclick="saveRegularPayment()" id="lblSaveReg">Сохранить</button>
+                <button class="btn btn-gray flex-1" onclick="cancelRegularPayment()" id="lblCancelReg">Отмена</button>
             </div>
         </div>
     </div>
@@ -292,556 +413,338 @@
     <div id="tab-products" class="hidden">
         <div class="block">
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
-                <span style="font-weight:bold;font-size:16px;" id="productsTitle">База товаров</span>
+                <span style="font-weight:bold;font-size:16px;" id="lblProdBase">База товаров</span>
                 <span class="text-muted" id="productCount">0 товаров</span>
             </div>
             <input type="text" id="productSearch" placeholder="Поиск" oninput="updateProductList()">
-            <div id="productList" style="margin-top:8px;">
-                <div class="text-muted text-center" style="padding:20px 0;" id="noProducts">Нет товаров</div>
-            </div>
+            <div id="productList" style="margin-top:8px;"><div class="text-muted text-center" style="padding:20px 0;" id="lblNoProd">Нет товаров</div></div>
         </div>
-
         <div class="block">
-            <div style="font-weight:bold;margin-bottom:10px;font-size:16px;" id="addProductTitle">Добавить товар</div>
+            <div style="font-weight:bold;margin-bottom:10px;font-size:16px;" id="lblAddProd">Добавить товар</div>
             <input type="text" id="newProductBarcode" placeholder="Штрихкод (можно несколько через запятую)">
             <div class="flex">
                 <input type="text" id="newProductName" placeholder="Название" class="flex-1">
                 <input type="number" id="newProductPrice" placeholder="Цена" step="0.01" inputmode="decimal" style="max-width:100px;">
             </div>
-            <button class="btn btn-green mt-8" onclick="addProductManually()" id="addProductBtn">Добавить товар</button>
+            <button class="btn btn-green mt-8" onclick="addProductManually()" id="lblAddProdBtn">Добавить товар</button>
         </div>
     </div>
 
-    <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+    <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js">
+    </script>
     <script>
-        // ===== CURRENCY =====
-        let currentCurrency = localStorage.getItem('currency') || '₽';
-        function changeCurrency(s) { currentCurrency = s; localStorage.setItem('currency', s); updateUI(); }
-        function formatCurrency(a) { return currentCurrency + a.toFixed(2); }
-
-        // ===== LANG =====
-        const tr = {
+        const TR = {
             ru: {
-                budgetLabel:'Бюджет',todayLabel:'Сегодня',tabMain:'Главная',tabScan:'Сканер',tabRegular:'Регулярные',tabProducts:'Товары',
-                currencyLabel:'Валюта:',weeklyStats:'Статистика за неделю',totalLabel:'Всего',daysLabel:'Дней',avgLabel:'Среднее',
-                recentExpenses:'Последние траты',clearBtn:'Очистить',noExpenses:'Пока нет трат',quickExpense:'Быстрая трата',
-                categories:{food:'Еда',transport:'Транспорт',entertainment:'Развлечения',home:'Дом',health:'Здоровье',gifts:'Подарки',clothing:'Одежда',other:'Другое'},
-                manualAmount:'Сумма',manualComment:'Комментарий',addExpenseBtn:'Добавить трату',scannerTitle:'Сканер штрихкодов',
-                startScanBtn:'Запустить',stopScanBtn:'Остановить',productFound:'Товар найден',addToCartBtn:'В корзину',
-                cartTitle:'Корзина',emptyCart:'Корзина пуста',saveCartBtn:'Сохранить покупку',regularTitle:'Регулярные платежи',
-                addRegularBtn:'+ Добавить',noRegular:'Нет платежей',newPaymentTitle:'Новый платёж',regularName:'Название',
-                regularAmount:'Сумма',regularDay:'День',saveRegularBtn:'Сохранить',cancelRegularBtn:'Отмена',
-                productsTitle:'База товаров',noProducts:'Нет товаров',addProductTitle:'Добавить товар',
-                newProductBarcode:'Штрихкод',newProductName:'Название',newProductPrice:'Цена',addProductBtn:'Добавить товар',
-                installText:'Установить как приложение',scanStatusStopped:'Остановлен',scanStatusStarting:'Запуск...',
-                scanStatusScanning:'Сканирует...',scanStatusError:'Ошибка камеры',scanStatusFront:'Фронт. камера',
-                scanStatusNoAccess:'Нет доступа',unknownProduct:'Неизвестный товар',addToDatabase:'Добавить в базу',
-                addedToDatabase:'Товар добавлен',payBtn:'Оплатить',deleteBtn:'Удалить',editBtn:'Изменить',
-                total:'Итого',items:'товаров',confirmClear:'Удалить ВСЕ расходы?',confirmDelete:'Удалить?',
-                enterAmount:'Введите сумму',selectCategory:'Выберите категорию',cartEmpty:'Корзина пуста',
-                saved:'Сохранено!',enterName:'Введите название',enterPrice:'Введите цену',enterDay:'Введите день (1-31)',
-                enterBarcode:'Введите штрихкод',barcodeExists:'Штрихкод уже есть. Обновить?',
-                cameraError:'Нет доступа к камере. Проверьте настройки браузера.',
-                installUnavailable:'Установка недоступна. Нажмите "Добавить на главный экран" в меню браузера.',
-                searchPlaceholder:'Поиск',barcodeLabel:'Штрихкод:',
-                matchFound:'Похожий товар найден!',matchAsk:'Это',
-                matchYes:'Да, добавить штрихкод',matchNo:'Нет, создать новый',
-                mergeSuccess:'Штрихкод добавлен к товару'
+                balance:'Баланс',today:'Сегодня',weekStats:'Статистика за неделю',expenses:'Расходы',incomes:'Доходы',days:'Дней',
+                recent:'Последние операции',clear:'Очистить',noOps:'Пока нет операций',quickExp:'Быстрая трата',addExp:'Добавить трату',
+                scanner:'Сканер штрихкодов',start:'Запустить',stop:'Остановить',cart:'Корзина',cartEmpty:'Корзина пуста',saveCart:'Сохранить покупку',
+                addInc:'Добавить доход',addIncBtn:'Добавить доход',incHist:'История доходов',noInc:'Нет доходов',
+                quickActions:'Быстрые действия',save:'Сохранить',
+                regPay:'Регулярные платежи',addReg:'+ Добавить',noReg:'Нет платежей',newPay:'Новый платёж',saveReg:'Сохранить',cancelReg:'Отмена',
+                prodBase:'База товаров',noProd:'Нет товаров',addProd:'Добавить товар',addProdBtn:'Добавить товар',
+                settings:'Настройки',lang:'Язык',curr:'Валюта',
+                sync:'Синхронизация',syncDesc:'Синхронизация между устройствами через GitHub Gist.',export:'Сохранить',import:'Загрузить',
+                syncHelp:'Токен: github.com/settings/tokens (права "gist")',data:'Данные',clearData:'Очистить все данные',
+                cats:{food:'Еда',transport:'Транспорт',entertainment:'Развлечения',home:'Дом',health:'Здоровье',gifts:'Подарки',clothing:'Одежда',other:'Другое'},
+                amount:'Сумма',comment:'Комментарий',source:'Источник (зарплата, подарок...)',name:'Название',price:'Цена',day:'День',
+                search:'Поиск',barcode:'Штрихкод (можно несколько через запятую)',
+                found:'Товар найден',unknown:'Неизвестный товар',similar:'Похожий товар',yesAdd:'Да, добавить',noNew:'Нет, новый',
+                toCart:'В корзину',addDB:'Добавить в базу',added:'Штрихкод добавлен!',
+                total:'Баланс',totalInc:'Всего доходов',totalCart:'Итого',items:'товаров',
+                stopped:'Остановлен',scanning:'Сканирует...',starting:'Запуск...',frontCam:'Фронт. камера',
+                pay:'Оплатить',edit:'Изм.',del:'Удалить',
+                enterAmount:'Введите сумму',enterName:'Введите название',enterPrice:'Введите цену',enterDay:'Введите день (1-31)',
+                selectCat:'Выберите категорию',fillAll:'Заполните все поля',cartIsEmpty:'Корзина пуста',saved:'Сохранено!',
+                confirmClear:'Удалить ВСЕ операции?',confirmDel:'Удалить?',confirmDelQuick:'Удалить быструю кнопку?',
+                noCamera:'Нет доступа к камере',syncReady:'Готов к синхронизации',syncSaved:'Сохранено. Gist ID: ',syncLoaded:'Загружено!',
+                syncError:'Ошибка: ',syncConnError:'Ошибка соединения',syncNotFound:'Gist не найден',
+                configPrice:'Настройте цену',install:'Установить как приложение',income:'Доход',quickEditTitle:'Быстрая кнопка'
             },
             en: {
-                budgetLabel:'Budget',todayLabel:'Today',tabMain:'Main',tabScan:'Scanner',tabRegular:'Regular',tabProducts:'Products',
-                currencyLabel:'Currency:',weeklyStats:'Weekly stats',totalLabel:'Total',daysLabel:'Days',avgLabel:'Average',
-                recentExpenses:'Recent expenses',clearBtn:'Clear',noExpenses:'No expenses yet',quickExpense:'Quick expense',
-                categories:{food:'Food',transport:'Transport',entertainment:'Entertainment',home:'Home',health:'Health',gifts:'Gifts',clothing:'Clothing',other:'Other'},
-                manualAmount:'Amount',manualComment:'Comment',addExpenseBtn:'Add expense',scannerTitle:'Barcode scanner',
-                startScanBtn:'Start',stopScanBtn:'Stop',productFound:'Product found',addToCartBtn:'To cart',
-                cartTitle:'Cart',emptyCart:'Cart is empty',saveCartBtn:'Save purchase',regularTitle:'Regular payments',
-                addRegularBtn:'+ Add',noRegular:'No payments',newPaymentTitle:'New payment',regularName:'Name',
-                regularAmount:'Amount',regularDay:'Day',saveRegularBtn:'Save',cancelRegularBtn:'Cancel',
-                productsTitle:'Product database',noProducts:'No products',addProductTitle:'Add product',
-                newProductBarcode:'Barcode',newProductName:'Name',newProductPrice:'Price',addProductBtn:'Add product',
-                installText:'Install as app',scanStatusStopped:'Stopped',scanStatusStarting:'Starting...',
-                scanStatusScanning:'Scanning...',scanStatusError:'Camera error',scanStatusFront:'Front camera',
-                scanStatusNoAccess:'No access',unknownProduct:'Unknown product',addToDatabase:'Add to database',
-                addedToDatabase:'Added to database',payBtn:'Pay',deleteBtn:'Delete',editBtn:'Edit',
-                total:'Total',items:'items',confirmClear:'Delete ALL expenses?',confirmDelete:'Delete?',
-                enterAmount:'Enter amount',selectCategory:'Select category',cartEmpty:'Cart is empty',
-                saved:'Saved!',enterName:'Enter name',enterPrice:'Enter price',enterDay:'Enter day (1-31)',
-                enterBarcode:'Enter barcode',barcodeExists:'Barcode already exists. Update?',
-                cameraError:'Cannot access camera. Check browser settings.',
-                installUnavailable:'Installation unavailable. Try "Add to home screen" in browser menu.',
-                searchPlaceholder:'Search',barcodeLabel:'Barcode:',
-                matchFound:'Similar product found!',matchAsk:'Is this',
-                matchYes:'Yes, add barcode',matchNo:'No, create new',
-                mergeSuccess:'Barcode added to product'
+                balance:'Balance',today:'Today',weekStats:'Weekly stats',expenses:'Expenses',incomes:'Income',days:'Days',
+                recent:'Recent operations',clear:'Clear',noOps:'No operations yet',quickExp:'Quick expense',addExp:'Add expense',
+                scanner:'Barcode scanner',start:'Start',stop:'Stop',cart:'Cart',cartEmpty:'Cart is empty',saveCart:'Save purchase',
+                addInc:'Add income',addIncBtn:'Add income',incHist:'Income history',noInc:'No income',
+                quickActions:'Quick actions',save:'Save',
+                regPay:'Regular payments',addReg:'+ Add',noReg:'No payments',newPay:'New payment',saveReg:'Save',cancelReg:'Cancel',
+                prodBase:'Product database',noProd:'No products',addProd:'Add product',addProdBtn:'Add product',
+                settings:'Settings',lang:'Language',curr:'Currency',
+                sync:'Sync',syncDesc:'Sync between devices via GitHub Gist.',export:'Export',import:'Import',
+                syncHelp:'Token: github.com/settings/tokens (gist scope)',data:'Data',clearData:'Clear all data',
+                cats:{food:'Food',transport:'Transport',entertainment:'Entertainment',home:'Home',health:'Health',gifts:'Gifts',clothing:'Clothing',other:'Other'},
+                amount:'Amount',comment:'Comment',source:'Source (salary, gift...)',name:'Name',price:'Price',day:'Day',
+                search:'Search',barcode:'Barcode (multiple with comma)',
+                found:'Product found',unknown:'Unknown product',similar:'Similar product',yesAdd:'Yes, add',noNew:'No, new',
+                toCart:'To cart',addDB:'Add to database',added:'Barcode added!',
+                total:'Balance',totalInc:'Total income',totalCart:'Total',items:'items',
+                stopped:'Stopped',scanning:'Scanning...',starting:'Starting...',frontCam:'Front camera',
+                pay:'Pay',edit:'Edit',del:'Delete',
+                enterAmount:'Enter amount',enterName:'Enter name',enterPrice:'Enter price',enterDay:'Enter day (1-31)',
+                selectCat:'Select category',fillAll:'Fill all fields',cartIsEmpty:'Cart is empty',saved:'Saved!',
+                confirmClear:'Delete ALL operations?',confirmDel:'Delete?',confirmDelQuick:'Delete quick button?',
+                noCamera:'No camera access',syncReady:'Ready to sync',syncSaved:'Saved. Gist ID: ',syncLoaded:'Loaded!',
+                syncError:'Error: ',syncConnError:'Connection error',syncNotFound:'Gist not found',
+                configPrice:'Configure price',install:'Install as app',income:'Income',quickEditTitle:'Quick button'
             }
         };
-        let lang = navigator.language.startsWith('ru') ? 'ru' : 'en';
-        function t(k) { return tr[lang][k] || k; }
 
-        // ===== PWA =====
-        let deferredPrompt;
-        window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); deferredPrompt = e; document.getElementById('installBanner').classList.add('show'); });
-        window.addEventListener('appinstalled', () => { document.getElementById('installBanner').classList.remove('show'); deferredPrompt = null; });
-        function installApp() {
-            if (!deferredPrompt) { alert(t('installUnavailable')); return; }
-            deferredPrompt.prompt();
-            deferredPrompt.userChoice.then(() => { deferredPrompt = null; document.getElementById('installBanner').classList.remove('show'); });
-        }
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                const swCode = 'self.addEventListener("install",e=>self.skipWaiting());self.addEventListener("activate",e=>e.waitUntil(clients.claim()));self.addEventListener("fetch",e=>e.respondWith(fetch(e.request).catch(()=>new Response("Offline",{status:503}))));';
-                navigator.serviceWorker.register(URL.createObjectURL(new Blob([swCode],{type:'application/javascript'}))).catch(()=>{});
+        let L = localStorage.getItem('language') || (navigator.language.startsWith('ru')?'ru':'en');
+        function t(key) { return TR[L][key] || key; }
+        function changeLanguage(l) { L = l; localStorage.setItem('language', l); translateUI(); updateUI(); }
+
+        function translateUI() {
+            document.getElementById('langSelect').value = L;
+            document.querySelectorAll('[id^="lbl"]').forEach(el => {
+                const key = el.id.replace('lbl','').replace(/^./, c => c.toLowerCase());
+                if (TR[L][key]) el.textContent = t(key);
             });
+            document.querySelectorAll('.cat-item').forEach(el => {
+                const k = el.getAttribute('data-key');
+                if (k && t('cats')[k]) el.textContent = t('cats')[k];
+            });
+            document.getElementById('manualAmount').placeholder = t('amount');
+            document.getElementById('manualComment').placeholder = t('comment');
+            document.getElementById('incomeSource').placeholder = t('source');
+            document.getElementById('incomeAmount').placeholder = t('amount');
+            document.getElementById('regularName').placeholder = t('name');
+            document.getElementById('regularAmount').placeholder = t('amount');
+            document.getElementById('regularDay').placeholder = t('day');
+            document.getElementById('productSearch').placeholder = t('search');
+            document.getElementById('newProductBarcode').placeholder = t('barcode');
+            document.getElementById('newProductName').placeholder = t('name');
+            document.getElementById('newProductPrice').placeholder = t('price');
+            document.getElementById('quickEditName').placeholder = t('name');
+            document.getElementById('quickEditPrice').placeholder = t('price');
+            document.getElementById('quickEditTitle').textContent = t('quickEditTitle');
+            document.getElementById('installBanner').querySelector('span').textContent = t('install');
         }
 
-        // ===== DATA =====
+        let C = localStorage.getItem('currency') || '₽';
+        function changeCurrency(s) { C = s; localStorage.setItem('currency', s); updateUI(); }
+        function f(a) { return C + a.toFixed(2); }
+
         let expenses = JSON.parse(localStorage.getItem('expenses')||'[]');
+        let incomes = JSON.parse(localStorage.getItem('incomes')||'[]');
         let cart = JSON.parse(localStorage.getItem('cart')||'[]');
         let regularPayments = JSON.parse(localStorage.getItem('regularPayments')||'[]');
-        let productDB = JSON.parse(localStorage.getItem('productDB')||JSON.stringify({
-            '4601234567890':{name:'Молоко',name_en:'Milk',price:89},
-            '4602345678901':{name:'Хлеб',name_en:'Bread',price:45},
-            '4603456789012':{name:'Яблоки',name_en:'Apples',price:120}
-        }));
-        let selectedCategory = '';
-        let scanner = null;
-        let scannedBarcode = '';
-
-        function getProductName(p) {
-            if (typeof p === 'string') return p;
-            if (lang === 'en' && p.name_en) return p.name_en;
-            return p.name || p.name_en || 'Unknown';
-        }
-
-        // Получить все штрихкоды товара
-        function getProductBarcodes(p) {
-            if (typeof p === 'object' && p.barcodes) return p.barcodes;
-            return [];
-        }
-
-        // Найти товар по любому из его штрихкодов
-        function findProductByBarcode(barcode) {
-            for (const [key, product] of Object.entries(productDB)) {
-                if (typeof product === 'object') {
-                    const barcodes = product.barcodes || [key];
-                    if (barcodes.includes(barcode)) return product;
-                } else if (key === barcode) {
-                    return product;
-                }
-            }
-            return null;
-        }
-
-        // Поиск похожих штрихкодов (7+ цифр совпадают)
-        function findSimilarBarcode(barcode) {
-            const matches = [];
-            for (const [key, product] of Object.entries(productDB)) {
-                const barcodes = (typeof product === 'object' && product.barcodes) ? product.barcodes : [key];
-                for (const existingBc of barcodes) {
-                    let matchCount = 0;
-                    const minLen = Math.min(barcode.length, existingBc.length);
-                    for (let i = 0; i < minLen; i++) {
-                        if (barcode[i] === existingBc[i]) matchCount++;
-                    }
-                    if (matchCount >= 7 && barcode !== existingBc) {
-                        matches.push({ product, key, existingBc, matchCount });
-                        break;
-                    }
-                }
-            }
-            return matches.sort((a, b) => b.matchCount - a.matchCount)[0] || null;
-        }
+        let productDB = JSON.parse(localStorage.getItem('productDB')||'{}');
+        let quickBtns = JSON.parse(localStorage.getItem('quickBtns')||'[{"name":"Проезд","price":50},{"name":"Кофе","price":200}]');
+        let selectedCategory = '', scanner = null, scannedBarcode = '', editingQuickIndex = -1;
 
         function saveAll() {
-            localStorage.setItem('expenses', JSON.stringify(expenses));
-            localStorage.setItem('cart', JSON.stringify(cart));
-            localStorage.setItem('regularPayments', JSON.stringify(regularPayments));
-            localStorage.setItem('productDB', JSON.stringify(productDB));
+            localStorage.setItem('expenses', JSON.stringify(expenses)); localStorage.setItem('incomes', JSON.stringify(incomes));
+            localStorage.setItem('cart', JSON.stringify(cart)); localStorage.setItem('regularPayments', JSON.stringify(regularPayments));
+            localStorage.setItem('productDB', JSON.stringify(productDB)); localStorage.setItem('quickBtns', JSON.stringify(quickBtns));
+        }
+
+        function getBalance() { return incomes.reduce((s,i)=>s+i.amount,0) - expenses.reduce((s,e)=>s+e.amount,0); }
+
+        function renderQuickButtons() {
+            const grid = document.getElementById('quickButtonsGrid');
+            if (!quickBtns || !quickBtns.length) {
+                grid.innerHTML = `<div class="text-muted text-center" style="padding:10px;grid-column:1/-1;">Нет быстрых кнопок</div>`;
+                return;
+            }
+            grid.innerHTML = quickBtns.map((b, i) => `
+                <div class="quick-btn show-delete" onclick="quickExpense(${i})" oncontextmenu="event.preventDefault();deleteQuickBtn(${i})">
+                    <div style="font-weight:bold;">${b.name}</div>
+                    <div class="text-muted" style="font-size:12px;">${b.price ? f(b.price) : '--'}</div>
+                    <button class="delete-quick" onclick="event.stopPropagation();deleteQuickBtn(${i})">&times;</button>
+                </div>
+            `).join('');
+        }
+
+        function addQuickBtn() {
+            editingQuickIndex = -1;
+            document.getElementById('quickEditName').value = '';
+            document.getElementById('quickEditPrice').value = '';
+            document.getElementById('quickEditDialog').classList.add('show');
+            document.getElementById('quickEditName').focus();
+        }
+
+        function saveQuickEdit() {
+            const name = document.getElementById('quickEditName').value.trim();
+            const price = parseFloat(document.getElementById('quickEditPrice').value) || 0;
+            if (!name) { alert(t('enterName')); return; }
+            if (!price || price <= 0) { alert(t('enterPrice')); return; }
+            
+            if (editingQuickIndex >= 0 && editingQuickIndex < quickBtns.length) {
+                quickBtns[editingQuickIndex] = { name, price };
+            } else {
+                quickBtns.push({ name, price });
+            }
+            saveAll();
+            document.getElementById('quickEditDialog').classList.remove('show');
+            editingQuickIndex = -1;
+            renderQuickButtons();
+        }
+
+        function cancelQuickEdit() {
+            document.getElementById('quickEditDialog').classList.remove('show');
+            editingQuickIndex = -1;
+        }
+
+        function deleteQuickBtn(i) {
+            if (!confirm(t('confirmDelQuick'))) return;
+            quickBtns.splice(i, 1);
+            saveAll();
+            if (editingQuickIndex === i) { cancelQuickEdit(); }
+            renderQuickButtons();
+        }
+
+        function quickExpense(i) {
+            const b = quickBtns[i];
+            if (!b || !b.price) { alert(t('configPrice')); return; }
+            expenses.push({amount: b.price, category: 'transport', comment: b.name, date: new Date().toISOString()});
+            saveAll();
+            updateUI();
         }
 
         function updateUI() {
-            document.getElementById('currencySelect').value = currentCurrency;
+            document.getElementById('profileCurrency').value = C;
+            document.getElementById('langSelect').value = L;
             
-            // Header
-            const total = expenses.reduce((s,e) => s + e.amount, 0);
-            document.getElementById('totalDisplay').textContent = formatCurrency(total);
+            const bal = getBalance();
+            document.getElementById('totalDisplay').textContent = f(bal);
+            document.getElementById('totalDisplay').style.color = bal >= 0 ? '#36855B' : '#dc3545';
+            
             const today = new Date().toDateString();
-            const todayTotal = expenses.filter(e => new Date(e.date).toDateString() === today).reduce((s,e) => s + e.amount, 0);
-            document.getElementById('todayDisplay').textContent = formatCurrency(todayTotal);
+            document.getElementById('todayDisplay').textContent = f(expenses.filter(e => new Date(e.date).toDateString() === today).reduce((s,e)=>s+e.amount,0));
 
-            // Week stats
-            const weekAgo = new Date(); weekAgo.setDate(weekAgo.getDate() - 7);
-            const weekEx = expenses.filter(e => new Date(e.date) >= weekAgo);
-            const weekSum = weekEx.reduce((s,e) => s + e.amount, 0);
-            const daysCount = new Set(weekEx.map(e => new Date(e.date).toDateString())).size;
-            document.getElementById('weekTotal').textContent = formatCurrency(weekSum);
-            document.getElementById('weekDays').textContent = daysCount;
-            document.getElementById('weekAvg').textContent = formatCurrency(daysCount > 0 ? weekSum / daysCount : 0);
+            const wa = new Date(); wa.setDate(wa.getDate()-7);
+            const we = expenses.filter(e => new Date(e.date) >= wa);
+            const wi = incomes.filter(e => new Date(e.date) >= wa);
+            document.getElementById('weekTotal').textContent = f(we.reduce((s,e)=>s+e.amount,0));
+            document.getElementById('weekIncome').textContent = f(wi.reduce((s,i)=>s+i.amount,0));
+            document.getElementById('weekDays').textContent = new Set([...we,...wi].map(e => new Date(e.date).toDateString())).size;
 
-            // Expenses
-            const list = document.getElementById('expenseList');
-            if (expenses.length === 0) {
-                list.innerHTML = `<div class="text-muted text-center" style="padding:20px 0;">${t('noExpenses')}</div>`;
-            } else {
-                list.innerHTML = expenses.slice().reverse().slice(0,20).map(e => {
-                    const d = new Date(e.date);
-                    const ds = d.toLocaleDateString(lang==='ru'?'ru-RU':'en-US',{day:'numeric',month:'short'});
-                    return `<div class="row"><span>${t('categories')[e.category]||e.category}${e.comment?' <span class="text-muted">('+e.comment+')</span>':''}<br><small class="text-muted">${ds}</small></span><span class="price">-${formatCurrency(e.amount)}</span></div>`;
-                }).join('');
-            }
-            document.getElementById('mainTotal').textContent = `${t('total')}: ${formatCurrency(total)}`;
+            const all = [...expenses.map(e=>({...e,type:'exp'})),...incomes.map(i=>({...i,type:'inc'}))].sort((a,b)=>new Date(b.date)-new Date(a.date));
+            const lst = document.getElementById('expenseList');
+            if (!all.length) lst.innerHTML = `<div class="text-muted text-center" style="padding:20px 0;">${t('noOps')}</div>`;
+            else lst.innerHTML = all.slice(0,30).map(o => {
+                const d = new Date(o.date).toLocaleDateString(L==='ru'?'ru-RU':'en-US',{day:'numeric',month:'short'});
+                if (o.type==='inc') return `<div class="row"><span>+ ${o.source||t('income')}<br><small class="text-muted">${d}</small></span><span class="price green">+${f(o.amount)}</span></div>`;
+                return `<div class="row"><span>${t('cats')[o.category]||o.category}${o.comment?' ('+o.comment+')':''}<br><small class="text-muted">${d}</small></span><span class="price">-${f(o.amount)}</span></div>`;
+            }).join('');
+            document.getElementById('mainTotal').textContent = t('total') + ': ' + f(bal);
 
-            // Cart
-            const cartList = document.getElementById('cartList');
-            if (cart.length === 0) {
-                cartList.innerHTML = `<div class="text-muted text-center" style="padding:15px 0;">${t('emptyCart')}</div>`;
-            } else {
-                cartList.innerHTML = cart.map((item,i) =>
-                    `<div class="row"><span>${item.name}</span><span><span class="price">-${formatCurrency(item.price)}</span> <span style="cursor:pointer;color:#888;margin-left:8px;font-size:18px;" onclick="removeFromCart(${i})">&times;</span></span></div>`
-                ).join('');
-            }
-            document.getElementById('cartTotal').textContent = `${t('total')}: ${formatCurrency(cart.reduce((s,i)=>s+i.price,0))}`;
-            document.getElementById('cartCount').textContent = `${cart.length} ${t('items')}`;
+            renderQuickButtons();
 
-            // Regular
-            const regList = document.getElementById('regularList');
-            if (regularPayments.length === 0) {
-                regList.innerHTML = `<div class="text-muted text-center" style="padding:20px 0;">${t('noRegular')}</div>`;
-            } else {
-                regList.innerHTML = regularPayments.map((p,i) =>
-                    `<div style="background:#f8f8f8;padding:14px;border-radius:10px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;"><div><strong>${p.name}</strong><div class="text-muted">${formatCurrency(p.amount)} &middot; ${p.day}</div></div><div style="display:flex;gap:6px;"><button class="btn-small" style="background:#36855B;color:#fff;" onclick="payRegular(${i})">${t('payBtn')}</button><button class="btn-small" onclick="deleteRegular(${i})">&times;</button></div></div>`
-                ).join('');
-            }
+            const il = document.getElementById('incomeList');
+            if (!incomes.length) il.innerHTML = `<div class="text-muted text-center" style="padding:20px 0;">${t('noInc')}</div>`;
+            else il.innerHTML = incomes.slice().reverse().slice(0,20).map(i => `<div class="row"><span>${i.source||t('income')}<br><small class="text-muted">${new Date(i.date).toLocaleDateString(L==='ru'?'ru-RU':'en-US',{day:'numeric',month:'short'})}</small></span><span class="price green">+${f(i.amount)}</span></div>`).join('');
+            document.getElementById('incomeTotal').textContent = t('totalInc') + ': ' + f(incomes.reduce((s,i)=>s+i.amount,0));
+
+            const cl = document.getElementById('cartList');
+            if (!cart.length) cl.innerHTML = `<div class="text-muted text-center" style="padding:15px 0;">${t('cartEmpty')}</div>`;
+            else cl.innerHTML = cart.map((it,i) => `<div class="row"><span>${it.name}</span><span><span class="price">-${f(it.price)}</span> <span style="cursor:pointer;color:#888;margin-left:8px;font-size:18px;" onclick="removeFromCart(${i})">&times;</span></span></div>`).join('');
+            document.getElementById('cartTotal').textContent = t('totalCart') + ': ' + f(cart.reduce((s,i)=>s+i.price,0));
+            document.getElementById('cartCount').textContent = cart.length + ' ' + t('items');
+
+            const rl = document.getElementById('regularList');
+            if (!regularPayments.length) rl.innerHTML = `<div class="text-muted text-center" style="padding:20px 0;">${t('noReg')}</div>`;
+            else rl.innerHTML = regularPayments.map((p,i) => `<div style="background:#f8f8f8;padding:14px;border-radius:10px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;"><div><strong>${p.name}</strong><div class="text-muted">${f(p.amount)} &middot; ${p.day}</div></div><div style="display:flex;gap:6px;"><button class="btn-small" style="background:#36855B;color:#fff;" onclick="payRegular(${i})">${t('pay')}</button><button class="btn-small" onclick="deleteRegular(${i})">&times;</button></div></div>`).join('');
 
             updateProductList();
+            document.getElementById('gistToken').value = localStorage.getItem('gistToken')||'';
+            document.getElementById('gistId').value = localStorage.getItem('gistId')||'';
             translateUI();
         }
 
         function updateProductList() {
-            const search = (document.getElementById('productSearch')?.value || '').toLowerCase();
-            const entries = Object.entries(productDB);
-            const filtered = entries.filter(([b,p]) => {
-                const name = getProductName(p).toLowerCase();
-                const barcodes = (typeof p === 'object' && p.barcodes) ? p.barcodes : [b];
-                return barcodes.some(bc => bc.includes(search)) || name.includes(search);
+            const s = (document.getElementById('productSearch')?.value||'').toLowerCase();
+            const ent = Object.entries(productDB);
+            const flt = ent.filter(([b,p]) => {
+                const n = (typeof p==='object'?(p.name||''):p).toLowerCase();
+                const bc = (typeof p==='object'&&p.barcodes)?p.barcodes:[b];
+                return bc.some(x=>x.includes(s)) || n.includes(s);
             });
-            document.getElementById('productCount').textContent = `${filtered.length} ${t('items')}`;
-            const list = document.getElementById('productList');
-            if (filtered.length === 0) {
-                list.innerHTML = `<div class="text-muted text-center" style="padding:20px 0;">${t('noProducts')}</div>`;
-                return;
-            }
-            list.innerHTML = filtered.map(([b,p]) => {
-                const barcodes = (typeof p === 'object' && p.barcodes) ? p.barcodes : [b];
-                const barcodesStr = barcodes.map(bc => `<span class="tag">${bc}</span>`).join(' ');
-                return `<div class="product-card" id="prod-${b}">
-                    <div><div class="name">${getProductName(p)}</div><div class="barcodes-list">${barcodesStr}</div></div>
-                    <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;">
-                        <span style="font-weight:600;">${formatCurrency(p.price)}</span>
-                        <button class="btn-small" onclick="editProduct('${b}')">${t('editBtn')}</button>
-                        <button class="btn-small" onclick="deleteProduct('${b}')">&times;</button>
-                    </div></div>`;
+            document.getElementById('productCount').textContent = flt.length + ' ' + t('items');
+            const lst = document.getElementById('productList');
+            if (!flt.length) { lst.innerHTML = `<div class="text-muted text-center" style="padding:20px 0;">${t('noProd')}</div>`; return; }
+            lst.innerHTML = flt.map(([b,p]) => {
+                const n = typeof p==='object'?(p.name||''):p, pr = typeof p==='object'?(p.price||0):0;
+                const bc = (typeof p==='object'&&p.barcodes)?p.barcodes:[b];
+                return `<div class="product-card" style="display:flex;justify-content:space-between;align-items:center;"><div><strong>${n}</strong><div style="font-size:10px;color:#aaa;">${bc.map(x=>'<span class="tag">'+x+'</span>').join(' ')}</div></div><div style="display:flex;align-items:center;gap:8px;"><span style="font-weight:600;">${f(pr)}</span><button class="btn-small" onclick="editProduct('${b}')">${t('edit')}</button><button class="btn-small" onclick="deleteProduct('${b}')">&times;</button></div></div>`;
             }).join('');
         }
 
-        function translateUI() {
-            document.querySelectorAll('[id]').forEach(el => {
-                const key = el.id;
-                if (tr[lang][key] && el.textContent.length < 30) {
-                    const currentText = el.textContent.trim();
-                    const ruText = tr['ru'][key] || '';
-                    const enText = tr['en'][key] || '';
-                    if (currentText === ruText || currentText === enText || currentText === '') {
-                        el.textContent = t(key);
-                    }
-                }
-            });
-            document.querySelectorAll('[id]').forEach(el => {
-                const key = el.id;
-                if (tr[lang][key] && (el.tagName === 'INPUT' || el.tagName === 'SELECT')) {
-                    el.placeholder = t(key);
-                }
-            });
-            document.querySelectorAll('.cat-item').forEach(el => {
-                const key = el.getAttribute('data-key');
-                if (key && t('categories')[key]) el.textContent = t('categories')[key];
-            });
-            document.getElementById('noExpenses').textContent = t('noExpenses');
-            document.getElementById('emptyCart').textContent = t('emptyCart');
-            document.getElementById('noRegular').textContent = t('noRegular');
-            document.getElementById('noProducts').textContent = t('noProducts');
-            document.getElementById('currencyLabel').textContent = t('currencyLabel');
-            document.getElementById('installText').textContent = t('installText');
-            document.getElementById('productSearch').placeholder = t('searchPlaceholder');
-            document.getElementById('newProductBarcode').placeholder = t('newProductBarcode') + ' (можно несколько)';
+        function openProfile() {
+            document.getElementById('profileModal').classList.add('show');
+            document.getElementById('langSelect').value = L;
+            document.getElementById('profileCurrency').value = C;
+            document.getElementById('gistToken').value = localStorage.getItem('gistToken')||'';
+            document.getElementById('gistId').value = localStorage.getItem('gistId')||'';
+        }
+        function closeProfile() { document.getElementById('profileModal').classList.remove('show'); }
+
+        function addIncome() { const a=parseFloat(document.getElementById('incomeAmount').value); if(!a||a<=0){alert(t('enterAmount'));return;} incomes.push({amount:a,source:document.getElementById('incomeSource').value.trim()||t('income'),date:new Date().toISOString()}); saveAll();document.getElementById('incomeAmount').value='';document.getElementById('incomeSource').value='';updateUI(); }
+
+        async function exportToGist() {
+            const tk=document.getElementById('gistToken').value.trim();let gid=document.getElementById('gistId').value.trim();
+            if(!tk){alert('Введите токен');return;}localStorage.setItem('gistToken',tk);
+            const data=JSON.stringify({expenses,incomes,regularPayments,productDB,quickBtns},null,2);
+            try{
+                let r;if(gid){r=await fetch('https://api.github.com/gists/'+gid,{method:'PATCH',headers:{'Authorization':'token '+tk,'Content-Type':'application/json'},body:JSON.stringify({files:{'fintracker.json':{content:data}}})});}
+                else{r=await fetch('https://api.github.com/gists',{method:'POST',headers:{'Authorization':'token '+tk,'Content-Type':'application/json'},body:JSON.stringify({description:'FinTracker',public:false,files:{'fintracker.json':{content:data}}})});}
+                const j=await r.json();
+                if(j.id){document.getElementById('gistId').value=j.id;localStorage.setItem('gistId',j.id);document.getElementById('syncStatus').textContent=t('syncSaved')+j.id;}
+                else{document.getElementById('syncStatus').textContent=t('syncError')+(j.message||'');}
+            }catch(e){document.getElementById('syncStatus').textContent=t('syncConnError');}
+        }
+        async function importFromGist() {
+            const tk=document.getElementById('gistToken').value.trim(),gid=document.getElementById('gistId').value.trim();
+            if(!tk||!gid){alert('Введите токен и Gist ID');return;}localStorage.setItem('gistToken',tk);localStorage.setItem('gistId',gid);
+            try{
+                const r=await fetch('https://api.github.com/gists/'+gid,{headers:{'Authorization':'token '+tk}}),j=await r.json();
+                if(j.files&&j.files['fintracker.json']){const d=JSON.parse(j.files['fintracker.json'].content);expenses=d.expenses||[];incomes=d.incomes||[];regularPayments=d.regularPayments||[];productDB=d.productDB||{};quickBtns=d.quickBtns||quickBtns;cart=[];saveAll();updateUI();document.getElementById('syncStatus').textContent=t('syncLoaded');}
+                else{document.getElementById('syncStatus').textContent=t('syncNotFound');}
+            }catch(e){document.getElementById('syncStatus').textContent=t('syncConnError');}
         }
 
-        function selectCategory(cat) {
-            selectedCategory = cat;
-            document.querySelectorAll('.cat-item').forEach(el => el.classList.remove('active'));
-            event?.target?.closest('.cat-item')?.classList.add('active');
-        }
+        function selectCategory(c){selectedCategory=c;document.querySelectorAll('.cat-item').forEach(el=>el.classList.remove('active'));event?.target?.closest('.cat-item')?.classList.add('active');}
+        function addManualExpense(){const a=parseFloat(document.getElementById('manualAmount').value);if(!a||a<=0){alert(t('enterAmount'));return;}if(!selectedCategory){alert(t('selectCat'));return;}expenses.push({amount:a,category:selectedCategory,comment:document.getElementById('manualComment').value.trim(),date:new Date().toISOString()});saveAll();document.getElementById('manualAmount').value='';document.getElementById('manualComment').value='';selectedCategory='';document.querySelectorAll('.cat-item').forEach(el=>el.classList.remove('active'));updateUI();}
 
-        function addManualExpense() {
-            const amount = parseFloat(document.getElementById('manualAmount').value);
-            if (!amount || amount <= 0) { alert(t('enterAmount')); return; }
-            if (!selectedCategory) { alert(t('selectCategory')); return; }
-            expenses.push({amount,category:selectedCategory,comment:document.getElementById('manualComment').value.trim(),date:new Date().toISOString()});
-            saveAll();
-            document.getElementById('manualAmount').value = '';
-            document.getElementById('manualComment').value = '';
-            selectedCategory = '';
-            document.querySelectorAll('.cat-item').forEach(el => el.classList.remove('active'));
+        function startScanner(){if(scanner){scanner.stop().then(()=>{scanner.clear();document.getElementById('reader').innerHTML='';scanner=null;initScanner();}).catch(()=>{scanner=null;document.getElementById('reader').innerHTML='';initScanner();});return;}initScanner();}
+        function initScanner(){document.getElementById('reader').innerHTML='';document.getElementById('scanStatus').textContent=t('starting');scanner=new Html5Qrcode("reader");scanner.start({facingMode:"environment"},{fps:10,qrbox:{width:250,height:150}},onScanSuccess,()=>{}).then(()=>{document.getElementById('scanStatus').textContent=t('scanning');document.getElementById('scanStatus').style.background='#d4edda';}).catch(()=>{scanner=new Html5Qrcode("reader");scanner.start({facingMode:"user"},{fps:10,qrbox:{width:250,height:150}},onScanSuccess,()=>{}).then(()=>{document.getElementById('scanStatus').textContent=t('frontCam');}).catch(()=>{alert(t('noCamera'));scanner=null;});});}
+        function onScanSuccess(d){if(navigator.vibrate)navigator.vibrate(100);stopScanner();scannedBarcode=d;const p=findProduct(d);document.getElementById('scannedProduct').style.display='block';const c=document.getElementById('scanResult');if(p){const n=typeof p==='object'?(p.name||''):p,pr=typeof p==='object'?(p.price||0):0;c.innerHTML=`<div style="font-weight:bold;color:#36855B;">${t('found')}</div><div style="font-size:22px;margin:6px 0;">${n}</div><div class="text-muted">${d}</div><div class="flex" style="margin-top:10px;"><input type="number" id="scannedPrice" placeholder="${t('price')}" step="0.01" class="flex-1" value="${pr}"><button class="btn btn-green" onclick="addScanned('${n}')" style="width:auto;padding:12px 20px;">${t('toCart')}</button></div>`;}else{const s=findSimilar(d);if(s){const n=typeof s.product==='object'?(s.product.name||''):s.product,pr=typeof s.product==='object'?(s.product.price||0):0;c.innerHTML=`<div class="match-box"><strong>${t('similar')}: "${n}"?</strong><div class="text-muted">${d}</div><div class="flex" style="margin-top:10px;"><button class="btn btn-green flex-1" onclick="mergeBarcode('${s.key}','${d}','${n}',${pr})">${t('yesAdd')}</button><button class="btn btn-gray flex-1" onclick="showNew()">${t('noNew')}</button></div></div>`;}else{showNew();}}}
+        function showNew(){document.getElementById('scanResult').innerHTML=`<div style="font-weight:bold;color:#dc3545;">${t('unknown')}</div><div class="text-muted">${scannedBarcode}</div><div class="flex" style="margin-top:10px;"><input type="number" id="scannedPrice" placeholder="${t('price')}" step="0.01" class="flex-1"><button class="btn btn-green" onclick="addUnknownToCart()" style="width:auto;padding:12px 20px;">${t('toCart')}</button></div><button class="btn btn-gray mt-8" onclick="addUnknownToDB()">${t('addDB')}</button>`;}
+        function findProduct(b){for(const[k,p]of Object.entries(productDB)){if((typeof p==='object'&&p.barcodes?p.barcodes:[k]).includes(b))return p;}return null;}
+        function findSimilar(b){const m=[];for(const[k,p]of Object.entries(productDB)){for(const eb of(typeof p==='object'&&p.barcodes?p.barcodes:[k])){let c=0;for(let i=0;i<Math.min(b.length,eb.length);i++)if(b[i]===eb[i])c++;if(c>=7&&b!==eb){m.push({product:p,key:k,existingBc:eb,matchCount:c});break;}}}return m.sort((a,b)=>b.matchCount-a.matchCount)[0]||null;}
+        function mergeBarcode(k,nb,nm,pr){if(typeof productDB[k]==='object'){if(!productDB[k].barcodes)productDB[k].barcodes=[k];if(!productDB[k].barcodes.includes(nb))productDB[k].barcodes.push(nb);}else{productDB[k]={name:nm,price:pr,barcodes:[k,nb]};}saveAll();updateUI();document.getElementById('scanResult').innerHTML=`<div style="font-weight:bold;color:#36855B;">${t('added')}</div><div style="font-size:22px;">${nm}</div><div class="flex" style="margin-top:10px;"><input type="number" id="scannedPrice" placeholder="${t('price')}" step="0.01" class="flex-1" value="${pr}"><button class="btn btn-green" onclick="addScanned('${nm}')" style="width:auto;padding:12px 20px;">${t('toCart')}</button></div>`;}
+        function stopScanner(){if(scanner){scanner.stop().then(()=>{scanner.clear();scanner=null;document.getElementById('scanStatus').textContent=t('stopped');document.getElementById('scanStatus').style.background='#f0f0f0';}).catch(()=>{scanner=null;});}}
+        function addScanned(nm){const p=parseFloat(document.getElementById('scannedPrice')?.value);if(!p||p<=0){alert(t('enterPrice'));return;}cart.push({name:nm,barcode:scannedBarcode,price:p});saveAll();updateUI();document.getElementById('scannedProduct').style.display='none';}
+        function addUnknownToCart(){const p=parseFloat(document.getElementById('scannedPrice')?.value);if(!p||p<=0){alert(t('enterPrice'));return;}cart.push({name:t('unknown'),barcode:scannedBarcode,price:p});saveAll();updateUI();document.getElementById('scannedProduct').style.display='none';}
+        function addUnknownToDB(){const n=prompt(t('name')+':');if(!n)return;const p=parseFloat(document.getElementById('scannedPrice')?.value);if(!p||p<=0){alert(t('enterPrice'));return;}productDB[scannedBarcode]={name:n.trim(),price:p,barcodes:[scannedBarcode]};saveAll();updateUI();document.getElementById('scanResult').innerHTML=`<div style="font-weight:bold;color:#36855B;">${t('added')}</div><div style="font-size:22px;">${n}</div><div class="flex" style="margin-top:10px;"><input type="number" id="scannedPrice" value="${p}" step="0.01" class="flex-1"><button class="btn btn-green" onclick="addScanned('${n}')" style="width:auto;padding:12px 20px;">${t('toCart')}</button></div>`;}
+        function removeFromCart(i){cart.splice(i,1);saveAll();updateUI();}
+        function saveCart(){if(!cart.length){alert(t('cartEmpty'));return;}cart.forEach(i=>expenses.push({amount:i.price,category:'purchase',comment:i.name,date:new Date().toISOString()}));cart=[];saveAll();updateUI();alert(t('saved'));}
+
+        function toggleRegularForm(){const f=document.getElementById('regularAddForm');f.style.display=f.style.display==='none'?'block':'none';if(f.style.display==='block')document.getElementById('regularName').focus();}
+        function cancelRegularPayment(){document.getElementById('regularAddForm').style.display='none';document.getElementById('regularName').value='';document.getElementById('regularAmount').value='';document.getElementById('regularDay').value='';}
+        function saveRegularPayment(){const n=document.getElementById('regularName').value.trim(),a=parseFloat(document.getElementById('regularAmount').value),d=parseInt(document.getElementById('regularDay').value);if(!n||!a||a<=0||!d||d<1||d>31){alert(t('fillAll'));return;}regularPayments.push({name:n,amount:a,day:d});saveAll();cancelRegularPayment();updateUI();}
+        function payRegular(i){const p=regularPayments[i];const a=parseFloat(prompt(t('enterAmount')+' "'+p.name+'":',p.amount));if(!a||a<=0)return;expenses.push({amount:a,category:'regular',comment:p.name,date:new Date().toISOString()});saveAll();updateUI();}
+        function deleteRegular(i){if(!confirm(t('confirmDel')))return;regularPayments.splice(i,1);saveAll();updateUI();}
+
+        function editProduct(b){const p=productDB[b];if(!p)return;const n=prompt(t('name')+':',typeof p==='object'?p.name:p);if(n===null)return;const pr=parseFloat(prompt(t('price')+':',typeof p==='object'?p.price:0));if(!pr||pr<=0)return;if(typeof p==='object'){p.name=n.trim();p.price=pr;}else{productDB[b]={name:n.trim(),price:pr,barcodes:[b]};}saveAll();updateUI();}
+        function deleteProduct(b){if(!confirm(t('confirmDel')))return;delete productDB[b];saveAll();updateUI();}
+        function addProductManually(){const b=document.getElementById('newProductBarcode').value.trim(),n=document.getElementById('newProductName').value.trim(),p=parseFloat(document.getElementById('newProductPrice').value);if(!b||!n||!p||p<=0){alert(t('fillAll'));return;}const bc=b.split(',').map(s=>s.trim()).filter(s=>s.length>0);productDB[bc[0]]={name:n,price:p,barcodes:bc};saveAll();updateUI();document.getElementById('newProductBarcode').value='';document.getElementById('newProductName').value='';document.getElementById('newProductPrice').value='';}
+
+        function switchTab(tab){
+            document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+            document.querySelectorAll('[id^="tab-"]').forEach(el=>el.classList.add('hidden'));
+            const target=document.getElementById('tab-'+tab);if(target)target.classList.remove('hidden');
+            const btn=document.querySelector('.tab[onclick*="'+tab+'"]');if(btn)btn.classList.add('active');
+            if(tab!=='scan')stopScanner();
             updateUI();
         }
+        function clearAll(){if(!confirm(t('confirmClear')))return;expenses=[];incomes=[];saveAll();updateUI();}
 
-        function startScanner() {
-            if (scanner) { scanner.stop().then(()=>{scanner.clear();document.getElementById('reader').innerHTML='';scanner=null;initScanner();}).catch(()=>{scanner=null;document.getElementById('reader').innerHTML='';initScanner();}); return; }
-            initScanner();
-        }
+        let dp;window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();dp=e;document.getElementById('installBanner').classList.add('show');});
+        window.addEventListener('appinstalled',()=>{document.getElementById('installBanner').classList.remove('show');dp=null;});
+        function installApp(){if(!dp){alert('Установка недоступна');return;}dp.prompt();dp.userChoice.then(()=>{dp=null;document.getElementById('installBanner').classList.remove('show');});}
+        if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register(URL.createObjectURL(new Blob(['self.addEventListener("install",e=>self.skipWaiting());self.addEventListener("activate",e=>e.waitUntil(clients.claim()));self.addEventListener("fetch",e=>e.respondWith(fetch(e.request).catch(()=>new Response("Offline",{status:503}))));'],{type:'application/javascript'}))).catch(()=>{});});}
 
-        function initScanner() {
-            document.getElementById('reader').innerHTML = '';
-            document.getElementById('scanStatus').textContent = t('scanStatusStarting');
-            scanner = new Html5Qrcode("reader");
-            const config = { fps: 10, qrbox: { width: 250, height: 150 }, aspectRatio: 1.0 };
-            scanner.start({ facingMode: "environment" }, config, onScanSuccess, ()=>{})
-                .then(() => { document.getElementById('scanStatus').textContent = t('scanStatusScanning'); document.getElementById('scanStatus').style.background = '#d4edda'; })
-                .catch(() => {
-                    document.getElementById('scanStatus').textContent = t('scanStatusError');
-                    scanner = new Html5Qrcode("reader");
-                    scanner.start({ facingMode: "user" }, config, onScanSuccess, ()=>{})
-                        .then(() => { document.getElementById('scanStatus').textContent = t('scanStatusFront'); document.getElementById('scanStatus').style.background = '#fff3cd'; })
-                        .catch(() => { document.getElementById('scanStatus').textContent = t('scanStatusNoAccess'); alert(t('cameraError')); scanner = null; });
-                });
-        }
-
-        function onScanSuccess(decodedText) {
-            if (navigator.vibrate) navigator.vibrate(100);
-            stopScanner();
-            scannedBarcode = decodedText;
-            
-            const prod = findProductByBarcode(decodedText);
-            const container = document.getElementById('scanResult');
-            document.getElementById('scannedProduct').style.display = 'block';
-            
-            if (prod) {
-                // Точное совпадение
-                container.innerHTML = `
-                    <div style="font-weight:bold;font-size:14px;color:#36855B;">${t('productFound')}</div>
-                    <div style="font-size:22px;margin:6px 0;font-weight:bold;">${getProductName(prod)}</div>
-                    <div class="text-muted">${t('barcodeLabel')} ${decodedText}</div>
-                    <div class="flex" style="margin-top:10px;">
-                        <input type="number" id="scannedPrice" placeholder="${t('manualAmount')}" step="0.01" inputmode="decimal" class="flex-1" value="${prod.price}">
-                        <button class="btn btn-green" onclick="addScannedItem('${getProductName(prod)}', ${prod.price})" style="width:auto;padding:12px 20px;white-space:nowrap;">${t('addToCartBtn')}</button>
-                    </div>`;
-            } else {
-                // Ищем похожие
-                const similar = findSimilarBarcode(decodedText);
-                if (similar) {
-                    const pname = getProductName(similar.product);
-                    container.innerHTML = `
-                        <div class="match-box">
-                            <div class="match-title">${t('matchFound')}</div>
-                            <div class="match-name">${t('matchAsk')} "${pname}"?</div>
-                            <div class="text-muted">${t('barcodeLabel')} ${decodedText}</div>
-                            <div class="text-muted" style="font-size:12px;">(${similar.matchCount} цифр совпадает с ${similar.existingBc})</div>
-                            <div class="flex" style="margin-top:10px;">
-                                <button class="btn btn-blue flex-1" onclick="mergeBarcode('${similar.key}', '${decodedText}', '${pname}', ${similar.product.price})">${t('matchYes')}</button>
-                                <button class="btn btn-gray flex-1" onclick="showNewProductForm()">${t('matchNo')}</button>
-                            </div>
-                        </div>`;
-                } else {
-                    showNewProductForm();
-                }
-            }
-            document.getElementById('scannedProduct').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function showNewProductForm() {
-            const container = document.getElementById('scanResult');
-            container.innerHTML = `
-                <div style="font-weight:bold;font-size:14px;color:#36855B;">${t('unknownProduct')}</div>
-                <div style="font-size:18px;margin:6px 0;font-weight:bold;">${t('unknownProduct')}</div>
-                <div class="text-muted">${t('barcodeLabel')} ${scannedBarcode}</div>
-                <div class="flex" style="margin-top:10px;">
-                    <input type="number" id="scannedPrice" placeholder="${t('manualAmount')}" step="0.01" inputmode="decimal" class="flex-1">
-                    <button class="btn btn-green" onclick="addUnknownToCart()" style="width:auto;padding:12px 20px;white-space:nowrap;">${t('addToCartBtn')}</button>
-                </div>
-                <button class="btn btn-orange mt-8" onclick="addUnknownToDB()">${t('addToDatabase')}</button>`;
-        }
-
-        function mergeBarcode(existingKey, newBarcode, productName, price) {
-            const existingProduct = productDB[existingKey];
-            if (typeof existingProduct === 'object') {
-                if (!existingProduct.barcodes) existingProduct.barcodes = [existingKey];
-                if (!existingProduct.barcodes.includes(newBarcode)) {
-                    existingProduct.barcodes.push(newBarcode);
-                }
-            } else {
-                productDB[existingKey] = {
-                    name: existingProduct.name || existingProduct,
-                    name_en: existingProduct.name_en || existingProduct,
-                    price: existingProduct.price || price,
-                    barcodes: [existingKey, newBarcode]
-                };
-            }
-            saveAll();
-            updateUI();
-            const container = document.getElementById('scanResult');
-            container.innerHTML = `
-                <div style="font-weight:bold;font-size:14px;color:#36855B;">${t('mergeSuccess')}: "${productName}"</div>
-                <div style="font-size:22px;margin:6px 0;font-weight:bold;">${productName}</div>
-                <div class="text-muted">${t('barcodeLabel')} ${newBarcode}</div>
-                <div class="flex" style="margin-top:10px;">
-                    <input type="number" id="scannedPrice" placeholder="${t('manualAmount')}" step="0.01" inputmode="decimal" class="flex-1" value="${price}">
-                    <button class="btn btn-green" onclick="addScannedItem('${productName}', ${price})" style="width:auto;padding:12px 20px;white-space:nowrap;">${t('addToCartBtn')}</button>
-                </div>`;
-            document.getElementById('scannedPrice').focus();
-        }
-
-        function stopScanner() {
-            if (scanner) {
-                scanner.stop().then(() => { scanner.clear(); scanner = null;
-                    document.getElementById('scanStatus').textContent = t('scanStatusStopped');
-                    document.getElementById('scanStatus').style.background = '#f0f0f0'; })
-                .catch(() => { scanner = null;
-                    document.getElementById('scanStatus').textContent = t('scanStatusStopped');
-                    document.getElementById('scanStatus').style.background = '#f0f0f0'; });
-            }
-        }
-
-        function addScannedItem(name, price) {
-            const p = parseFloat(document.getElementById('scannedPrice')?.value || price);
-            if (!p || p <= 0) { alert(t('enterAmount')); return; }
-            cart.push({ name, barcode: scannedBarcode, price: p });
-            saveAll(); updateUI();
-            document.getElementById('scannedProduct').style.display = 'none';
-        }
-
-        function addUnknownToCart() {
-            const p = parseFloat(document.getElementById('scannedPrice')?.value);
-            if (!p || p <= 0) { alert(t('enterAmount')); return; }
-            cart.push({ name: t('unknownProduct'), barcode: scannedBarcode, price: p });
-            saveAll(); updateUI();
-            document.getElementById('scannedProduct').style.display = 'none';
-        }
-
-        function addUnknownToDB() {
-            const name = prompt(t('enterName') + ':');
-            if (!name) return;
-            const price = parseFloat(document.getElementById('scannedPrice')?.value);
-            if (!price || price <= 0) { alert(t('enterPrice')); return; }
-            productDB[scannedBarcode] = { name: name.trim(), price, barcodes: [scannedBarcode] };
-            if (lang === 'ru') { const en = prompt('English name (optional):'); if (en) productDB[scannedBarcode].name_en = en.trim(); }
-            saveAll(); updateUI();
-            const container = document.getElementById('scanResult');
-            container.innerHTML = `
-                <div style="font-weight:bold;font-size:14px;color:#36855B;">${t('addedToDatabase')}</div>
-                <div style="font-size:22px;margin:6px 0;font-weight:bold;">${name}</div>
-                <div class="text-muted">${t('barcodeLabel')} ${scannedBarcode}</div>
-                <div class="flex" style="margin-top:10px;">
-                    <input type="number" id="scannedPrice" placeholder="${t('manualAmount')}" step="0.01" inputmode="decimal" class="flex-1" value="${price}">
-                    <button class="btn btn-green" onclick="addScannedItem('${name}', ${price})" style="width:auto;padding:12px 20px;white-space:nowrap;">${t('addToCartBtn')}</button>
-                </div>`;
-        }
-
-        function removeFromCart(i) { cart.splice(i,1); saveAll(); updateUI(); }
-
-        function saveCart() {
-            if (cart.length === 0) { alert(t('cartEmpty')); return; }
-            const total = cart.reduce((s,i) => s + i.price, 0);
-            cart.forEach(i => expenses.push({ amount: i.price, category: 'purchase', comment: i.name, date: new Date().toISOString() }));
-            cart = []; saveAll(); updateUI();
-            alert(t('saved') + ' ' + formatCurrency(total));
-        }
-
-        function toggleRegularForm() {
-            const f = document.getElementById('regularAddForm');
-            f.style.display = f.style.display === 'none' ? 'block' : 'none';
-            if (f.style.display === 'block') document.getElementById('regularName').focus();
-        }
-        function cancelRegularPayment() {
-            document.getElementById('regularAddForm').style.display = 'none';
-            document.getElementById('regularName').value = '';
-            document.getElementById('regularAmount').value = '';
-            document.getElementById('regularDay').value = '';
-        }
-        function saveRegularPayment() {
-            const name = document.getElementById('regularName').value.trim();
-            const amount = parseFloat(document.getElementById('regularAmount').value);
-            const day = parseInt(document.getElementById('regularDay').value);
-            if (!name) { alert(t('enterName')); return; }
-            if (!amount || amount <= 0) { alert(t('enterAmount')); return; }
-            if (!day || day < 1 || day > 31) { alert(t('enterDay')); return; }
-            regularPayments.push({ name, amount, day });
-            saveAll(); cancelRegularPayment(); updateUI();
-        }
-        function payRegular(i) {
-            const p = regularPayments[i];
-            const amount = parseFloat(prompt(`${t('enterAmount')} "${p.name}":`, p.amount));
-            if (!amount || amount <= 0) return;
-            expenses.push({ amount, category: 'regular', comment: p.name, date: new Date().toISOString() });
-            saveAll(); updateUI();
-        }
-        function deleteRegular(i) {
-            if (!confirm(t('confirmDelete'))) return;
-            regularPayments.splice(i,1); saveAll(); updateUI();
-        }
-
-        function editProduct(b) {
-            const p = productDB[b];
-            if (!p) return;
-            const name = prompt(t('enterName') + ':', getProductName(p));
-            if (name === null) return;
-            const price = parseFloat(prompt(t('enterPrice') + ':', p.price));
-            if (!price || price <= 0) return;
-            if (lang === 'ru') { p.name = name.trim(); const en = prompt('English name (optional):', p.name_en||''); if (en) p.name_en = en.trim(); }
-            else p.name = name.trim();
-            p.price = price;
-            saveAll(); updateUI();
-        }
-        function deleteProduct(b) {
-            if (!confirm(t('confirmDelete') + ' "' + getProductName(productDB[b]) + '"?')) return;
-            delete productDB[b]; saveAll(); updateUI();
-        }
-        function addProductManually() {
-            const b = document.getElementById('newProductBarcode').value.trim();
-            const n = document.getElementById('newProductName').value.trim();
-            const p = parseFloat(document.getElementById('newProductPrice').value);
-            if (!b) { alert(t('enterBarcode')); return; }
-            if (!n) { alert(t('enterName')); return; }
-            if (!p || p <= 0) { alert(t('enterPrice')); return; }
-            
-            // Разделяем штрихкоды по запятой
-            const barcodes = b.split(',').map(s => s.trim()).filter(s => s.length > 0);
-            const mainBarcode = barcodes[0];
-            
-            if (productDB[mainBarcode] && !confirm(t('barcodeExists') + ` (${getProductName(productDB[mainBarcode])})?`)) return;
-            
-            productDB[mainBarcode] = { name: n, price: p, barcodes: barcodes };
-            if (lang === 'ru') { const en = prompt('English name (optional):'); if (en) productDB[mainBarcode].name_en = en.trim(); }
-            saveAll(); updateUI();
-            document.getElementById('newProductBarcode').value = '';
-            document.getElementById('newProductName').value = '';
-            document.getElementById('newProductPrice').value = '';
-        }
-
-        function switchTab(tab) {
-            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-            document.querySelectorAll('[id^="tab-"]').forEach(el => el.classList.add('hidden'));
-            document.getElementById('tab-' + tab).classList.remove('hidden');
-            document.querySelector(`.tab[onclick*="${tab}"]`).classList.add('active');
-            if (tab !== 'scan') stopScanner();
-            updateUI();
-        }
-        function clearAll() {
-            if (!confirm(t('confirmClear'))) return;
-            expenses = []; saveAll(); updateUI();
-        }
-
-        updateUI();
+        translateUI(); updateUI();
     </script>
 </body>
 </html>
