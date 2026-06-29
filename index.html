@@ -3,286 +3,145 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Трекер расходов</title>
+    <title>FinTracker</title>
     
-    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogItCi0YDQtdC60LXRgCDRgNCw0YHRhdC+0LTQvtCyIiwKICAic2hvcnRfbmFtZSI6ICLQotGA0LXQutC10YAiLAogICJzdGFydF91cmwiOiAiLiIsCiAgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsCiAgImJhY2tncm91bmRfY29sb3IiOiAiI2YyZjJmMiIsCiAgInRoZW1lX2NvbG9yIjogIiMzNjg1NUIiLAogICJpY29ucyI6IFt7CiAgICAic3JjIjogImRhdGE6aW1hZ2Uvc3ZnK3htbCwlM0NzdmcgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJyB2aWV3Qm94PScwIDAgMTAwIDEwMCclM0UlM0NjaXJjbGUgY3g9JzUwJyBjeT0nNTAnIHI9JzUwJyBmaWxsPSclMjMzNjg1NUInLyUzRSUzQ3RleHQgeD0nNTAnIHk9JzY1JyBmb250LXNpemU9JzQwJyB0ZXh0LWFuY2hvcj0nbWlkZGxlJyBmaWxsPSd3aGl0ZScgZm9udC1mYW1pbHk9J0FyaWFsJyUzRSVDRCVBMCUzQy90ZXh0JTNFJTNDL3N2ZyUzRSIsCiAgICAic2l6ZXMiOiAiMTkyeDE5MiIsCiAgICAidHlwZSI6ICJpbWFnZS9zdmcreG1sIgogIH1dfQ==">
+    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIkZpblRyYWNrZXIiLAogICJzaG9ydF9uYW1lIjogIkZpblRyYWNrZXIiLAogICJzdGFydF91cmwiOiAiLiIsCiAgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsCiAgImJhY2tncm91bmRfY29sb3IiOiAiI2YyZjJmMiIsCiAgInRoZW1lX2NvbG9yIjogIiMzNjg1NUIiLAogICJpY29ucyI6IFt7CiAgICAic3JjIjogImRhdGE6aW1hZ2Uvc3ZnK3htbCwlM0NzdmcgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJyB2aWV3Qm94PScwIDAgMTAwIDEwMCclM0UlM0NjaXJjbGUgY3g9JzUwJyBjeT0nNTAnIHI9JzUwJyBmaWxsPSclMjMzNjg1NUInLyUzRSUzQ3RleHQgeD0nNTAnIHk9JzY1JyBmb250LXNpemU9JzQwJyB0ZXh0LWFuY2hvcj0nbWlkZGxlJyBmaWxsPSd3aGl0ZScgZm9udC1mYW1pbHk9J0FyaWFsJyUzRUYlM0MvdGV4dCUzRSUzQy9zdmclM0UiLAogICAgInNpemVzIjogIjE5MngxOTIiLAogICAgInR5cGUiOiAiaW1hZ2Uvc3ZnK3htbCIKICB9XX0=">
     
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="Трекер">
+    <meta name="apple-mobile-web-app-title" content="FinTracker">
     <meta name="theme-color" content="#36855B">
     
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #f2f2f2;
-            color: #1a1a1a;
-            padding: 12px;
-            max-width: 480px;
-            margin: 0 auto;
-            -webkit-tap-highlight-color: transparent;
-            user-select: none;
+            background: #f2f2f2; color: #1a1a1a; padding: 12px;
+            max-width: 480px; margin: 0 auto;
+            -webkit-tap-highlight-color: transparent; user-select: none;
             padding-top: max(12px, env(safe-area-inset-top));
             padding-bottom: max(12px, env(safe-area-inset-bottom));
         }
-
         .block {
-            background: #fff;
-            border-radius: 12px;
-            padding: 16px;
-            margin-bottom: 12px;
-            border: 1px solid #ddd;
+            background: #fff; border-radius: 12px; padding: 16px;
+            margin-bottom: 12px; border: 1px solid #ddd;
             box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
-
-        .flex {
-            display: flex;
-            gap: 8px;
-        }
-        .flex-1 {
-            flex: 1;
-        }
-
+        .flex { display: flex; gap: 8px; }
+        .flex-1 { flex: 1; }
         .btn {
-            border: none;
-            padding: 12px 16px;
-            border-radius: 10px;
-            font-size: 15px;
-            cursor: pointer;
-            background: #e0e0e0;
-            color: #1a1a1a;
-            width: 100%;
-            font-weight: 500;
+            border: none; padding: 12px 16px; border-radius: 10px;
+            font-size: 15px; cursor: pointer; background: #e0e0e0;
+            color: #1a1a1a; width: 100%; font-weight: 500;
             transition: opacity 0.15s;
         }
-        .btn:active {
-            opacity: 0.7;
-        }
-        .btn-green {
-            background: #36855B;
-            color: #fff;
-        }
-        .btn-red {
-            background: #dc3545;
-            color: #fff;
-        }
-        .btn-gray {
-            background: #e9ecef;
-        }
-
+        .btn:active { opacity: 0.7; }
+        .btn-green { background: #36855B; color: #fff; }
+        .btn-red { background: #dc3545; color: #fff; }
+        .btn-gray { background: #e9ecef; }
+        .btn-orange { background: #e67e22; color: #fff; }
+        .btn-blue { background: #2980b9; color: #fff; }
         input, select {
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            padding: 12px 14px;
-            font-size: 16px;
-            width: 100%;
-            background: #fff;
-            margin-bottom: 8px;
+            border: 1px solid #ccc; border-radius: 10px;
+            padding: 12px 14px; font-size: 16px; width: 100%;
+            background: #fff; margin-bottom: 8px;
         }
-        input:focus, select:focus {
-            outline: none;
-            border-color: #36855B;
-        }
+        input:focus, select:focus { outline: none; border-color: #36855B; }
         select {
-            -webkit-appearance: none;
-            appearance: none;
+            -webkit-appearance: none; appearance: none;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 8L0 2h12z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 14px center;
+            background-repeat: no-repeat; background-position: right 14px center;
             padding-right: 36px;
         }
-
         .cat-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 6px;
-            margin: 8px 0;
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            gap: 6px; margin: 8px 0;
         }
         .cat-item {
-            background: #f0f0f0;
-            padding: 12px 4px;
-            border-radius: 10px;
-            text-align: center;
-            cursor: pointer;
-            border: 2px solid transparent;
-            font-size: 13px;
-            transition: all 0.15s;
-            font-weight: 500;
+            background: #f0f0f0; padding: 12px 4px; border-radius: 10px;
+            text-align: center; cursor: pointer; border: 2px solid transparent;
+            font-size: 13px; transition: all 0.15s; font-weight: 500;
         }
-        .cat-item:active {
-            transform: scale(0.95);
-        }
-        .cat-item.active {
-            border-color: #36855B;
-            background: #e6f2ec;
-        }
-
+        .cat-item:active { transform: scale(0.95); }
+        .cat-item.active { border-color: #36855B; background: #e6f2ec; }
         .row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 0;
-            border-bottom: 1px solid #eee;
+            display: flex; justify-content: space-between;
+            align-items: center; padding: 10px 0; border-bottom: 1px solid #eee;
         }
-        .row .price {
-            color: #dc3545;
-            font-weight: 600;
-        }
-
+        .row .price { color: #dc3545; font-weight: 600; }
         .total {
-            text-align: right;
-            font-size: 20px;
-            font-weight: bold;
-            padding-top: 12px;
-            border-top: 2px solid #eee;
-            margin-top: 8px;
+            text-align: right; font-size: 20px; font-weight: bold;
+            padding-top: 12px; border-top: 2px solid #eee; margin-top: 8px;
         }
-
         .tabs {
-            display: flex;
-            gap: 4px;
-            background: #fff;
-            border-radius: 12px;
-            padding: 4px;
-            border: 1px solid #ddd;
-            margin-bottom: 12px;
-            position: sticky;
-            top: 0;
-            z-index: 10;
+            display: flex; gap: 4px; background: #fff; border-radius: 12px;
+            padding: 4px; border: 1px solid #ddd; margin-bottom: 12px;
+            position: sticky; top: 0; z-index: 10;
         }
         .tab {
-            flex: 1;
-            padding: 12px 4px;
-            text-align: center;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 12px;
-            font-weight: 500;
-            color: #666;
-            transition: all 0.15s;
-            white-space: nowrap;
+            flex: 1; padding: 12px 4px; text-align: center;
+            border-radius: 10px; cursor: pointer; font-size: 12px;
+            font-weight: 500; color: #666; transition: all 0.15s; white-space: nowrap;
         }
-        .tab:active {
-            transform: scale(0.95);
-        }
-        .tab.active {
-            background: #36855B;
-            color: #fff;
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
+        .tab:active { transform: scale(0.95); }
+        .tab.active { background: #36855B; color: #fff; }
+        .hidden { display: none !important; }
         .scanner-box {
-            background: #000;
-            border-radius: 12px;
-            overflow: hidden;
-            min-height: 250px;
-            position: relative;
+            background: #000; border-radius: 12px; overflow: hidden;
+            min-height: 250px; position: relative;
         }
-        #reader {
-            width: 100%;
-            min-height: 250px;
-        }
-        #reader video {
-            width: 100%;
-            display: block;
-            object-fit: cover;
-        }
-
-        .text-muted {
-            color: #888;
-            font-size: 13px;
-        }
-        .text-center {
-            text-align: center;
-        }
-        .mt-8 {
-            margin-top: 8px;
-        }
-        .mb-8 {
-            margin-bottom: 8px;
-        }
-
+        #reader { width: 100%; min-height: 250px; }
+        #reader video { width: 100%; display: block; object-fit: cover; }
+        .text-muted { color: #888; font-size: 13px; }
+        .text-center { text-align: center; }
+        .mt-8 { margin-top: 8px; }
+        .mb-8 { margin-bottom: 8px; }
         .product-card {
-            background: #f8f8f8;
-            padding: 12px 14px;
-            border-radius: 10px;
+            background: #f8f8f8; padding: 12px 14px; border-radius: 10px;
             margin-bottom: 6px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
         }
-        .product-card .name {
-            font-weight: 500;
+        .product-card .name { font-weight: 500; }
+        .product-card .barcodes-list {
+            font-size: 10px; color: #aaa; margin-top: 4px; word-break: break-all;
         }
-        .product-card .barcode {
-            font-size: 11px;
-            color: #888;
-            margin-top: 2px;
-        }
-
         .badge {
-            background: #e9ecef;
-            padding: 4px 14px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 500;
+            background: #e9ecef; padding: 4px 14px; border-radius: 20px;
+            font-size: 13px; font-weight: 500;
         }
-
         .btn-small {
-            border: none;
-            padding: 6px 12px;
-            border-radius: 8px;
-            font-size: 13px;
-            cursor: pointer;
-            background: #e0e0e0;
-            color: #1a1a1a;
-            font-weight: 500;
+            border: none; padding: 6px 12px; border-radius: 8px;
+            font-size: 13px; cursor: pointer; background: #e0e0e0;
+            color: #1a1a1a; font-weight: 500;
         }
-        .btn-small:active {
-            opacity: 0.7;
-        }
-
+        .btn-small:active { opacity: 0.7; }
         .install-banner {
-            background: #36855B;
-            color: white;
-            padding: 12px 16px;
-            border-radius: 12px;
-            margin-bottom: 12px;
-            display: none;
-            align-items: center;
-            gap: 12px;
-            cursor: pointer;
-            font-weight: 500;
+            background: #36855B; color: white; padding: 12px 16px;
+            border-radius: 12px; margin-bottom: 12px; display: none;
+            align-items: center; gap: 12px; cursor: pointer; font-weight: 500;
         }
-        .install-banner.show {
-            display: flex;
-        }
-
+        .install-banner.show { display: flex; }
         .currency-selector {
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            display: flex; align-items: center; gap: 8px;
         }
-        .currency-selector label {
-            font-size: 13px;
-            color: #888;
-            white-space: nowrap;
-        }
+        .currency-selector label { font-size: 13px; color: #888; white-space: nowrap; }
         .currency-selector select {
-            width: auto;
-            margin-bottom: 0;
-            padding: 6px 28px 6px 10px;
-            font-size: 14px;
-            background-position: right 8px center;
+            width: auto; margin-bottom: 0; padding: 6px 28px 6px 10px;
+            font-size: 14px; background-position: right 8px center;
+        }
+        .tag {
+            display: inline-block; background: #e8f5e9; color: #36855B;
+            padding: 2px 8px; border-radius: 12px; font-size: 11px;
+            margin: 2px; font-family: monospace;
+        }
+        .match-box {
+            background: #fff3cd; padding: 12px; border-radius: 10px;
+            margin: 10px 0; border: 1px solid #ffc107;
+        }
+        .match-box .match-title {
+            font-weight: bold; color: #856404; margin-bottom: 6px;
+        }
+        .match-box .match-name {
+            font-size: 18px; font-weight: bold; color: #333; margin-bottom: 8px;
         }
     </style>
 </head>
@@ -325,7 +184,6 @@
                         <option value="₴">₴ (Гривна)</option>
                         <option value="£">£ (Фунт)</option>
                         <option value="¥">¥ (Йена)</option>
-                        <option value="¥">¥ (Юань)</option>
                     </select>
                 </div>
             </div>
@@ -390,14 +248,7 @@
         </div>
 
         <div class="block" id="scannedProduct" style="display:none;">
-            <div style="font-weight:bold;font-size:14px;color:#36855B;" id="productFound">Товар найден</div>
-            <div style="font-size:22px;margin:6px 0;font-weight:bold;" id="scannedName">--</div>
-            <div class="text-muted" id="scannedBarcode">Штрихкод: --</div>
-            <div class="flex" style="margin-top:10px;">
-                <input type="number" id="scannedPrice" placeholder="Цена" step="0.01" inputmode="decimal" class="flex-1">
-                <button class="btn btn-green" onclick="addScannedItem()" style="width:auto;padding:12px 20px;white-space:nowrap;" id="addToCartBtn">В корзину</button>
-            </div>
-            <div id="addUnknownProduct" style="margin-top:8px;"></div>
+            <div id="scanResult"></div>
         </div>
 
         <div class="block">
@@ -452,7 +303,7 @@
 
         <div class="block">
             <div style="font-weight:bold;margin-bottom:10px;font-size:16px;" id="addProductTitle">Добавить товар</div>
-            <input type="text" id="newProductBarcode" placeholder="Штрихкод" inputmode="numeric">
+            <input type="text" id="newProductBarcode" placeholder="Штрихкод (можно несколько через запятую)">
             <div class="flex">
                 <input type="text" id="newProductName" placeholder="Название" class="flex-1">
                 <input type="number" id="newProductPrice" placeholder="Цена" step="0.01" inputmode="decimal" style="max-width:100px;">
@@ -465,314 +316,141 @@
     <script>
         // ===== CURRENCY =====
         let currentCurrency = localStorage.getItem('currency') || '₽';
-        
-        function changeCurrency(symbol) {
-            currentCurrency = symbol;
-            localStorage.setItem('currency', symbol);
-            updateUI();
-        }
+        function changeCurrency(s) { currentCurrency = s; localStorage.setItem('currency', s); updateUI(); }
+        function formatCurrency(a) { return currentCurrency + a.toFixed(2); }
 
-        function formatCurrency(amount) {
-            return currentCurrency + amount.toFixed(2);
-        }
-
-        // ===== LANGUAGE SYSTEM =====
-        const translations = {
+        // ===== LANG =====
+        const tr = {
             ru: {
-                budgetLabel: 'Бюджет',
-                todayLabel: 'Сегодня',
-                tabMain: 'Главная',
-                tabScan: 'Сканер',
-                tabRegular: 'Регулярные',
-                tabProducts: 'Товары',
-                currencyLabel: 'Валюта:',
-                weeklyStats: 'Статистика за неделю',
-                totalLabel: 'Всего',
-                daysLabel: 'Дней',
-                avgLabel: 'Среднее',
-                recentExpenses: 'Последние траты',
-                clearBtn: 'Очистить',
-                noExpenses: 'Пока нет трат',
-                quickExpense: 'Быстрая трата',
-                categories: {
-                    food: 'Еда',
-                    transport: 'Транспорт',
-                    entertainment: 'Развлечения',
-                    home: 'Дом',
-                    health: 'Здоровье',
-                    gifts: 'Подарки',
-                    clothing: 'Одежда',
-                    other: 'Другое'
-                },
-                manualAmount: 'Сумма',
-                manualComment: 'Комментарий',
-                addExpenseBtn: 'Добавить трату',
-                scannerTitle: 'Сканер штрихкодов',
-                startScanBtn: 'Запустить',
-                stopScanBtn: 'Остановить',
-                productFound: 'Товар найден',
-                addToCartBtn: 'В корзину',
-                cartTitle: 'Корзина',
-                emptyCart: 'Корзина пуста',
-                saveCartBtn: 'Сохранить покупку',
-                regularTitle: 'Регулярные платежи',
-                addRegularBtn: '+ Добавить',
-                noRegular: 'Нет платежей',
-                newPaymentTitle: 'Новый платёж',
-                regularName: 'Название',
-                regularAmount: 'Сумма',
-                regularDay: 'День',
-                saveRegularBtn: 'Сохранить',
-                cancelRegularBtn: 'Отмена',
-                productsTitle: 'База товаров',
-                noProducts: 'Нет товаров',
-                addProductTitle: 'Добавить товар',
-                newProductBarcode: 'Штрихкод',
-                newProductName: 'Название',
-                newProductPrice: 'Цена',
-                addProductBtn: 'Добавить товар',
-                installText: 'Установить как приложение',
-                scanStatusStopped: 'Остановлен',
-                scanStatusStarting: 'Запуск...',
-                scanStatusScanning: 'Сканирует...',
-                scanStatusError: 'Ошибка камеры',
-                scanStatusFront: 'Фронт. камера',
-                scanStatusNoAccess: 'Нет доступа',
-                unknownProduct: 'Неизвестный товар',
-                addToDatabase: 'Добавить в базу',
-                addedToDatabase: 'Товар добавлен в базу',
-                payBtn: 'Оплатить',
-                deleteBtn: 'Удалить',
-                editBtn: 'Изменить',
-                today: 'Сегодня',
-                total: 'Итого',
-                items: 'товаров',
-                confirmClear: 'Удалить ВСЕ расходы?',
-                confirmDelete: 'Удалить?',
-                enterAmount: 'Введите сумму',
-                selectCategory: 'Выберите категорию',
-                cartEmpty: 'Корзина пуста',
-                saved: 'Сохранено!',
-                enterName: 'Введите название',
-                enterPrice: 'Введите цену',
-                enterDay: 'Введите день (1-31)',
-                enterBarcode: 'Введите штрихкод',
-                barcodeExists: 'Штрихкод уже есть. Обновить?',
-                cameraError: 'Не удалось получить доступ к камере. Проверьте настройки браузера.',
-                installUnavailable: 'Установка недоступна. Попробуйте нажать "Добавить на главный экран" в меню браузера.',
-                searchPlaceholder: 'Поиск',
-                barcodeLabel: 'Штрихкод:'
+                budgetLabel:'Бюджет',todayLabel:'Сегодня',tabMain:'Главная',tabScan:'Сканер',tabRegular:'Регулярные',tabProducts:'Товары',
+                currencyLabel:'Валюта:',weeklyStats:'Статистика за неделю',totalLabel:'Всего',daysLabel:'Дней',avgLabel:'Среднее',
+                recentExpenses:'Последние траты',clearBtn:'Очистить',noExpenses:'Пока нет трат',quickExpense:'Быстрая трата',
+                categories:{food:'Еда',transport:'Транспорт',entertainment:'Развлечения',home:'Дом',health:'Здоровье',gifts:'Подарки',clothing:'Одежда',other:'Другое'},
+                manualAmount:'Сумма',manualComment:'Комментарий',addExpenseBtn:'Добавить трату',scannerTitle:'Сканер штрихкодов',
+                startScanBtn:'Запустить',stopScanBtn:'Остановить',productFound:'Товар найден',addToCartBtn:'В корзину',
+                cartTitle:'Корзина',emptyCart:'Корзина пуста',saveCartBtn:'Сохранить покупку',regularTitle:'Регулярные платежи',
+                addRegularBtn:'+ Добавить',noRegular:'Нет платежей',newPaymentTitle:'Новый платёж',regularName:'Название',
+                regularAmount:'Сумма',regularDay:'День',saveRegularBtn:'Сохранить',cancelRegularBtn:'Отмена',
+                productsTitle:'База товаров',noProducts:'Нет товаров',addProductTitle:'Добавить товар',
+                newProductBarcode:'Штрихкод',newProductName:'Название',newProductPrice:'Цена',addProductBtn:'Добавить товар',
+                installText:'Установить как приложение',scanStatusStopped:'Остановлен',scanStatusStarting:'Запуск...',
+                scanStatusScanning:'Сканирует...',scanStatusError:'Ошибка камеры',scanStatusFront:'Фронт. камера',
+                scanStatusNoAccess:'Нет доступа',unknownProduct:'Неизвестный товар',addToDatabase:'Добавить в базу',
+                addedToDatabase:'Товар добавлен',payBtn:'Оплатить',deleteBtn:'Удалить',editBtn:'Изменить',
+                total:'Итого',items:'товаров',confirmClear:'Удалить ВСЕ расходы?',confirmDelete:'Удалить?',
+                enterAmount:'Введите сумму',selectCategory:'Выберите категорию',cartEmpty:'Корзина пуста',
+                saved:'Сохранено!',enterName:'Введите название',enterPrice:'Введите цену',enterDay:'Введите день (1-31)',
+                enterBarcode:'Введите штрихкод',barcodeExists:'Штрихкод уже есть. Обновить?',
+                cameraError:'Нет доступа к камере. Проверьте настройки браузера.',
+                installUnavailable:'Установка недоступна. Нажмите "Добавить на главный экран" в меню браузера.',
+                searchPlaceholder:'Поиск',barcodeLabel:'Штрихкод:',
+                matchFound:'Похожий товар найден!',matchAsk:'Это',
+                matchYes:'Да, добавить штрихкод',matchNo:'Нет, создать новый',
+                mergeSuccess:'Штрихкод добавлен к товару'
             },
             en: {
-                budgetLabel: 'Budget',
-                todayLabel: 'Today',
-                tabMain: 'Main',
-                tabScan: 'Scanner',
-                tabRegular: 'Regular',
-                tabProducts: 'Products',
-                currencyLabel: 'Currency:',
-                weeklyStats: 'Weekly stats',
-                totalLabel: 'Total',
-                daysLabel: 'Days',
-                avgLabel: 'Average',
-                recentExpenses: 'Recent expenses',
-                clearBtn: 'Clear',
-                noExpenses: 'No expenses yet',
-                quickExpense: 'Quick expense',
-                categories: {
-                    food: 'Food',
-                    transport: 'Transport',
-                    entertainment: 'Entertainment',
-                    home: 'Home',
-                    health: 'Health',
-                    gifts: 'Gifts',
-                    clothing: 'Clothing',
-                    other: 'Other'
-                },
-                manualAmount: 'Amount',
-                manualComment: 'Comment',
-                addExpenseBtn: 'Add expense',
-                scannerTitle: 'Barcode scanner',
-                startScanBtn: 'Start',
-                stopScanBtn: 'Stop',
-                productFound: 'Product found',
-                addToCartBtn: 'To cart',
-                cartTitle: 'Cart',
-                emptyCart: 'Cart is empty',
-                saveCartBtn: 'Save purchase',
-                regularTitle: 'Regular payments',
-                addRegularBtn: '+ Add',
-                noRegular: 'No payments',
-                newPaymentTitle: 'New payment',
-                regularName: 'Name',
-                regularAmount: 'Amount',
-                regularDay: 'Day',
-                saveRegularBtn: 'Save',
-                cancelRegularBtn: 'Cancel',
-                productsTitle: 'Product database',
-                noProducts: 'No products',
-                addProductTitle: 'Add product',
-                newProductBarcode: 'Barcode',
-                newProductName: 'Name',
-                newProductPrice: 'Price',
-                addProductBtn: 'Add product',
-                installText: 'Install as app',
-                scanStatusStopped: 'Stopped',
-                scanStatusStarting: 'Starting...',
-                scanStatusScanning: 'Scanning...',
-                scanStatusError: 'Camera error',
-                scanStatusFront: 'Front camera',
-                scanStatusNoAccess: 'No access',
-                unknownProduct: 'Unknown product',
-                addToDatabase: 'Add to database',
-                addedToDatabase: 'Added to database',
-                payBtn: 'Pay',
-                deleteBtn: 'Delete',
-                editBtn: 'Edit',
-                today: 'Today',
-                total: 'Total',
-                items: 'items',
-                confirmClear: 'Delete ALL expenses?',
-                confirmDelete: 'Delete?',
-                enterAmount: 'Enter amount',
-                selectCategory: 'Select category',
-                cartEmpty: 'Cart is empty',
-                saved: 'Saved!',
-                enterName: 'Enter name',
-                enterPrice: 'Enter price',
-                enterDay: 'Enter day (1-31)',
-                enterBarcode: 'Enter barcode',
-                barcodeExists: 'Barcode already exists. Update?',
-                cameraError: 'Cannot access camera. Check browser settings.',
-                installUnavailable: 'Installation unavailable. Try "Add to home screen" in browser menu.',
-                searchPlaceholder: 'Search',
-                barcodeLabel: 'Barcode:'
+                budgetLabel:'Budget',todayLabel:'Today',tabMain:'Main',tabScan:'Scanner',tabRegular:'Regular',tabProducts:'Products',
+                currencyLabel:'Currency:',weeklyStats:'Weekly stats',totalLabel:'Total',daysLabel:'Days',avgLabel:'Average',
+                recentExpenses:'Recent expenses',clearBtn:'Clear',noExpenses:'No expenses yet',quickExpense:'Quick expense',
+                categories:{food:'Food',transport:'Transport',entertainment:'Entertainment',home:'Home',health:'Health',gifts:'Gifts',clothing:'Clothing',other:'Other'},
+                manualAmount:'Amount',manualComment:'Comment',addExpenseBtn:'Add expense',scannerTitle:'Barcode scanner',
+                startScanBtn:'Start',stopScanBtn:'Stop',productFound:'Product found',addToCartBtn:'To cart',
+                cartTitle:'Cart',emptyCart:'Cart is empty',saveCartBtn:'Save purchase',regularTitle:'Regular payments',
+                addRegularBtn:'+ Add',noRegular:'No payments',newPaymentTitle:'New payment',regularName:'Name',
+                regularAmount:'Amount',regularDay:'Day',saveRegularBtn:'Save',cancelRegularBtn:'Cancel',
+                productsTitle:'Product database',noProducts:'No products',addProductTitle:'Add product',
+                newProductBarcode:'Barcode',newProductName:'Name',newProductPrice:'Price',addProductBtn:'Add product',
+                installText:'Install as app',scanStatusStopped:'Stopped',scanStatusStarting:'Starting...',
+                scanStatusScanning:'Scanning...',scanStatusError:'Camera error',scanStatusFront:'Front camera',
+                scanStatusNoAccess:'No access',unknownProduct:'Unknown product',addToDatabase:'Add to database',
+                addedToDatabase:'Added to database',payBtn:'Pay',deleteBtn:'Delete',editBtn:'Edit',
+                total:'Total',items:'items',confirmClear:'Delete ALL expenses?',confirmDelete:'Delete?',
+                enterAmount:'Enter amount',selectCategory:'Select category',cartEmpty:'Cart is empty',
+                saved:'Saved!',enterName:'Enter name',enterPrice:'Enter price',enterDay:'Enter day (1-31)',
+                enterBarcode:'Enter barcode',barcodeExists:'Barcode already exists. Update?',
+                cameraError:'Cannot access camera. Check browser settings.',
+                installUnavailable:'Installation unavailable. Try "Add to home screen" in browser menu.',
+                searchPlaceholder:'Search',barcodeLabel:'Barcode:',
+                matchFound:'Similar product found!',matchAsk:'Is this',
+                matchYes:'Yes, add barcode',matchNo:'No, create new',
+                mergeSuccess:'Barcode added to product'
             }
         };
-
-        let currentLang = navigator.language.startsWith('ru') ? 'ru' : 'en';
-        
-        function t(key) {
-            return translations[currentLang][key] || key;
-        }
-
-        function translateUI() {
-            document.getElementById('budgetLabel').textContent = t('budgetLabel');
-            document.getElementById('todayLabel').textContent = t('todayLabel');
-            document.getElementById('tabMain').textContent = t('tabMain');
-            document.getElementById('tabScan').textContent = t('tabScan');
-            document.getElementById('tabRegular').textContent = t('tabRegular');
-            document.getElementById('tabProducts').textContent = t('tabProducts');
-            document.getElementById('currencyLabel').textContent = t('currencyLabel');
-            document.getElementById('weeklyStats').textContent = t('weeklyStats');
-            document.getElementById('totalLabel').textContent = t('totalLabel');
-            document.getElementById('daysLabel').textContent = t('daysLabel');
-            document.getElementById('avgLabel').textContent = t('avgLabel');
-            document.getElementById('recentExpenses').textContent = t('recentExpenses');
-            document.getElementById('clearBtn').textContent = t('clearBtn');
-            document.getElementById('quickExpense').textContent = t('quickExpense');
-            document.getElementById('addExpenseBtn').textContent = t('addExpenseBtn');
-            document.getElementById('scannerTitle').textContent = t('scannerTitle');
-            document.getElementById('startScanBtn').textContent = t('startScanBtn');
-            document.getElementById('stopScanBtn').textContent = t('stopScanBtn');
-            document.getElementById('productFound').textContent = t('productFound');
-            document.getElementById('addToCartBtn').textContent = t('addToCartBtn');
-            document.getElementById('cartTitle').textContent = t('cartTitle');
-            document.getElementById('emptyCart').textContent = t('emptyCart');
-            document.getElementById('saveCartBtn').textContent = t('saveCartBtn');
-            document.getElementById('regularTitle').textContent = t('regularTitle');
-            document.getElementById('addRegularBtn').textContent = t('addRegularBtn');
-            document.getElementById('noRegular').textContent = t('noRegular');
-            document.getElementById('newPaymentTitle').textContent = t('newPaymentTitle');
-            document.getElementById('saveRegularBtn').textContent = t('saveRegularBtn');
-            document.getElementById('cancelRegularBtn').textContent = t('cancelRegularBtn');
-            document.getElementById('productsTitle').textContent = t('productsTitle');
-            document.getElementById('noProducts').textContent = t('noProducts');
-            document.getElementById('addProductTitle').textContent = t('addProductTitle');
-            document.getElementById('addProductBtn').textContent = t('addProductBtn');
-            document.getElementById('installText').textContent = t('installText');
-            document.getElementById('productSearch').placeholder = t('searchPlaceholder');
-            
-            document.getElementById('manualAmount').placeholder = t('manualAmount');
-            document.getElementById('manualComment').placeholder = t('manualComment');
-            document.getElementById('regularName').placeholder = t('regularName');
-            document.getElementById('regularAmount').placeholder = t('regularAmount');
-            document.getElementById('regularDay').placeholder = t('regularDay');
-            document.getElementById('scannedPrice').placeholder = t('manualAmount');
-            document.getElementById('newProductBarcode').placeholder = t('newProductBarcode');
-            document.getElementById('newProductName').placeholder = t('newProductName');
-            document.getElementById('newProductPrice').placeholder = t('newProductPrice');
-            
-            document.querySelectorAll('.cat-item').forEach(el => {
-                const key = el.getAttribute('data-key');
-                if (key && t('categories')[key]) {
-                    el.textContent = t('categories')[key];
-                }
-            });
-            
-            document.getElementById('noExpenses').textContent = t('noExpenses');
-            
-            if (document.getElementById('scanStatus').textContent === 'Остановлен' || document.getElementById('scanStatus').textContent === 'Stopped') {
-                document.getElementById('scanStatus').textContent = t('scanStatusStopped');
-            }
-        }
+        let lang = navigator.language.startsWith('ru') ? 'ru' : 'en';
+        function t(k) { return tr[lang][k] || k; }
 
         // ===== PWA =====
         let deferredPrompt;
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            document.getElementById('installBanner').classList.add('show');
-        });
-        window.addEventListener('appinstalled', () => {
-            document.getElementById('installBanner').classList.remove('show');
-            deferredPrompt = null;
-        });
+        window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); deferredPrompt = e; document.getElementById('installBanner').classList.add('show'); });
+        window.addEventListener('appinstalled', () => { document.getElementById('installBanner').classList.remove('show'); deferredPrompt = null; });
         function installApp() {
-            if (!deferredPrompt) {
-                alert(t('installUnavailable'));
-                return;
-            }
+            if (!deferredPrompt) { alert(t('installUnavailable')); return; }
             deferredPrompt.prompt();
-            deferredPrompt.userChoice.then((result) => {
-                deferredPrompt = null;
-                document.getElementById('installBanner').classList.remove('show');
-            });
+            deferredPrompt.userChoice.then(() => { deferredPrompt = null; document.getElementById('installBanner').classList.remove('show'); });
         }
-
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                const swCode = `
-                    self.addEventListener('install', (e) => { self.skipWaiting(); });
-                    self.addEventListener('activate', (e) => { e.waitUntil(clients.claim()); });
-                    self.addEventListener('fetch', (e) => {
-                        e.respondWith(fetch(e.request).catch(() => new Response('Offline', { status: 503 })));
-                    });
-                `;
-                const blob = new Blob([swCode], { type: 'application/javascript' });
-                const swUrl = URL.createObjectURL(blob);
-                navigator.serviceWorker.register(swUrl).catch(() => {});
+                const swCode = 'self.addEventListener("install",e=>self.skipWaiting());self.addEventListener("activate",e=>e.waitUntil(clients.claim()));self.addEventListener("fetch",e=>e.respondWith(fetch(e.request).catch(()=>new Response("Offline",{status:503}))));';
+                navigator.serviceWorker.register(URL.createObjectURL(new Blob([swCode],{type:'application/javascript'}))).catch(()=>{});
             });
         }
 
         // ===== DATA =====
-        let expenses = JSON.parse(localStorage.getItem('expenses') || '[]');
-        let cart = JSON.parse(localStorage.getItem('cart') || '[]');
-        let regularPayments = JSON.parse(localStorage.getItem('regularPayments') || '[]');
-        let productDB = JSON.parse(localStorage.getItem('productDB') || JSON.stringify({
-            '4601234567890': { name: 'Молоко', name_en: 'Milk', price: 89 },
-            '4602345678901': { name: 'Хлеб', name_en: 'Bread', price: 45 },
-            '4603456789012': { name: 'Яблоки', name_en: 'Apples', price: 120 }
+        let expenses = JSON.parse(localStorage.getItem('expenses')||'[]');
+        let cart = JSON.parse(localStorage.getItem('cart')||'[]');
+        let regularPayments = JSON.parse(localStorage.getItem('regularPayments')||'[]');
+        let productDB = JSON.parse(localStorage.getItem('productDB')||JSON.stringify({
+            '4601234567890':{name:'Молоко',name_en:'Milk',price:89},
+            '4602345678901':{name:'Хлеб',name_en:'Bread',price:45},
+            '4603456789012':{name:'Яблоки',name_en:'Apples',price:120}
         }));
-        
         let selectedCategory = '';
         let scanner = null;
         let scannedBarcode = '';
 
         function getProductName(p) {
             if (typeof p === 'string') return p;
-            if (currentLang === 'en' && p.name_en) return p.name_en;
+            if (lang === 'en' && p.name_en) return p.name_en;
             return p.name || p.name_en || 'Unknown';
+        }
+
+        // Получить все штрихкоды товара
+        function getProductBarcodes(p) {
+            if (typeof p === 'object' && p.barcodes) return p.barcodes;
+            return [];
+        }
+
+        // Найти товар по любому из его штрихкодов
+        function findProductByBarcode(barcode) {
+            for (const [key, product] of Object.entries(productDB)) {
+                if (typeof product === 'object') {
+                    const barcodes = product.barcodes || [key];
+                    if (barcodes.includes(barcode)) return product;
+                } else if (key === barcode) {
+                    return product;
+                }
+            }
+            return null;
+        }
+
+        // Поиск похожих штрихкодов (7+ цифр совпадают)
+        function findSimilarBarcode(barcode) {
+            const matches = [];
+            for (const [key, product] of Object.entries(productDB)) {
+                const barcodes = (typeof product === 'object' && product.barcodes) ? product.barcodes : [key];
+                for (const existingBc of barcodes) {
+                    let matchCount = 0;
+                    const minLen = Math.min(barcode.length, existingBc.length);
+                    for (let i = 0; i < minLen; i++) {
+                        if (barcode[i] === existingBc[i]) matchCount++;
+                    }
+                    if (matchCount >= 7 && barcode !== existingBc) {
+                        matches.push({ product, key, existingBc, matchCount });
+                        break;
+                    }
+                }
+            }
+            return matches.sort((a, b) => b.matchCount - a.matchCount)[0] || null;
         }
 
         function saveAll() {
@@ -784,72 +462,55 @@
 
         function updateUI() {
             document.getElementById('currencySelect').value = currentCurrency;
-
-            const list = document.getElementById('expenseList');
-            if (expenses.length === 0) {
-                list.innerHTML = `<div class="text-muted text-center" style="padding:20px 0;">${t('noExpenses')}</div>`;
-            } else {
-                list.innerHTML = expenses.slice().reverse().slice(0, 20).map(e => {
-                    const date = new Date(e.date);
-                    const dateStr = date.toLocaleDateString(currentLang === 'ru' ? 'ru-RU' : 'en-US', { day: 'numeric', month: 'short' });
-                    const catName = t('categories')[e.category] || e.category;
-                    return `<div class="row">
-                        <span>${catName}${e.comment ? ' <span class="text-muted">('+e.comment+')</span>' : ''}<br><small class="text-muted">${dateStr}</small></span>
-                        <span class="price">-${formatCurrency(e.amount)}</span>
-                    </div>`;
-                }).join('');
-            }
             
-            const total = expenses.reduce((s, e) => s + e.amount, 0);
-            document.getElementById('mainTotal').textContent = `${t('total')}: ${formatCurrency(total)}`;
+            // Header
+            const total = expenses.reduce((s,e) => s + e.amount, 0);
             document.getElementById('totalDisplay').textContent = formatCurrency(total);
-
             const today = new Date().toDateString();
-            const todayTotal = expenses.filter(e => new Date(e.date).toDateString() === today).reduce((s, e) => s + e.amount, 0);
+            const todayTotal = expenses.filter(e => new Date(e.date).toDateString() === today).reduce((s,e) => s + e.amount, 0);
             document.getElementById('todayDisplay').textContent = formatCurrency(todayTotal);
 
-            const weekAgo = new Date();
-            weekAgo.setDate(weekAgo.getDate() - 7);
+            // Week stats
+            const weekAgo = new Date(); weekAgo.setDate(weekAgo.getDate() - 7);
             const weekEx = expenses.filter(e => new Date(e.date) >= weekAgo);
-            const weekSum = weekEx.reduce((s, e) => s + e.amount, 0);
-            const daysSet = new Set(weekEx.map(e => new Date(e.date).toDateString()));
-            const daysCount = daysSet.size;
+            const weekSum = weekEx.reduce((s,e) => s + e.amount, 0);
+            const daysCount = new Set(weekEx.map(e => new Date(e.date).toDateString())).size;
             document.getElementById('weekTotal').textContent = formatCurrency(weekSum);
             document.getElementById('weekDays').textContent = daysCount;
             document.getElementById('weekAvg').textContent = formatCurrency(daysCount > 0 ? weekSum / daysCount : 0);
 
+            // Expenses
+            const list = document.getElementById('expenseList');
+            if (expenses.length === 0) {
+                list.innerHTML = `<div class="text-muted text-center" style="padding:20px 0;">${t('noExpenses')}</div>`;
+            } else {
+                list.innerHTML = expenses.slice().reverse().slice(0,20).map(e => {
+                    const d = new Date(e.date);
+                    const ds = d.toLocaleDateString(lang==='ru'?'ru-RU':'en-US',{day:'numeric',month:'short'});
+                    return `<div class="row"><span>${t('categories')[e.category]||e.category}${e.comment?' <span class="text-muted">('+e.comment+')</span>':''}<br><small class="text-muted">${ds}</small></span><span class="price">-${formatCurrency(e.amount)}</span></div>`;
+                }).join('');
+            }
+            document.getElementById('mainTotal').textContent = `${t('total')}: ${formatCurrency(total)}`;
+
+            // Cart
             const cartList = document.getElementById('cartList');
             if (cart.length === 0) {
                 cartList.innerHTML = `<div class="text-muted text-center" style="padding:15px 0;">${t('emptyCart')}</div>`;
             } else {
-                cartList.innerHTML = cart.map((item, i) =>
-                    `<div class="row">
-                        <span>${item.name}</span>
-                        <span>
-                            <span class="price">-${formatCurrency(item.price)}</span>
-                            <span style="cursor:pointer;color:#888;margin-left:8px;font-size:18px;" onclick="removeFromCart(${i})">&times;</span>
-                        </span>
-                    </div>`
+                cartList.innerHTML = cart.map((item,i) =>
+                    `<div class="row"><span>${item.name}</span><span><span class="price">-${formatCurrency(item.price)}</span> <span style="cursor:pointer;color:#888;margin-left:8px;font-size:18px;" onclick="removeFromCart(${i})">&times;</span></span></div>`
                 ).join('');
             }
-            document.getElementById('cartTotal').textContent = `${t('total')}: ${formatCurrency(cart.reduce((s, i) => s + i.price, 0))}`;
+            document.getElementById('cartTotal').textContent = `${t('total')}: ${formatCurrency(cart.reduce((s,i)=>s+i.price,0))}`;
             document.getElementById('cartCount').textContent = `${cart.length} ${t('items')}`;
 
+            // Regular
             const regList = document.getElementById('regularList');
             if (regularPayments.length === 0) {
                 regList.innerHTML = `<div class="text-muted text-center" style="padding:20px 0;">${t('noRegular')}</div>`;
             } else {
-                regList.innerHTML = regularPayments.map((p, i) =>
-                    `<div style="background:#f8f8f8;padding:14px;border-radius:10px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;">
-                        <div>
-                            <strong>${p.name}</strong>
-                            <div class="text-muted">${formatCurrency(p.amount)} &middot; ${p.day}</div>
-                        </div>
-                        <div style="display:flex;gap:6px;">
-                            <button class="btn-small" style="background:#36855B;color:#fff;" onclick="payRegular(${i})">${t('payBtn')}</button>
-                            <button class="btn-small" onclick="deleteRegular(${i})">&times;</button>
-                        </div>
-                    </div>`
+                regList.innerHTML = regularPayments.map((p,i) =>
+                    `<div style="background:#f8f8f8;padding:14px;border-radius:10px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;"><div><strong>${p.name}</strong><div class="text-muted">${formatCurrency(p.amount)} &middot; ${p.day}</div></div><div style="display:flex;gap:6px;"><button class="btn-small" style="background:#36855B;color:#fff;" onclick="payRegular(${i})">${t('payBtn')}</button><button class="btn-small" onclick="deleteRegular(${i})">&times;</button></div></div>`
                 ).join('');
             }
 
@@ -858,32 +519,62 @@
         }
 
         function updateProductList() {
-            const search = document.getElementById('productSearch')?.value?.toLowerCase() || '';
+            const search = (document.getElementById('productSearch')?.value || '').toLowerCase();
             const entries = Object.entries(productDB);
-            const filtered = entries.filter(([b, p]) => {
+            const filtered = entries.filter(([b,p]) => {
                 const name = getProductName(p).toLowerCase();
-                return b.includes(search) || name.includes(search);
+                const barcodes = (typeof p === 'object' && p.barcodes) ? p.barcodes : [b];
+                return barcodes.some(bc => bc.includes(search)) || name.includes(search);
             });
             document.getElementById('productCount').textContent = `${filtered.length} ${t('items')}`;
-
             const list = document.getElementById('productList');
             if (filtered.length === 0) {
                 list.innerHTML = `<div class="text-muted text-center" style="padding:20px 0;">${t('noProducts')}</div>`;
                 return;
             }
-            list.innerHTML = filtered.map(([b, p]) =>
-                `<div class="product-card" id="prod-${b}">
-                    <div>
-                        <div class="name">${getProductName(p)}</div>
-                        <div class="barcode">${b}</div>
-                    </div>
-                    <div style="display:flex;align-items:center;gap:8px;">
+            list.innerHTML = filtered.map(([b,p]) => {
+                const barcodes = (typeof p === 'object' && p.barcodes) ? p.barcodes : [b];
+                const barcodesStr = barcodes.map(bc => `<span class="tag">${bc}</span>`).join(' ');
+                return `<div class="product-card" id="prod-${b}">
+                    <div><div class="name">${getProductName(p)}</div><div class="barcodes-list">${barcodesStr}</div></div>
+                    <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;">
                         <span style="font-weight:600;">${formatCurrency(p.price)}</span>
                         <button class="btn-small" onclick="editProduct('${b}')">${t('editBtn')}</button>
                         <button class="btn-small" onclick="deleteProduct('${b}')">&times;</button>
-                    </div>
-                </div>`
-            ).join('');
+                    </div></div>`;
+            }).join('');
+        }
+
+        function translateUI() {
+            document.querySelectorAll('[id]').forEach(el => {
+                const key = el.id;
+                if (tr[lang][key] && el.textContent.length < 30) {
+                    const currentText = el.textContent.trim();
+                    const ruText = tr['ru'][key] || '';
+                    const enText = tr['en'][key] || '';
+                    if (currentText === ruText || currentText === enText || currentText === '') {
+                        el.textContent = t(key);
+                    }
+                }
+            });
+            document.querySelectorAll('[id]').forEach(el => {
+                const key = el.id;
+                if (tr[lang][key] && (el.tagName === 'INPUT' || el.tagName === 'SELECT')) {
+                    el.placeholder = t(key);
+                }
+            });
+            document.querySelectorAll('.cat-item').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (key && t('categories')[key]) el.textContent = t('categories')[key];
+            });
+            document.getElementById('noExpenses').textContent = t('noExpenses');
+            document.getElementById('emptyCart').textContent = t('emptyCart');
+            document.getElementById('noRegular').textContent = t('noRegular');
+            document.getElementById('noProducts').textContent = t('noProducts');
+            document.getElementById('currencyLabel').textContent = t('currencyLabel');
+            document.getElementById('installText').textContent = t('installText');
+            document.getElementById('productSearch').placeholder = t('searchPlaceholder');
+            document.getElementById('newProductBarcode').placeholder = t('newProductBarcode') + ' (можно несколько)';
         }
 
         function selectCategory(cat) {
@@ -896,11 +587,7 @@
             const amount = parseFloat(document.getElementById('manualAmount').value);
             if (!amount || amount <= 0) { alert(t('enterAmount')); return; }
             if (!selectedCategory) { alert(t('selectCategory')); return; }
-            expenses.push({
-                amount, category: selectedCategory,
-                comment: document.getElementById('manualComment').value.trim(),
-                date: new Date().toISOString()
-            });
+            expenses.push({amount,category:selectedCategory,comment:document.getElementById('manualComment').value.trim(),date:new Date().toISOString()});
             saveAll();
             document.getElementById('manualAmount').value = '';
             document.getElementById('manualComment').value = '';
@@ -910,10 +597,7 @@
         }
 
         function startScanner() {
-            if (scanner) {
-                scanner.stop().then(() => { scanner.clear(); document.getElementById('reader').innerHTML = ''; scanner = null; initScanner(); }).catch(() => { scanner = null; document.getElementById('reader').innerHTML = ''; initScanner(); });
-                return;
-            }
+            if (scanner) { scanner.stop().then(()=>{scanner.clear();document.getElementById('reader').innerHTML='';scanner=null;initScanner();}).catch(()=>{scanner=null;document.getElementById('reader').innerHTML='';initScanner();}); return; }
             initScanner();
         }
 
@@ -922,25 +606,14 @@
             document.getElementById('scanStatus').textContent = t('scanStatusStarting');
             scanner = new Html5Qrcode("reader");
             const config = { fps: 10, qrbox: { width: 250, height: 150 }, aspectRatio: 1.0 };
-            scanner.start({ facingMode: "environment" }, config, onScanSuccess, onScanError)
-                .then(() => {
-                    document.getElementById('scanStatus').textContent = t('scanStatusScanning');
-                    document.getElementById('scanStatus').style.background = '#d4edda';
-                })
-                .catch(err => {
+            scanner.start({ facingMode: "environment" }, config, onScanSuccess, ()=>{})
+                .then(() => { document.getElementById('scanStatus').textContent = t('scanStatusScanning'); document.getElementById('scanStatus').style.background = '#d4edda'; })
+                .catch(() => {
                     document.getElementById('scanStatus').textContent = t('scanStatusError');
-                    document.getElementById('scanStatus').style.background = '#f8d7da';
                     scanner = new Html5Qrcode("reader");
-                    scanner.start({ facingMode: "user" }, config, onScanSuccess, onScanError)
-                        .then(() => {
-                            document.getElementById('scanStatus').textContent = t('scanStatusFront');
-                            document.getElementById('scanStatus').style.background = '#fff3cd';
-                        })
-                        .catch(err2 => {
-                            document.getElementById('scanStatus').textContent = t('scanStatusNoAccess');
-                            alert(t('cameraError'));
-                            scanner = null;
-                        });
+                    scanner.start({ facingMode: "user" }, config, onScanSuccess, ()=>{})
+                        .then(() => { document.getElementById('scanStatus').textContent = t('scanStatusFront'); document.getElementById('scanStatus').style.background = '#fff3cd'; })
+                        .catch(() => { document.getElementById('scanStatus').textContent = t('scanStatusNoAccess'); alert(t('cameraError')); scanner = null; });
                 });
         }
 
@@ -948,87 +621,153 @@
             if (navigator.vibrate) navigator.vibrate(100);
             stopScanner();
             scannedBarcode = decodedText;
-            const prod = productDB[decodedText];
+            
+            const prod = findProductByBarcode(decodedText);
+            const container = document.getElementById('scanResult');
             document.getElementById('scannedProduct').style.display = 'block';
-            document.getElementById('scannedBarcode').textContent = t('barcodeLabel') + ' ' + decodedText;
-            document.getElementById('addUnknownProduct').innerHTML = '';
+            
             if (prod) {
-                document.getElementById('scannedName').textContent = getProductName(prod);
-                document.getElementById('scannedPrice').value = prod.price;
+                // Точное совпадение
+                container.innerHTML = `
+                    <div style="font-weight:bold;font-size:14px;color:#36855B;">${t('productFound')}</div>
+                    <div style="font-size:22px;margin:6px 0;font-weight:bold;">${getProductName(prod)}</div>
+                    <div class="text-muted">${t('barcodeLabel')} ${decodedText}</div>
+                    <div class="flex" style="margin-top:10px;">
+                        <input type="number" id="scannedPrice" placeholder="${t('manualAmount')}" step="0.01" inputmode="decimal" class="flex-1" value="${prod.price}">
+                        <button class="btn btn-green" onclick="addScannedItem('${getProductName(prod)}', ${prod.price})" style="width:auto;padding:12px 20px;white-space:nowrap;">${t('addToCartBtn')}</button>
+                    </div>`;
             } else {
-                document.getElementById('scannedName').textContent = t('unknownProduct');
-                document.getElementById('scannedPrice').value = '';
-                document.getElementById('addUnknownProduct').innerHTML = `<button class="btn btn-gray mt-8" onclick="addUnknownToDB()">${t('addToDatabase')}</button>`;
+                // Ищем похожие
+                const similar = findSimilarBarcode(decodedText);
+                if (similar) {
+                    const pname = getProductName(similar.product);
+                    container.innerHTML = `
+                        <div class="match-box">
+                            <div class="match-title">${t('matchFound')}</div>
+                            <div class="match-name">${t('matchAsk')} "${pname}"?</div>
+                            <div class="text-muted">${t('barcodeLabel')} ${decodedText}</div>
+                            <div class="text-muted" style="font-size:12px;">(${similar.matchCount} цифр совпадает с ${similar.existingBc})</div>
+                            <div class="flex" style="margin-top:10px;">
+                                <button class="btn btn-blue flex-1" onclick="mergeBarcode('${similar.key}', '${decodedText}', '${pname}', ${similar.product.price})">${t('matchYes')}</button>
+                                <button class="btn btn-gray flex-1" onclick="showNewProductForm()">${t('matchNo')}</button>
+                            </div>
+                        </div>`;
+                } else {
+                    showNewProductForm();
+                }
             }
-            document.getElementById('scannedPrice').focus();
             document.getElementById('scannedProduct').scrollIntoView({ behavior: 'smooth' });
         }
 
-        function onScanError(error) {}
+        function showNewProductForm() {
+            const container = document.getElementById('scanResult');
+            container.innerHTML = `
+                <div style="font-weight:bold;font-size:14px;color:#36855B;">${t('unknownProduct')}</div>
+                <div style="font-size:18px;margin:6px 0;font-weight:bold;">${t('unknownProduct')}</div>
+                <div class="text-muted">${t('barcodeLabel')} ${scannedBarcode}</div>
+                <div class="flex" style="margin-top:10px;">
+                    <input type="number" id="scannedPrice" placeholder="${t('manualAmount')}" step="0.01" inputmode="decimal" class="flex-1">
+                    <button class="btn btn-green" onclick="addUnknownToCart()" style="width:auto;padding:12px 20px;white-space:nowrap;">${t('addToCartBtn')}</button>
+                </div>
+                <button class="btn btn-orange mt-8" onclick="addUnknownToDB()">${t('addToDatabase')}</button>`;
+        }
+
+        function mergeBarcode(existingKey, newBarcode, productName, price) {
+            const existingProduct = productDB[existingKey];
+            if (typeof existingProduct === 'object') {
+                if (!existingProduct.barcodes) existingProduct.barcodes = [existingKey];
+                if (!existingProduct.barcodes.includes(newBarcode)) {
+                    existingProduct.barcodes.push(newBarcode);
+                }
+            } else {
+                productDB[existingKey] = {
+                    name: existingProduct.name || existingProduct,
+                    name_en: existingProduct.name_en || existingProduct,
+                    price: existingProduct.price || price,
+                    barcodes: [existingKey, newBarcode]
+                };
+            }
+            saveAll();
+            updateUI();
+            const container = document.getElementById('scanResult');
+            container.innerHTML = `
+                <div style="font-weight:bold;font-size:14px;color:#36855B;">${t('mergeSuccess')}: "${productName}"</div>
+                <div style="font-size:22px;margin:6px 0;font-weight:bold;">${productName}</div>
+                <div class="text-muted">${t('barcodeLabel')} ${newBarcode}</div>
+                <div class="flex" style="margin-top:10px;">
+                    <input type="number" id="scannedPrice" placeholder="${t('manualAmount')}" step="0.01" inputmode="decimal" class="flex-1" value="${price}">
+                    <button class="btn btn-green" onclick="addScannedItem('${productName}', ${price})" style="width:auto;padding:12px 20px;white-space:nowrap;">${t('addToCartBtn')}</button>
+                </div>`;
+            document.getElementById('scannedPrice').focus();
+        }
 
         function stopScanner() {
             if (scanner) {
-                scanner.stop().then(() => {
-                    scanner.clear(); scanner = null;
+                scanner.stop().then(() => { scanner.clear(); scanner = null;
                     document.getElementById('scanStatus').textContent = t('scanStatusStopped');
-                    document.getElementById('scanStatus').style.background = '#f0f0f0';
-                }).catch(() => {
-                    scanner = null;
+                    document.getElementById('scanStatus').style.background = '#f0f0f0'; })
+                .catch(() => { scanner = null;
                     document.getElementById('scanStatus').textContent = t('scanStatusStopped');
-                    document.getElementById('scanStatus').style.background = '#f0f0f0';
-                });
+                    document.getElementById('scanStatus').style.background = '#f0f0f0'; });
             }
         }
 
-        function addScannedItem() {
-            const price = parseFloat(document.getElementById('scannedPrice').value);
-            if (!price || price <= 0) { alert(t('enterAmount')); return; }
-            cart.push({ name: document.getElementById('scannedName').textContent, barcode: scannedBarcode, price });
+        function addScannedItem(name, price) {
+            const p = parseFloat(document.getElementById('scannedPrice')?.value || price);
+            if (!p || p <= 0) { alert(t('enterAmount')); return; }
+            cart.push({ name, barcode: scannedBarcode, price: p });
             saveAll(); updateUI();
             document.getElementById('scannedProduct').style.display = 'none';
-            document.getElementById('scannedPrice').value = '';
+        }
+
+        function addUnknownToCart() {
+            const p = parseFloat(document.getElementById('scannedPrice')?.value);
+            if (!p || p <= 0) { alert(t('enterAmount')); return; }
+            cart.push({ name: t('unknownProduct'), barcode: scannedBarcode, price: p });
+            saveAll(); updateUI();
+            document.getElementById('scannedProduct').style.display = 'none';
         }
 
         function addUnknownToDB() {
             const name = prompt(t('enterName') + ':');
             if (!name) return;
-            const price = parseFloat(document.getElementById('scannedPrice').value);
+            const price = parseFloat(document.getElementById('scannedPrice')?.value);
             if (!price || price <= 0) { alert(t('enterPrice')); return; }
-            productDB[scannedBarcode] = { name: name.trim(), price };
-            if (currentLang === 'ru') {
-                const enName = prompt('English name (optional):');
-                if (enName) productDB[scannedBarcode].name_en = enName.trim();
-            }
+            productDB[scannedBarcode] = { name: name.trim(), price, barcodes: [scannedBarcode] };
+            if (lang === 'ru') { const en = prompt('English name (optional):'); if (en) productDB[scannedBarcode].name_en = en.trim(); }
             saveAll(); updateUI();
-            document.getElementById('scannedName').textContent = name;
-            document.getElementById('addUnknownProduct').innerHTML = `<div class="text-muted mt-8">${t('addedToDatabase')}</div>`;
+            const container = document.getElementById('scanResult');
+            container.innerHTML = `
+                <div style="font-weight:bold;font-size:14px;color:#36855B;">${t('addedToDatabase')}</div>
+                <div style="font-size:22px;margin:6px 0;font-weight:bold;">${name}</div>
+                <div class="text-muted">${t('barcodeLabel')} ${scannedBarcode}</div>
+                <div class="flex" style="margin-top:10px;">
+                    <input type="number" id="scannedPrice" placeholder="${t('manualAmount')}" step="0.01" inputmode="decimal" class="flex-1" value="${price}">
+                    <button class="btn btn-green" onclick="addScannedItem('${name}', ${price})" style="width:auto;padding:12px 20px;white-space:nowrap;">${t('addToCartBtn')}</button>
+                </div>`;
         }
 
-        function removeFromCart(i) { cart.splice(i, 1); saveAll(); updateUI(); }
+        function removeFromCart(i) { cart.splice(i,1); saveAll(); updateUI(); }
 
         function saveCart() {
             if (cart.length === 0) { alert(t('cartEmpty')); return; }
-            const total = cart.reduce((s, i) => s + i.price, 0);
-            cart.forEach(i => {
-                expenses.push({ amount: i.price, category: 'purchase', comment: i.name, date: new Date().toISOString() });
-            });
+            const total = cart.reduce((s,i) => s + i.price, 0);
+            cart.forEach(i => expenses.push({ amount: i.price, category: 'purchase', comment: i.name, date: new Date().toISOString() }));
             cart = []; saveAll(); updateUI();
             alert(t('saved') + ' ' + formatCurrency(total));
         }
 
         function toggleRegularForm() {
-            const form = document.getElementById('regularAddForm');
-            form.style.display = form.style.display === 'none' ? 'block' : 'none';
-            if (form.style.display === 'block') document.getElementById('regularName').focus();
+            const f = document.getElementById('regularAddForm');
+            f.style.display = f.style.display === 'none' ? 'block' : 'none';
+            if (f.style.display === 'block') document.getElementById('regularName').focus();
         }
-
         function cancelRegularPayment() {
             document.getElementById('regularAddForm').style.display = 'none';
             document.getElementById('regularName').value = '';
             document.getElementById('regularAmount').value = '';
             document.getElementById('regularDay').value = '';
         }
-
         function saveRegularPayment() {
             const name = document.getElementById('regularName').value.trim();
             const amount = parseFloat(document.getElementById('regularAmount').value);
@@ -1039,7 +778,6 @@
             regularPayments.push({ name, amount, day });
             saveAll(); cancelRegularPayment(); updateUI();
         }
-
         function payRegular(i) {
             const p = regularPayments[i];
             const amount = parseFloat(prompt(`${t('enterAmount')} "${p.name}":`, p.amount));
@@ -1047,10 +785,9 @@
             expenses.push({ amount, category: 'regular', comment: p.name, date: new Date().toISOString() });
             saveAll(); updateUI();
         }
-
         function deleteRegular(i) {
             if (!confirm(t('confirmDelete'))) return;
-            regularPayments.splice(i, 1); saveAll(); updateUI();
+            regularPayments.splice(i,1); saveAll(); updateUI();
         }
 
         function editProduct(b) {
@@ -1060,22 +797,15 @@
             if (name === null) return;
             const price = parseFloat(prompt(t('enterPrice') + ':', p.price));
             if (!price || price <= 0) return;
-            if (currentLang === 'ru') {
-                productDB[b].name = name.trim();
-                const enName = prompt('English name (optional):', p.name_en || '');
-                if (enName) productDB[b].name_en = enName.trim();
-            } else {
-                productDB[b].name = name.trim();
-            }
-            productDB[b].price = price;
+            if (lang === 'ru') { p.name = name.trim(); const en = prompt('English name (optional):', p.name_en||''); if (en) p.name_en = en.trim(); }
+            else p.name = name.trim();
+            p.price = price;
             saveAll(); updateUI();
         }
-
         function deleteProduct(b) {
             if (!confirm(t('confirmDelete') + ' "' + getProductName(productDB[b]) + '"?')) return;
             delete productDB[b]; saveAll(); updateUI();
         }
-
         function addProductManually() {
             const b = document.getElementById('newProductBarcode').value.trim();
             const n = document.getElementById('newProductName').value.trim();
@@ -1083,12 +813,15 @@
             if (!b) { alert(t('enterBarcode')); return; }
             if (!n) { alert(t('enterName')); return; }
             if (!p || p <= 0) { alert(t('enterPrice')); return; }
-            if (productDB[b] && !confirm(t('barcodeExists') + ` (${getProductName(productDB[b])})?`)) return;
-            productDB[b] = { name: n, price: p };
-            if (currentLang === 'ru') {
-                const enName = prompt('English name (optional):');
-                if (enName) productDB[b].name_en = enName.trim();
-            }
+            
+            // Разделяем штрихкоды по запятой
+            const barcodes = b.split(',').map(s => s.trim()).filter(s => s.length > 0);
+            const mainBarcode = barcodes[0];
+            
+            if (productDB[mainBarcode] && !confirm(t('barcodeExists') + ` (${getProductName(productDB[mainBarcode])})?`)) return;
+            
+            productDB[mainBarcode] = { name: n, price: p, barcodes: barcodes };
+            if (lang === 'ru') { const en = prompt('English name (optional):'); if (en) productDB[mainBarcode].name_en = en.trim(); }
             saveAll(); updateUI();
             document.getElementById('newProductBarcode').value = '';
             document.getElementById('newProductName').value = '';
@@ -1098,14 +831,11 @@
         function switchTab(tab) {
             document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
             document.querySelectorAll('[id^="tab-"]').forEach(el => el.classList.add('hidden'));
-            const targetTab = document.getElementById('tab-' + tab);
-            if (targetTab) targetTab.classList.remove('hidden');
-            const activeButton = document.querySelector(`.tab[onclick*="${tab}"]`);
-            if (activeButton) activeButton.classList.add('active');
+            document.getElementById('tab-' + tab).classList.remove('hidden');
+            document.querySelector(`.tab[onclick*="${tab}"]`).classList.add('active');
             if (tab !== 'scan') stopScanner();
             updateUI();
         }
-
         function clearAll() {
             if (!confirm(t('confirmClear'))) return;
             expenses = []; saveAll(); updateUI();
