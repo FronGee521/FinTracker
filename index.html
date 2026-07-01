@@ -5,247 +5,249 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>MoneyKo</title>
     
-    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIk1vbmV5S28iLAogICJzaG9ydF9uYW1lIjogIk1vbmV5S28iLAogICJzdGFydF91cmwiOiAiLiIsCiAgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsCiAgImJhY2tncm91bmRfY29sb3IiOiAiI2YyZjJmMiIsCiAgInRoZW1lX2NvbG9yIjogIiMzNjg1NUIiLAogICJpY29ucyI6IFt7CiAgICAic3JjIjogImRhdGE6aW1hZ2Uvc3ZnK3htbCwlM0NzdmcgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJyB2aWV3Qm94PScwIDAgMTAwIDEwMCclM0UlM0NjaXJjbGUgY3g9JzUwJyBjeT0nNTAnIHI9JzUwJyBmaWxsPSclMjMzNjg1NUInLyUzRSUzQ3RleHQgeD0nNTAnIHk9JzY1JyBmb250LXNpemU9JzM4JyB0ZXh0LWFuY2hvcj0nbWlkZGxlJyBmaWxsPSd3aGl0ZScgZm9udC1mYW1pbHk9J0FyaWFsJyBmb250LXdlaWdodD0nYm9sZCclM0VNSyUzQy90ZXh0JTNFJTNDL3N2ZyUzRSIsCiAgICAic2l6ZXMiOiAiMTkyeDE5MiIsCiAgICAidHlwZSI6ICJpbWFnZS9zdmcreG1sIgogIH1dfQ==">
+    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIk1vbmV5S28iLAogICJzaG9ydF9uYW1lIjogIk1vbmV5S28iLAogICJzdGFydF91cmwiOiAiLiIsCiAgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsCiAgImJhY2tncm91bmRfY29sb3IiOiAiI2Y1ZmFmOCIsCiAgInRoZW1lX2NvbG9yIjogIiMxYTkxNzAiLAogICJpY29ucyI6IFt7CiAgICAic3JjIjogImRhdGE6aW1hZ2Uvc3ZnK3htbCwlM0NzdmcgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJyB2aWV3Qm94PScwIDAgMTAwIDEwMCclM0UlM0NjaXJjbGUgY3g9JzUwJyBjeT0nNTAnIHI9JzUwJyBmaWxsPSclMjMxYTkxNzAnLyUzRSUzQ3RleHQgeD0nNTAnIHk9JzY4JyBmb250LXNpemU9JzM4JyB0ZXh0LWFuY2hvcj0nbWlkZGxlJyBmaWxsPSd3aGl0ZScgZm9udC1mYW1pbHk9J0FyaWFsJyBmb250LXdlaWdodD0nYm9sZCclM0VNSyUzQy90ZXh0JTNFJTNDL3N2ZyUzRSIsCiAgICAic2l6ZXMiOiAiMTkyeDE5MiIsCiAgICAidHlwZSI6ICJpbWFnZS9zdmcreG1sIgogIH1dfQ==">
     
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="MoneyKo">
-    <meta name="theme-color" content="#36855B">
+    <meta name="theme-color" content="#f5faf8">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Russo+One&display=swap" rel="stylesheet">
     
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         :root {
-            --bg: #f2f2f2; --card: #fff; --card2: #f8f8f8; --text: #1a1a1a;
-            --muted: #888; --border: #ddd; --btn-gray: #e9ecef; --btn-light: #e0e0e0;
-            --green: #36855B; --red: #dc3545; --cat-bg: #f0f0f0;
+            --bg-start: #f5faf8; --bg-end: #e0ece6;
+            --card-bg: rgba(255,255,255,0.55); --card-border: rgba(255,255,255,0.35);
+            --text: #1a2e28; --muted: #5a7a6e;
+            --accent: #1a9170; --accent-light: #23a080; --gold: #c9a96e;
+            --red: #dc3545; --input-bg: rgba(255,255,255,0.45); --input-border: rgba(255,255,255,0.4);
+            --tab-bg: rgba(255,255,255,0.35); --tab-border: rgba(255,255,255,0.25); --tab-text: #5a7a6e;
+            --drop-bg: rgba(255,255,255,0.85); --shadow: 0 8px 32px rgba(0,0,0,0.05);
+            --progress-bg: rgba(0,0,0,0.06); --divider: rgba(26,145,112,0.2);
+            --cat-bg: rgba(255,255,255,0.4); --cat-border: rgba(255,255,255,0.25);
+            --quick-bg: rgba(255,255,255,0.4); --quick-border: rgba(255,255,255,0.25);
+            --badge-bg: rgba(255,255,255,0.4); --tag-bg: rgba(26,145,112,0.1);
+            --modal-bg: rgba(255,255,255,0.85); --overlay-bg: rgba(0,0,0,0.4);
+            --font: 'Rubik', 'Montserrat', -apple-system, sans-serif;
+            --font-title: 'Russo One', sans-serif;
+            --radius: 24px; --radius-sm: 16px;
         }
         body.dark {
-            --bg: #1a1a1a; --card: #2a2a2a; --card2: #333; --text: #eee;
-            --muted: #999; --border: #444; --btn-gray: #444; --btn-light: #444;
-            --cat-bg: #333;
+            --bg-start: #0a1a14; --bg-end: #1a2e28;
+            --card-bg: rgba(26,40,35,0.75); --card-border: rgba(255,255,255,0.06);
+            --text: #d4e6df; --muted: #8ab0a0;
+            --accent: #2dbd94; --accent-light: #3dd4a8; --gold: #d4b87a;
+            --input-bg: rgba(42,64,56,0.6); --input-border: rgba(255,255,255,0.08);
+            --tab-bg: rgba(30,47,41,0.5); --tab-border: rgba(255,255,255,0.05); --tab-text: #8ab0a0;
+            --drop-bg: rgba(26,40,35,0.9); --shadow: 0 8px 32px rgba(0,0,0,0.2);
+            --progress-bg: rgba(255,255,255,0.06); --divider: rgba(201,169,110,0.3);
+            --cat-bg: rgba(255,255,255,0.05); --cat-border: rgba(255,255,255,0.06);
+            --quick-bg: rgba(255,255,255,0.05); --quick-border: rgba(255,255,255,0.06);
+            --badge-bg: rgba(255,255,255,0.08); --tag-bg: rgba(45,189,148,0.15);
+            --modal-bg: rgba(26,40,35,0.92); --overlay-bg: rgba(0,0,0,0.6);
         }
+        body.elite-dark {
+            --bg-start: #0d0d0d; --bg-end: #1a1a1a;
+            --card-bg: rgba(20,20,20,0.8); --card-border: rgba(201,169,110,0.15);
+            --text: #f0ece4; --muted: #9a9588;
+            --accent: #c9a96e; --accent-light: #d4b87a; --gold: #c9a96e;
+            --red: #8b1a1a; --input-bg: rgba(30,30,30,0.7); --input-border: rgba(201,169,110,0.2);
+            --tab-bg: rgba(20,20,20,0.6); --tab-border: rgba(201,169,110,0.12); --tab-text: #9a9588;
+            --drop-bg: rgba(20,20,20,0.95); --shadow: 0 8px 32px rgba(0,0,0,0.4);
+            --progress-bg: rgba(255,255,255,0.06); --divider: rgba(201,169,110,0.4);
+            --cat-bg: rgba(20,20,20,0.6); --cat-border: rgba(201,169,110,0.12);
+            --quick-bg: rgba(20,20,20,0.6); --quick-border: rgba(201,169,110,0.12);
+            --badge-bg: rgba(201,169,110,0.12); --tag-bg: rgba(201,169,110,0.15);
+            --modal-bg: rgba(20,20,20,0.95); --overlay-bg: rgba(0,0,0,0.7);
+        }
+        body.elite-light {
+            --bg-start: #faf8f5; --bg-end: #f0ebe0;
+            --card-bg: rgba(255,255,255,0.7); --card-border: rgba(201,169,110,0.2);
+            --text: #2a2a2a; --muted: #8a8278;
+            --accent: #c9a96e; --accent-light: #d4b87a; --gold: #c9a96e;
+            --red: #8b1a1a; --input-bg: rgba(255,255,255,0.6); --input-border: rgba(201,169,110,0.25);
+            --tab-bg: rgba(255,255,255,0.5); --tab-border: rgba(201,169,110,0.15); --tab-text: #8a8278;
+            --drop-bg: rgba(255,255,255,0.9); --shadow: 0 8px 32px rgba(0,0,0,0.06);
+            --progress-bg: rgba(0,0,0,0.05); --divider: rgba(201,169,110,0.3);
+            --cat-bg: rgba(255,255,255,0.5); --cat-border: rgba(201,169,110,0.15);
+            --quick-bg: rgba(255,255,255,0.5); --quick-border: rgba(201,169,110,0.15);
+            --badge-bg: rgba(201,169,110,0.12); --tag-bg: rgba(201,169,110,0.12);
+            --modal-bg: rgba(255,255,255,0.9); --overlay-bg: rgba(0,0,0,0.4);
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: var(--bg); color: var(--text); padding: 12px;
-            max-width: 480px; margin: 0 auto;
+            font-family: var(--font);
+            background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-end) 100%);
+            color: var(--text); padding: 12px; max-width: 480px; margin: 0 auto;
             -webkit-tap-highlight-color: transparent; user-select: none;
             padding-top: max(12px, env(safe-area-inset-top));
-            padding-bottom: max(12px, env(safe-area-inset-bottom));
+            padding-bottom: max(100px, env(safe-area-inset-bottom));
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 14px; line-height: 1.5; font-weight: 400;
+            overflow-x: hidden;
         }
+
+        @keyframes fadeSlideUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes float { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-8px); } }
+        @keyframes slideLeft { from { transform: translateX(0); opacity: 1; } to { transform: translateX(-100px); opacity: 0; } }
+
         .block {
-            background: var(--card); border-radius: 12px; padding: 16px;
-            margin-bottom: 12px; border: 1px solid var(--border);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            background: var(--card-bg); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+            border: 1px solid var(--card-border); border-radius: var(--radius);
+            padding: 18px; margin-bottom: 14px; box-shadow: var(--shadow);
+            transition: all 0.3s ease; animation: fadeSlideUp 0.5s ease-out;
         }
-        .flex { display: flex; gap: 8px; }
+        .flex { display: flex; gap: 10px; }
         .flex-1 { flex: 1; }
+
         .btn {
-            border: none; padding: 12px 16px; border-radius: 10px;
-            font-size: 15px; cursor: pointer; background: var(--btn-light);
-            color: var(--text); width: 100%; font-weight: 500;
-            transition: opacity 0.15s;
+            border: none; padding: 13px 18px; border-radius: 30px; font-size: 14px;
+            cursor: pointer; width: 100%; font-weight: 500; transition: all 0.3s ease;
+            font-family: var(--font); letter-spacing: 0.2px;
         }
-        .btn:active { opacity: 0.7; }
-        .btn-green { background: var(--green); color: #fff; }
+        .btn:active { transform: scale(0.96); }
+        .btn-accent {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: #fff; box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
         .btn-red { background: var(--red); color: #fff; }
-        .btn-gray { background: var(--btn-gray); color: var(--text); }
-        input, select {
-            border: 1px solid var(--border); border-radius: 10px;
-            padding: 12px 14px; font-size: 16px; width: 100%;
-            background: var(--card); color: var(--text); margin-bottom: 8px;
+        .btn-gray {
+            background: rgba(255,255,255,0.15); backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px); color: var(--text);
         }
-        input:focus, select:focus { outline: none; border-color: var(--green); }
+        .btn-xs {
+            padding: 8px 14px; font-size: 13px; border-radius: 20px; width: auto;
+            font-weight: 500; cursor: pointer; border: none;
+            background: var(--cat-bg); color: var(--text);
+            transition: all 0.3s ease; font-family: var(--font);
+        }
+        .btn-xs:active { transform: scale(0.94); }
+
+        input, select {
+            border: 1px solid var(--input-border); border-radius: var(--radius-sm);
+            padding: 13px 15px; font-size: 14px; width: 100%;
+            background: var(--input-bg); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+            color: var(--text); margin-bottom: 9px; font-family: var(--font); transition: all 0.3s ease;
+        }
+        input:focus, select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,0,0,0.05); }
         select {
             -webkit-appearance: none; appearance: none;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23888' d='M6 8L0 2h12z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat; background-position: right 14px center;
-            padding-right: 36px;
+            background-repeat: no-repeat; background-position: right 15px center; padding-right: 40px;
         }
-        .cat-grid {
-            display: grid; grid-template-columns: repeat(4, 1fr);
-            gap: 6px; margin: 8px 0;
-        }
+
+        .cat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 10px 0; }
         .cat-item {
-            background: var(--cat-bg); padding: 12px 4px; border-radius: 10px;
-            text-align: center; cursor: pointer; border: 2px solid transparent;
-            font-size: 13px; transition: all 0.15s; font-weight: 500;
+            background: var(--cat-bg); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--cat-border); border-radius: 18px; padding: 13px 5px;
+            text-align: center; cursor: pointer; font-size: 12px; font-weight: 500; transition: all 0.3s ease;
         }
-        .cat-item:active { transform: scale(0.95); }
-        .cat-item.active { border-color: var(--green); background: #e6f2ec; }
-        .row {
-            display: flex; justify-content: space-between;
-            align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border);
-        }
-        .row .price { color: var(--red); font-weight: 600; }
-        .row .price.green { color: var(--green); }
-        .total {
-            text-align: right; font-size: 20px; font-weight: bold;
-            padding-top: 12px; border-top: 2px solid var(--border); margin-top: 8px;
-        }
+        .cat-item:active { transform: scale(0.94); }
+        .cat-item.active { background: rgba(0,0,0,0.08); border-color: var(--accent); color: var(--accent); }
 
-        .nav-bar { display: flex; gap: 8px; margin-bottom: 12px; }
-        .nav-main {
-            flex: 1; background: var(--card); border-radius: 12px;
-            padding: 4px; border: 1px solid var(--border); display: flex; gap: 4px;
+        .op-row {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 12px 8px; border-bottom: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.3s ease; position: relative; overflow: hidden;
         }
-        .nav-main .tab {
-            flex: 1; padding: 12px 8px; text-align: center; border-radius: 10px;
-            cursor: pointer; font-size: 13px; font-weight: 500;
-            color: var(--muted); transition: all 0.15s; white-space: nowrap;
+        body.dark .op-row, body.elite-dark .op-row, body.elite-light .op-row { border-bottom: 1px solid rgba(255,255,255,0.04); }
+        .op-row .price { color: var(--red); font-weight: 600; }
+        .op-row .price.green { color: var(--accent); }
+        .op-row.swiped { animation: slideLeft 0.3s ease forwards; }
+        .op-row .delete-hint {
+            position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
+            background: var(--red); color: #fff; padding: 6px 12px; border-radius: 20px;
+            font-size: 11px; font-weight: 600; pointer-events: none;
         }
+        .total { text-align: right; font-size: 20px; font-weight: 600; padding-top: 14px; border-top: 2px solid var(--divider); margin-top: 10px; }
+
+        .nav-bar { display: flex; gap: 8px; margin-bottom: 14px; }
+        .nav-main { flex: 1; background: var(--tab-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-radius: 24px; padding: 5px; border: 1px solid var(--tab-border); display: flex; gap: 4px; }
+        .nav-main .tab { flex: 1; padding: 12px 8px; text-align: center; border-radius: 20px; cursor: pointer; font-size: 12px; font-weight: 500; color: var(--tab-text); transition: all 0.3s ease; white-space: nowrap; }
         .nav-main .tab:active { transform: scale(0.95); }
-        .nav-main .tab.active { background: var(--green); color: #fff; }
-
-        .nav-more-btn {
-            width: 44px; height: 44px; border-radius: 12px;
-            background: var(--card); border: 1px solid var(--border);
-            display: flex; align-items: center; justify-content: center;
-            cursor: pointer; font-size: 18px; color: var(--text); flex-shrink: 0;
-            transition: all 0.15s;
-        }
+        .nav-main .tab.active { background: linear-gradient(135deg, var(--accent), var(--accent-light)); color: #fff; }
+        .nav-more-btn { width: 48px; height: 48px; border-radius: 24px; background: var(--tab-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid var(--tab-border); display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 18px; color: var(--tab-text); flex-shrink: 0; transition: all 0.3s ease; }
         .nav-more-btn:active { transform: scale(0.9); }
-        .nav-more-btn.open { background: var(--green); color: #fff; border-color: var(--green); }
-
-        .nav-dropdown {
-            position: absolute; top: 100%; right: 0; margin-top: 4px;
-            background: var(--card); border: 1px solid var(--border);
-            border-radius: 12px; padding: 4px; z-index: 50;
-            min-width: 140px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            display: none; flex-direction: column; gap: 2px;
-        }
+        .nav-more-btn.open { background: linear-gradient(135deg, var(--accent), var(--accent-light)); color: #fff; border-color: transparent; }
+        .nav-dropdown { position: absolute; top: 100%; right: 0; margin-top: 6px; background: var(--drop-bg); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); border: 1px solid var(--card-border); border-radius: 20px; padding: 6px; z-index: 50; min-width: 150px; box-shadow: 0 12px 40px rgba(0,0,0,0.2); display: none; flex-direction: column; gap: 2px; }
         .nav-dropdown.show { display: flex; }
-        .nav-dropdown .tab {
-            padding: 10px 14px; text-align: left; border-radius: 10px;
-            cursor: pointer; font-size: 13px; font-weight: 500; color: var(--muted);
-        }
-        .nav-dropdown .tab:active { background: var(--btn-gray); }
-        .nav-dropdown .tab.active { background: var(--green); color: #fff; }
+        .nav-dropdown .tab { padding: 11px 16px; text-align: left; border-radius: 14px; cursor: pointer; font-size: 13px; font-weight: 500; color: var(--tab-text); }
+        .nav-dropdown .tab:active { background: rgba(0,0,0,0.05); }
+        .nav-dropdown .tab.active { background: linear-gradient(135deg, var(--accent), var(--accent-light)); color: #fff; }
         .nav-wrapper { position: relative; flex-shrink: 0; }
 
         .hidden { display: none !important; }
-        .scanner-box { background: #000; border-radius: 12px; overflow: hidden; min-height: 250px; }
+        .scanner-box { background: #000; border-radius: 20px; overflow: hidden; min-height: 250px; }
         #reader { width: 100%; min-height: 250px; }
         #reader video { width: 100%; display: block; object-fit: cover; }
         .text-muted { color: var(--muted); font-size: 13px; }
         .text-center { text-align: center; }
-        .mt-8 { margin-top: 8px; }
-        .mb-8 { margin-bottom: 8px; }
-        .badge {
-            background: var(--btn-gray); padding: 4px 14px; border-radius: 20px;
-            font-size: 13px; font-weight: 500;
-        }
-        .btn-small {
-            border: none; padding: 6px 12px; border-radius: 8px;
-            font-size: 13px; cursor: pointer; background: var(--btn-light);
-            color: var(--text); font-weight: 500;
-        }
-        .btn-small:active { opacity: 0.7; }
-        .install-banner {
-            background: var(--green); color: white; padding: 12px 16px;
-            border-radius: 12px; margin-bottom: 12px; display: none;
-            align-items: center; gap: 12px; cursor: pointer; font-weight: 500;
-        }
+        .mt-8 { margin-top: 8px; } .mb-8 { margin-bottom: 8px; }
+        .badge { background: var(--badge-bg); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 5px 15px; border-radius: 20px; font-size: 12px; font-weight: 500; color: var(--text); }
+        .btn-small { border: none; padding: 7px 14px; border-radius: 20px; font-size: 12px; cursor: pointer; background: rgba(0,0,0,0.05); color: var(--text); font-weight: 500; transition: all 0.3s ease; }
+        .btn-small:active { transform: scale(0.94); }
+        .install-banner { background: rgba(0,0,0,0.05); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); color: var(--text); padding: 14px 20px; border-radius: 24px; margin-bottom: 14px; display: none; align-items: center; gap: 12px; cursor: pointer; font-weight: 500; border: 1px solid var(--card-border); animation: fadeSlideUp 0.5s ease; }
         .install-banner.show { display: flex; }
-        .tag {
-            display: inline-block; background: #e8f5e9; color: var(--green);
-            padding: 2px 8px; border-radius: 12px; font-size: 11px;
-            margin: 2px; font-family: monospace;
-        }
-        .match-box {
-            background: var(--card2); padding: 12px; border-radius: 10px;
-            margin: 10px 0; border: 1px solid var(--border);
-        }
-        .quick-btn {
-            padding: 14px 8px; border-radius: 10px; text-align: center;
-            cursor: pointer; font-weight: 500; font-size: 14px;
-            transition: opacity 0.15s; background: var(--cat-bg);
-            border: 2px solid transparent; position: relative;
-        }
-        .quick-btn:active { opacity: 0.8; border-color: var(--green); }
-        .quick-btn .delete-quick {
-            position: absolute; top: 2px; right: 4px; width: 20px; height: 20px;
-            border-radius: 50%; background: var(--red); color: #fff;
-            border: none; font-size: 12px; cursor: pointer;
-            display: flex; align-items: center; justify-content: center;
-        }
+        .tag { display: inline-block; background: var(--tag-bg); color: var(--accent); padding: 3px 10px; border-radius: 14px; font-size: 11px; margin: 2px; font-family: monospace; }
+        .match-box { background: var(--card-bg); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 14px; border-radius: 18px; margin: 10px 0; border: 1px solid var(--card-border); }
+        .quick-btn { padding: 15px 8px; border-radius: 18px; text-align: center; cursor: pointer; font-weight: 500; font-size: 13px; transition: all 0.3s ease; background: var(--quick-bg); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--quick-border); position: relative; }
+        .quick-btn:active { transform: scale(0.95); border-color: var(--accent); }
+        .quick-btn .delete-quick { position: absolute; top: 4px; right: 5px; width: 18px; height: 18px; border-radius: 50%; background: var(--red); color: #fff; border: none; font-size: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
         .quick-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-        .setting-row {
-            display: flex; justify-content: space-between;
-            align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border);
-        }
+        .quick-mini-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 10px; }
+        .quick-mini-btn { padding: 12px 6px; border-radius: 16px; text-align: center; cursor: pointer; font-weight: 500; font-size: 12px; transition: all 0.3s ease; background: rgba(0,0,0,0.04); border: 1px solid transparent; color: var(--text); }
+        .quick-mini-btn:active { transform: scale(0.94); border-color: var(--accent); }
+        .amount-chip-row { display: flex; gap: 6px; margin-bottom: 8px; flex-wrap: wrap; }
+        .amount-chip { padding: 8px 14px; border-radius: 20px; font-size: 13px; font-weight: 500; cursor: pointer; background: var(--cat-bg); border: 1px solid var(--cat-border); color: var(--text); transition: all 0.3s ease; }
+        .amount-chip:active { transform: scale(0.94); background: var(--accent); color: #fff; }
+
+        .setting-row { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid rgba(0,0,0,0.05); }
+        body.dark .setting-row, body.elite-dark .setting-row, body.elite-light .setting-row { border-bottom: 1px solid rgba(255,255,255,0.04); }
         .setting-row:last-child { border-bottom: none; }
-        .setting-row .label { font-weight: 500; }
-        .setting-row select { width: auto; min-width: 120px; margin-bottom: 0; }
+        .setting-row .label { font-weight: 500; font-size: 14px; }
+        .setting-row select, .setting-row input[type="text"] { width: auto; min-width: 140px; margin-bottom: 0; }
 
-        .gear-btn {
-            position: fixed; bottom: 20px; right: 20px;
-            width: 48px; height: 48px; border-radius: 50%;
-            background: var(--card); border: 2px solid var(--border);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-            display: flex; align-items: center; justify-content: center;
-            cursor: pointer; z-index: 100; font-size: 24px;
-            transition: all 0.15s; color: var(--text);
-        }
-        .gear-btn:active { transform: scale(0.9); }
+        .gear-btn { position: fixed; bottom: 28px; right: 22px; width: 62px; height: 62px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent-light)); color: #fff; border: none; font-size: 28px; box-shadow: 0 8px 32px rgba(0,0,0,0.25); cursor: pointer; z-index: 100; display: flex; align-items: center; justify-content: center; animation: float 3s ease-in-out infinite; transition: all 0.3s ease; font-family: var(--font); }
+        .gear-btn:active { transform: scale(0.92); }
 
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.5); z-index: 200;
-            display: none; align-items: flex-end; justify-content: center;
-        }
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--overlay-bg); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); z-index: 200; display: none; align-items: flex-end; justify-content: center; }
         .modal-overlay.show { display: flex; }
-        .modal-content {
-            background: var(--card); width: 100%; max-width: 480px;
-            max-height: 85vh; border-radius: 20px 20px 0 0;
-            padding: 20px 16px 30px; overflow-y: auto;
-        }
-        .modal-header {
-            display: flex; justify-content: space-between;
-            align-items: center; margin-bottom: 16px;
-        }
-        .modal-header .title { font-size: 20px; font-weight: bold; }
-        .modal-close {
-            width: 36px; height: 36px; border-radius: 50%;
-            border: none; background: var(--btn-gray); font-size: 20px;
-            cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--text);
-        }
-        .edit-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.5); z-index: 300;
-            display: none; align-items: center; justify-content: center;
-        }
+        .modal-content { background: var(--modal-bg); backdrop-filter: blur(40px); -webkit-backdrop-filter: blur(40px); border: 1px solid var(--card-border); width: 100%; max-width: 480px; max-height: 85vh; border-radius: 28px 28px 0 0; padding: 24px 20px 30px; overflow-y: auto; box-shadow: 0 -8px 40px rgba(0,0,0,0.2); animation: fadeSlideUp 0.4s ease; }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .modal-header .title { font-family: var(--font-title); font-size: 22px; color: var(--accent); }
+        .modal-close { width: 40px; height: 40px; border-radius: 50%; border: none; background: rgba(0,0,0,0.05); font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--text); transition: all 0.3s ease; }
+
+        .edit-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--overlay-bg); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); z-index: 300; display: none; align-items: center; justify-content: center; padding: 20px; }
         .edit-overlay.show { display: flex; }
-        .edit-dialog {
-            background: var(--card); padding: 20px; border-radius: 16px;
-            width: 90%; max-width: 360px;
-        }
+        .edit-dialog { background: var(--modal-bg); backdrop-filter: blur(40px); -webkit-backdrop-filter: blur(40px); border: 1px solid var(--card-border); padding: 24px; border-radius: 28px; width: 90%; max-width: 380px; box-shadow: 0 24px 80px rgba(0,0,0,0.3); animation: fadeSlideUp 0.3s ease; }
         .edit-dialog input, .edit-dialog select { margin-bottom: 10px; }
-        .progress-bar {
-            height: 8px; border-radius: 4px; background: var(--btn-gray);
-            overflow: hidden; margin: 6px 0;
-        }
-        .progress-fill { height: 100%; border-radius: 4px; transition: width 0.3s; }
-        .progress-fill.safe { background: var(--green); }
+
+        .progress-bar { height: 6px; border-radius: 3px; background: var(--progress-bg); overflow: hidden; margin: 7px 0; }
+        .progress-fill { height: 100%; border-radius: 3px; transition: width 0.4s ease; }
+        .progress-fill.safe { background: linear-gradient(135deg, var(--accent), var(--gold)); }
         .progress-fill.warn { background: #f39c12; }
         .progress-fill.danger { background: var(--red); }
-        .goal-card {
-            background: var(--card2); padding: 14px; border-radius: 10px;
-            margin-bottom: 8px;
-        }
-        .toast {
-            position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%);
-            background: var(--card); color: var(--text); padding: 12px 24px;
-            border-radius: 20px; font-size: 14px; font-weight: 500;
-            z-index: 500; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            transition: opacity 0.3s; pointer-events: none; opacity: 0;
-            border: 1px solid var(--border);
-        }
+
+        .toast { position: fixed; bottom: 110px; left: 20px; right: 20px; max-width: 400px; margin: 0 auto; background: rgba(0,0,0,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); color: #fff; padding: 14px 22px; border-radius: 40px; font-weight: 500; text-align: center; z-index: 500; box-shadow: 0 8px 32px rgba(0,0,0,0.3); transition: all 0.4s ease; opacity: 0; transform: translateY(20px); pointer-events: none; font-size: 13px; border: 1px solid rgba(255,255,255,0.1); }
+        .toast.show { opacity: 1; transform: translateY(0); }
+
+        .filter-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+        .filter-chip { padding: 8px 14px; border-radius: 20px; font-size: 12px; font-weight: 500; cursor: pointer; background: var(--cat-bg); border: 1px solid var(--cat-border); color: var(--muted); transition: all 0.3s ease; white-space: nowrap; }
+        .filter-chip.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+        .avatar { width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent-light)); display: flex; align-items: center; justify-content: center; font-size: 24px; color: #fff; font-weight: 700; font-family: var(--font-title); overflow: hidden; }
+        .avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .avatar-input { display: none; }
+        .avatar-label { cursor: pointer; font-size: 12px; color: var(--accent); font-weight: 500; }
     </style>
 </head>
 <body>
 
     <div class="install-banner" id="installBanner" onclick="installApp()">
-        <span style="flex:1;">Установить MoneyKo</span>
+        <span style="flex:1; font-family:var(--font-title); font-size:15px;">MoneyKo</span>
         <span style="font-size:20px;">&rarr;</span>
     </div>
 
@@ -255,121 +257,62 @@
     <div class="modal-overlay" id="profileModal" onclick="if(event.target===this)closeProfile()">
         <div class="modal-content">
             <div class="modal-header">
-                <span class="title">MoneyKo</span>
+                <span class="title" id="profileTitle">MoneyKo</span>
                 <button class="modal-close" onclick="closeProfile()">&times;</button>
             </div>
-            <div class="block">
-                <div class="setting-row">
-                    <span class="label">Язык</span>
-                    <select id="langSelect" onchange="changeLanguage(this.value)">
-                        <option value="ru">Русский</option>
-                        <option value="en">English</option>
-                    </select>
-                </div>
-                <div class="setting-row">
-                    <span class="label">Валюта</span>
-                    <select id="profileCurrency" onchange="changeCurrency(this.value)">
-                        <option value="₽">₽</option><option value="$">$</option><option value="€">€</option>
-                        <option value="₸">₸</option><option value="₴">₴</option><option value="£">£</option><option value="¥">¥</option>
-                    </select>
-                </div>
-                <div class="setting-row">
-                    <span class="label">Тема</span>
-                    <select id="themeSelect" onchange="changeTheme(this.value)">
-                        <option value="light">Светлая</option>
-                        <option value="dark">Тёмная</option>
-                        <option value="auto">Как в системе</option>
-                    </select>
+            <div class="block" style="text-align:center;">
+                <div class="avatar" id="profileAvatar" style="margin:0 auto;" onclick="document.getElementById('avatarInput').click()">MK</div>
+                <input type="file" id="avatarInput" class="avatar-input" accept="image/*" onchange="changeAvatar(this)">
+                <label class="avatar-label mt-8" for="avatarInput">Сменить аватар</label>
+                <div class="setting-row" style="justify-content:center;border:none;margin-top:12px;">
+                    <input type="text" id="profileName" placeholder="Ваше имя" onchange="saveProfileName()" style="text-align:center;max-width:200px;margin:0;">
                 </div>
             </div>
             <div class="block">
-                <div style="font-weight:bold;margin-bottom:10px;font-size:16px;">Синхронизация</div>
+                <div class="setting-row"><span class="label">Язык</span><select id="langSelect" onchange="changeLanguage(this.value)"><option value="ru">Русский</option><option value="en">English</option></select></div>
+                <div class="setting-row"><span class="label">Валюта</span><select id="profileCurrency" onchange="changeCurrency(this.value)"><option value="₽">₽</option><option value="$">$</option><option value="€">€</option><option value="₸">₸</option><option value="₴">₴</option><option value="£">£</option><option value="¥">¥</option></select></div>
+                <div class="setting-row"><span class="label">Тема</span><select id="themeSelect" onchange="changeTheme(this.value)"><option value="light">Светлая</option><option value="dark">Тёмная</option><option value="elite-dark">Elite Тёмная</option><option value="elite-light">Elite Светлая</option><option value="auto">Авто</option></select></div>
+            </div>
+            <div class="block">
+                <div style="font-weight:600;margin-bottom:12px;font-size:15px;">Статистика</div>
+                <div class="row"><span>Всего расходов</span><span class="price" id="statTotalExp">0</span></div>
+                <div class="row"><span>Всего доходов</span><span class="price green" id="statTotalInc">0</span></div>
+                <div class="row"><span>Операций за месяц</span><span id="statMonthOps">0</span></div>
+                <div class="row"><span>Самая частая категория</span><span id="statTopCat">—</span></div>
+                <div class="row"><span>Средний чек</span><span id="statAvgCheck">0</span></div>
+            </div>
+            <div class="block">
+                <div style="font-weight:600;margin-bottom:10px;font-size:15px;">Синхронизация</div>
                 <div class="text-muted mb-8">Перенос данных через QR-код.</div>
-                <div class="flex">
-                    <button class="btn btn-green flex-1" onclick="exportQR()">Создать QR</button>
-                    <button class="btn btn-gray flex-1" onclick="importQR()">Сканировать QR</button>
-                </div>
+                <div class="flex"><button class="btn btn-accent flex-1" onclick="exportQR()">Создать QR</button><button class="btn btn-gray flex-1" onclick="importQR()">Сканировать QR</button></div>
                 <div id="syncStatus" class="text-muted text-center mt-8">Готов к синхронизации</div>
                 <div id="qrDisplay" style="text-align:center;margin-top:10px;"></div>
             </div>
             <div class="block">
-                <div style="font-weight:bold;margin-bottom:10px;font-size:16px;">Данные</div>
+                <div style="font-weight:600;margin-bottom:10px;font-size:15px;">Экспорт</div>
+                <button class="btn btn-accent" onclick="exportCSV()">Скачать CSV</button>
+            </div>
+            <div class="block">
+                <div style="font-weight:600;margin-bottom:10px;font-size:15px;">Данные</div>
                 <button class="btn btn-red" onclick="clearAll()">Очистить все данные</button>
             </div>
         </div>
     </div>
 
-    <!-- Диалог быстрой кнопки -->
-    <div class="edit-overlay" id="quickEditDialog" onclick="if(event.target===this)cancelQuickEdit()">
-        <div class="edit-dialog">
-            <div style="font-weight:bold;margin-bottom:12px;font-size:16px;">Быстрая кнопка</div>
-            <input type="text" id="quickEditName" placeholder="Название">
-            <input type="number" id="quickEditPrice" placeholder="Цена" step="0.01" inputmode="decimal">
-            <select id="quickEditCat">
-                <option value="transport">Транспорт</option>
-                <option value="food">Еда</option>
-                <option value="entertainment">Развлечения</option>
-                <option value="home">Дом</option>
-                <option value="health">Здоровье</option>
-                <option value="gifts">Подарки</option>
-                <option value="clothing">Одежда</option>
-                <option value="other">Другое</option>
-            </select>
-            <div class="flex">
-                <button class="btn btn-green flex-1" onclick="saveQuickEdit()">Сохранить</button>
-                <button class="btn btn-gray flex-1" onclick="cancelQuickEdit()">Отмена</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Диалог цели -->
-    <div class="edit-overlay" id="goalEditDialog" onclick="if(event.target===this)cancelGoalEdit()">
-        <div class="edit-dialog">
-            <div style="font-weight:bold;margin-bottom:12px;font-size:16px;">Новая цель</div>
-            <input type="text" id="goalEditName" placeholder="Название цели">
-            <input type="number" id="goalEditAmount" placeholder="Сумма" step="0.01" inputmode="decimal">
-            <div class="flex">
-                <button class="btn btn-green flex-1" onclick="saveGoalEdit()">Сохранить</button>
-                <button class="btn btn-gray flex-1" onclick="cancelGoalEdit()">Отмена</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Диалог подтверждения -->
-    <div class="edit-overlay" id="confirmDialog" onclick="if(event.target===this)closeConfirm()">
-        <div class="edit-dialog">
-            <div style="font-weight:bold;margin-bottom:8px;font-size:16px;" id="confirmTitle">Подтверждение</div>
-            <div style="margin-bottom:16px;color:var(--muted);" id="confirmMessage">Вы уверены?</div>
-            <div class="flex">
-                <button class="btn btn-red flex-1" id="confirmYesBtn">Да</button>
-                <button class="btn btn-gray flex-1" onclick="closeConfirm()">Отмена</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Диалог ввода -->
-    <div class="edit-overlay" id="inputDialog" onclick="if(event.target===this)closeInputDialog()">
-        <div class="edit-dialog">
-            <div style="font-weight:bold;margin-bottom:8px;font-size:16px;" id="inputTitle">Введите данные</div>
-            <input type="text" id="inputField1" placeholder="Название">
-            <input type="number" id="inputField2" placeholder="Цена" step="0.01" inputmode="decimal" style="display:none;">
-            <div class="flex">
-                <button class="btn btn-green flex-1" id="inputOkBtn">OK</button>
-                <button class="btn btn-gray flex-1" onclick="closeInputDialog()">Отмена</button>
-            </div>
-        </div>
-    </div>
+    <!-- Диалоги -->
+    <div class="edit-overlay" id="quickEditDialog" onclick="if(event.target===this)cancelQuickEdit()"><div class="edit-dialog"><div style="font-weight:600;margin-bottom:14px;font-size:16px;">Быстрая кнопка</div><input type="text" id="quickEditName" placeholder="Название"><input type="number" id="quickEditPrice" placeholder="Цена" step="0.01" inputmode="decimal"><select id="quickEditCat"><option value="transport">Транспорт</option><option value="food">Еда</option><option value="entertainment">Развлечения</option><option value="home">Дом</option><option value="health">Здоровье</option><option value="gifts">Подарки</option><option value="clothing">Одежда</option><option value="other">Другое</option></select><div class="flex"><button class="btn btn-accent flex-1" onclick="saveQuickEdit()">Сохранить</button><button class="btn btn-gray flex-1" onclick="cancelQuickEdit()">Отмена</button></div></div></div>
+    <div class="edit-overlay" id="confirmDialog" onclick="if(event.target===this)closeConfirm()"><div class="edit-dialog"><div style="font-weight:600;margin-bottom:8px;font-size:16px;" id="confirmTitle"></div><div style="margin-bottom:18px;color:var(--muted);" id="confirmMessage"></div><div class="flex"><button class="btn btn-red flex-1" id="confirmYesBtn">Да</button><button class="btn btn-gray flex-1" onclick="closeConfirm()">Отмена</button></div></div></div>
 
     <!-- ШАПКА -->
-    <div class="block" style="display:flex;justify-content:space-between;align-items:center;">
-        <div style="flex:1;">
-            <div class="text-muted">Баланс</div>
-            <div style="font-size:28px;font-weight:bold;" id="totalDisplay">0</div>
+    <div class="block" style="background:linear-gradient(135deg, rgba(0,0,0,0.03), rgba(0,0,0,0.01)); backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px);">
+        <div style="font-size:13px;color:var(--muted);margin-bottom:6px;" id="greetingText">Добро пожаловать</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+            <div style="flex:1;"><div class="text-muted" style="font-size:11px;">БАЛАНС</div><div style="font-size:30px;font-weight:700;font-family:var(--font-title);color:var(--accent);" id="totalDisplay">0</div></div>
+            <div style="text-align:right;"><div class="text-muted" style="font-size:11px;">СЕГОДНЯ</div><div style="font-size:18px;font-weight:600;color:var(--red);" id="todayDisplay">0</div></div>
         </div>
-        <div style="text-align:right;">
-            <div class="text-muted">Сегодня</div>
-            <div style="font-size:18px;font-weight:bold;color:#dc3545;" id="todayDisplay">0</div>
-        </div>
+        <div id="vsYesterday" class="text-muted" style="font-size:11px;margin-top:4px;"></div>
+        <div class="quick-mini-grid" id="quickMiniGrid"></div>
+        <div id="monthlyBudgetBar" style="margin-top:8px;"></div>
     </div>
 
     <!-- НАВИГАЦИЯ -->
@@ -377,51 +320,33 @@
         <div class="nav-main" id="navMain">
             <div class="tab active" onclick="switchTab('main')" data-tab="main">Главная</div>
             <div class="tab" onclick="switchTab('income')" data-tab="income">Доходы</div>
-            <div class="tab" onclick="switchTab('regular')" data-tab="regular">Регулярные</div>
+            <div class="tab" onclick="switchTab('actions')" data-tab="actions">Действия</div>
             <div class="tab" onclick="switchTab('scan')" data-tab="scan">Сканер</div>
         </div>
         <div class="nav-wrapper">
             <div class="nav-more-btn" id="navMoreBtn" onclick="toggleNavDropdown()">•••</div>
             <div class="nav-dropdown" id="navDropdown">
                 <div class="tab" onclick="switchTab('limits')" data-tab="limits">Лимиты</div>
-                <div class="tab" onclick="switchTab('goals')" data-tab="goals">Цели</div>
-                <div class="tab" onclick="switchTab('products')" data-tab="products">Товары</div>
             </div>
         </div>
     </div>
 
     <!-- ГЛАВНАЯ -->
     <div id="tab-main">
+        <div class="block"><div style="font-weight:600;margin-bottom:12px;font-size:15px;">Статистика за неделю</div><div style="display:flex;gap:8px;"><div style="flex:1;background:rgba(0,0,0,0.02);padding:13px;border-radius:18px;text-align:center;"><div class="text-muted" style="font-size:11px;">Расходы</div><div style="font-weight:600;font-size:16px;color:var(--red);" id="weekTotal">0</div></div><div style="flex:1;background:rgba(0,0,0,0.02);padding:13px;border-radius:18px;text-align:center;"><div class="text-muted" style="font-size:11px;">Доходы</div><div style="font-weight:600;font-size:16px;color:var(--accent);" id="weekIncome">0</div></div><div style="flex:1;background:rgba(0,0,0,0.02);padding:13px;border-radius:18px;text-align:center;"><div class="text-muted" style="font-size:11px;">Дней</div><div style="font-weight:600;font-size:16px;" id="weekDays">0</div></div></div></div>
         <div class="block">
-            <div style="font-weight:bold;margin-bottom:10px;">Статистика за неделю</div>
-            <div style="display:flex;gap:8px;">
-                <div style="flex:1;background:var(--card2);padding:12px;border-radius:10px;text-align:center;">
-                    <div class="text-muted" style="font-size:12px;">Расходы</div>
-                    <div style="font-weight:bold;font-size:16px;color:#dc3545;" id="weekTotal">0</div>
-                </div>
-                <div style="flex:1;background:var(--card2);padding:12px;border-radius:10px;text-align:center;">
-                    <div class="text-muted" style="font-size:12px;">Доходы</div>
-                    <div style="font-weight:bold;font-size:16px;color:#36855B;" id="weekIncome">0</div>
-                </div>
-                <div style="flex:1;background:var(--card2);padding:12px;border-radius:10px;text-align:center;">
-                    <div class="text-muted" style="font-size:12px;">Дней</div>
-                    <div style="font-weight:bold;font-size:16px;" id="weekDays">0</div>
-                </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+                <span style="font-weight:600;">Последние операции</span>
+                <span style="color:var(--red);font-size:13px;cursor:pointer;" onclick="clearAll()">Очистить</span>
             </div>
-            <div id="monthlyBudgetBar" style="margin-top:12px;"></div>
-        </div>
-
-        <div class="block">
-            <div style="display:flex;justify-content:space-between;font-weight:bold;margin-bottom:10px;">
-                <span>Последние операции</span>
-                <span style="color:#dc3545;font-size:13px;cursor:pointer;" onclick="clearAll()">Очистить</span>
-            </div>
+            <input type="text" id="searchOps" placeholder="Поиск по операциям..." oninput="renderOps()" style="margin-bottom:8px;">
+            <div class="filter-row" id="filterRow"></div>
             <div id="expenseList"><div class="text-muted text-center" style="padding:20px 0;">Пока нет операций</div></div>
             <div class="total" id="mainTotal">Баланс: 0</div>
         </div>
-
         <div class="block">
-            <div style="font-weight:bold;margin-bottom:10px;font-size:16px;">Быстрая трата</div>
+            <div style="font-weight:600;margin-bottom:12px;font-size:15px;">Быстрая трата</div>
+            <div class="amount-chip-row" id="amountChips"></div>
             <input type="number" id="manualAmount" placeholder="Сумма" step="0.01" inputmode="decimal">
             <div class="cat-grid" id="categoryGrid">
                 <div class="cat-item" onclick="selectCategory('food')" data-key="food">Еда</div>
@@ -434,133 +359,31 @@
                 <div class="cat-item" onclick="selectCategory('other')" data-key="other">Другое</div>
             </div>
             <input type="text" id="manualComment" placeholder="Комментарий">
-            <button class="btn btn-green" onclick="addManualExpense()">Добавить трату</button>
+            <div class="flex"><button class="btn btn-accent flex-1" onclick="addManualExpense()">Добавить трату</button><button class="btn btn-gray flex-1" id="repeatLastBtn" onclick="repeatLastExpense()" style="display:none;">Повторить</button></div>
         </div>
     </div>
 
     <!-- ДОХОДЫ -->
-    <div id="tab-income" class="hidden">
-        <div class="block">
-            <div style="font-weight:bold;margin-bottom:10px;font-size:16px;">Добавить доход</div>
-            <input type="number" id="incomeAmount" placeholder="Сумма" step="0.01" inputmode="decimal">
-            <input type="text" id="incomeSource" placeholder="Источник (зарплата, подарок...)">
-            <button class="btn btn-green" onclick="addIncome()">Добавить доход</button>
-        </div>
-        <div class="block">
-            <div style="font-weight:bold;margin-bottom:10px;font-size:16px;">История доходов</div>
-            <div id="incomeList"><div class="text-muted text-center" style="padding:20px 0;">Нет доходов</div></div>
-            <div class="total" style="color:#36855B;" id="incomeTotal">Всего доходов: 0</div>
-        </div>
-    </div>
+    <div id="tab-income" class="hidden"><div class="block"><div style="font-weight:600;margin-bottom:12px;font-size:15px;">Добавить доход</div><input type="number" id="incomeAmount" placeholder="Сумма" step="0.01" inputmode="decimal"><input type="text" id="incomeSource" placeholder="Источник"><button class="btn btn-accent" onclick="addIncome()">Добавить доход</button></div><div class="block"><div style="font-weight:600;margin-bottom:12px;font-size:15px;">История доходов</div><div id="incomeList"><div class="text-muted text-center" style="padding:20px 0;">Нет доходов</div></div><div class="total" style="color:var(--accent);" id="incomeTotal">Всего доходов: 0</div></div></div>
 
-    <!-- РЕГУЛЯРНЫЕ + БЫСТРЫЕ -->
-    <div id="tab-regular" class="hidden">
-        <div class="block">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
-                <span style="font-weight:bold;font-size:16px;">Быстрые действия</span>
-                <button class="btn btn-green" onclick="addQuickBtn()" style="width:auto;padding:8px 16px;font-size:18px;">+</button>
-            </div>
-            <div class="quick-grid" id="quickButtonsGrid"></div>
-        </div>
-        <div class="block">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
-                <span style="font-weight:bold;font-size:16px;">Регулярные платежи</span>
-                <button class="btn btn-green" onclick="toggleRegularForm()" style="width:auto;padding:10px 16px;font-size:14px;">+ Добавить</button>
-            </div>
-            <div id="regularList"><div class="text-muted text-center" style="padding:20px 0;">Нет платежей</div></div>
-        </div>
-        <div class="block" id="regularAddForm" style="display:none;">
-            <div style="font-weight:bold;margin-bottom:10px;font-size:16px;">Новый платёж</div>
-            <input type="text" id="regularName" placeholder="Название">
-            <div class="flex">
-                <input type="number" id="regularAmount" placeholder="Сумма" step="0.01" inputmode="decimal" class="flex-1">
-                <input type="number" id="regularDay" placeholder="День" min="1" max="31" style="max-width:80px;">
-            </div>
-            <div class="flex mt-8">
-                <button class="btn btn-green flex-1" onclick="saveRegularPayment()">Сохранить</button>
-                <button class="btn btn-gray flex-1" onclick="cancelRegularPayment()">Отмена</button>
-            </div>
-        </div>
+    <!-- ДЕЙСТВИЯ -->
+    <div id="tab-actions" class="hidden">
+        <div class="block"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;"><span style="font-weight:600;font-size:15px;">Быстрые действия</span><button class="btn btn-accent" onclick="addQuickBtn()" style="width:auto;padding:10px 18px;font-size:16px;">+</button></div><div class="quick-grid" id="quickButtonsGrid"></div></div>
+        <div class="block"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;"><span style="font-weight:600;font-size:15px;">Регулярные платежи</span><button class="btn btn-accent" onclick="toggleRegularForm()" style="width:auto;padding:10px 16px;font-size:13px;">+ Добавить</button></div><div id="regularList"><div class="text-muted text-center" style="padding:20px 0;">Нет платежей</div></div></div>
+        <div class="block" id="regularAddForm" style="display:none;"><div style="font-weight:600;margin-bottom:12px;font-size:15px;">Новый платёж</div><input type="text" id="regularName" placeholder="Название"><div class="flex"><input type="number" id="regularAmount" placeholder="Сумма" step="0.01" inputmode="decimal" class="flex-1"><input type="number" id="regularDay" placeholder="День" min="1" max="31" style="max-width:80px;"></div><div class="flex mt-8"><button class="btn btn-accent flex-1" onclick="saveRegularPayment()">Сохранить</button><button class="btn btn-gray flex-1" onclick="cancelRegularPayment()">Отмена</button></div></div>
     </div>
 
     <!-- СКАНЕР -->
-    <div id="tab-scan" class="hidden">
-        <div class="block">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
-                <span style="font-weight:bold;font-size:16px;" id="scannerTitle">Сканер штрихкодов</span>
-                <span class="badge" id="scanStatus">Остановлен</span>
-            </div>
-            <div class="scanner-box"><div id="reader"></div></div>
-            <div class="flex" style="margin-top:10px;">
-                <button class="btn btn-green" onclick="startScanner()" style="flex:1;">Запустить</button>
-                <button class="btn btn-red" onclick="stopScanner()" style="flex:1;">Остановить</button>
-            </div>
-        </div>
-        <div class="block" id="scannedProduct" style="display:none;"><div id="scanResult"></div></div>
-        <div class="block">
-            <div style="display:flex;justify-content:space-between;font-weight:bold;margin-bottom:10px;">
-                <span>Корзина</span><span style="color:#36855B;" id="cartCount">0 товаров</span>
-            </div>
-            <div id="cartList"><div class="text-muted text-center" style="padding:15px 0;">Корзина пуста</div></div>
-            <div class="total" id="cartTotal">Итого: 0</div>
-            <button class="btn btn-green mt-8" onclick="saveCart()">Сохранить покупку</button>
-        </div>
-    </div>
+    <div id="tab-scan" class="hidden"><div class="block"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;"><span style="font-weight:600;font-size:15px;" id="scannerTitle">Сканер штрихкодов</span><span class="badge" id="scanStatus">Остановлен</span></div><div class="scanner-box"><div id="reader"></div></div><div class="flex mt-8"><button class="btn btn-accent flex-1" onclick="startScanner()">Запустить</button><button class="btn btn-red flex-1" onclick="stopScanner()">Остановить</button></div></div><div class="block" id="scannedProduct" style="display:none;"><div id="scanResult"></div></div><div class="block"><div style="display:flex;justify-content:space-between;font-weight:600;margin-bottom:12px;"><span>Корзина</span><span style="color:var(--accent);" id="cartCount">0 товаров</span></div><div id="cartList"><div class="text-muted text-center" style="padding:15px 0;">Корзина пуста</div></div><div class="total" id="cartTotal">Итого: 0</div><button class="btn btn-accent mt-8" onclick="saveCart()">Сохранить покупку</button></div></div>
 
     <!-- ЛИМИТЫ -->
-    <div id="tab-limits" class="hidden">
-        <div class="block">
-            <div style="font-weight:bold;margin-bottom:10px;font-size:16px;">Месячный бюджет</div>
-            <div class="flex">
-                <input type="number" id="monthlyBudget" placeholder="Сумма на месяц" step="0.01" inputmode="decimal" class="flex-1">
-                <button class="btn btn-green" onclick="saveMonthlyBudget()" style="width:auto;padding:12px 20px;">Сохранить</button>
-            </div>
-            <div id="monthlyBudgetStatus" class="mt-8"></div>
-        </div>
-        <div class="block">
-            <div style="font-weight:bold;margin-bottom:10px;font-size:16px;">Лимиты по категориям</div>
-            <div id="categoryLimits"></div>
-        </div>
-    </div>
-
-    <!-- ЦЕЛИ -->
-    <div id="tab-goals" class="hidden">
-        <div class="block">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
-                <span style="font-weight:bold;font-size:16px;">Цели накопления</span>
-                <button class="btn btn-green" onclick="addGoal()" style="width:auto;padding:8px 16px;font-size:18px;">+</button>
-            </div>
-            <div id="goalsList"><div class="text-muted text-center" style="padding:20px 0;">Нет целей</div></div>
-        </div>
-    </div>
-
-    <!-- ТОВАРЫ -->
-    <div id="tab-products" class="hidden">
-        <div class="block">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
-                <span style="font-weight:bold;font-size:16px;">База товаров</span>
-                <span class="text-muted" id="productCount">0 товаров</span>
-            </div>
-            <input type="text" id="productSearch" placeholder="Поиск" oninput="updateProductList()">
-            <div id="productList" style="margin-top:8px;"><div class="text-muted text-center" style="padding:20px 0;">Нет товаров</div></div>
-        </div>
-        <div class="block">
-            <div style="font-weight:bold;margin-bottom:10px;font-size:16px;">Добавить товар</div>
-            <input type="text" id="newProductBarcode" placeholder="Штрихкод (можно несколько через запятую)">
-            <div class="flex">
-                <input type="text" id="newProductName" placeholder="Название" class="flex-1">
-                <input type="number" id="newProductPrice" placeholder="Цена" step="0.01" inputmode="decimal" style="max-width:100px;">
-            </div>
-            <button class="btn btn-green mt-8" onclick="addProductManually()">Добавить товар</button>
-        </div>
-    </div>
+    <div id="tab-limits" class="hidden"><div class="block"><div style="font-weight:600;margin-bottom:12px;font-size:15px;">Месячный бюджет</div><div class="flex"><input type="number" id="monthlyBudget" placeholder="Сумма на месяц" step="0.01" inputmode="decimal" class="flex-1"><button class="btn btn-accent" onclick="saveMonthlyBudget()" style="width:auto;padding:13px 20px;">Сохранить</button></div><div id="monthlyBudgetStatus" class="mt-8"></div></div><div class="block"><div style="font-weight:600;margin-bottom:12px;font-size:15px;">Лимиты по категориям</div><div id="categoryLimits"></div></div></div>
 
     <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
     <script>
-        // ===== DATA =====
-        let L = localStorage.getItem('language') || (navigator.language.startsWith('ru')?'ru':'en');
+        let L = localStorage.getItem('language') || 'ru';
         let C = localStorage.getItem('currency') || '₽';
-        let theme = localStorage.getItem('theme') || 'auto';
+        let theme = localStorage.getItem('theme') || 'elite-dark';
         let expenses = JSON.parse(localStorage.getItem('expenses')||'[]');
         let incomes = JSON.parse(localStorage.getItem('incomes')||'[]');
         let cart = JSON.parse(localStorage.getItem('cart')||'[]');
@@ -569,566 +392,205 @@
         let quickBtns = JSON.parse(localStorage.getItem('quickBtns')||'[{"name":"Проезд","price":50,"category":"transport"},{"name":"Кофе","price":200,"category":"food"}]');
         let monthlyBudget = parseFloat(localStorage.getItem('monthlyBudget')||'0');
         let categoryLimits = JSON.parse(localStorage.getItem('categoryLimits')||'{}');
-        let goals = JSON.parse(localStorage.getItem('goals')||'[]');
-        let selectedCategory = '', scanner = null, scannedBarcode = '', editingQuickIndex = -1, editingGoalIndex = -1;
-        let confirmCallback = null, inputCallback = null;
-        let isImporting = false;
+        let profileName = localStorage.getItem('profileName') || '';
+        let profileAvatar = localStorage.getItem('profileAvatar') || '';
+        let selectedCategory = '', scanner = null, scannedBarcode = '', editingQuickIndex = -1;
+        let confirmCallback = null, isImporting = false;
+        let opsFilter = 'all';
+        let swipeStartX = 0, swipeRow = null;
 
-        function saveAll() {
-            localStorage.setItem('expenses', JSON.stringify(expenses));
-            localStorage.setItem('incomes', JSON.stringify(incomes));
-            localStorage.setItem('cart', JSON.stringify(cart));
-            localStorage.setItem('regularPayments', JSON.stringify(regularPayments));
-            localStorage.setItem('productDB', JSON.stringify(productDB));
-            localStorage.setItem('quickBtns', JSON.stringify(quickBtns));
-            localStorage.setItem('monthlyBudget', monthlyBudget);
-            localStorage.setItem('categoryLimits', JSON.stringify(categoryLimits));
-            localStorage.setItem('goals', JSON.stringify(goals));
-        }
-
+        function saveAll() { localStorage.setItem('expenses',JSON.stringify(expenses)); localStorage.setItem('incomes',JSON.stringify(incomes)); localStorage.setItem('cart',JSON.stringify(cart)); localStorage.setItem('regularPayments',JSON.stringify(regularPayments)); localStorage.setItem('productDB',JSON.stringify(productDB)); localStorage.setItem('quickBtns',JSON.stringify(quickBtns)); localStorage.setItem('monthlyBudget',monthlyBudget); localStorage.setItem('categoryLimits',JSON.stringify(categoryLimits)); }
         function f(a) { return C + a.toFixed(2); }
         function getBalance() { return incomes.reduce((s,i)=>s+i.amount,0) - expenses.reduce((s,e)=>s+e.amount,0); }
 
-        // ===== TOAST =====
-        function showToast(msg) {
-            let toast = document.getElementById('toast');
-            if (!toast) {
-                toast = document.createElement('div');
-                toast.id = 'toast';
-                toast.className = 'toast';
-                document.body.appendChild(toast);
-            }
-            toast.textContent = msg;
-            toast.style.opacity = '1';
-            clearTimeout(toast._t);
-            toast._t = setTimeout(() => { toast.style.opacity = '0'; }, 2000);
-        }
+        function showToast(msg) { let t = document.getElementById('toast'); if(!t){t=document.createElement('div');t.id='toast';t.className='toast';document.body.appendChild(t);} const prefix = profileName ? profileName + ', ' : ''; t.textContent = prefix + msg.charAt(0).toLowerCase() + msg.slice(1); t.classList.add('show'); clearTimeout(t._t); t._t=setTimeout(()=>t.classList.remove('show'),2000); }
+        function showConfirm(title,message,callback) { document.getElementById('confirmTitle').textContent=title; document.getElementById('confirmMessage').textContent=message; confirmCallback=callback; document.getElementById('confirmDialog').classList.add('show'); }
+        function closeConfirm() { document.getElementById('confirmDialog').classList.remove('show'); confirmCallback=null; }
+        document.getElementById('confirmYesBtn').addEventListener('click',()=>{if(confirmCallback)confirmCallback();closeConfirm();});
 
-        // ===== CONFIRM DIALOG =====
-        function showConfirm(title, message, callback) {
-            document.getElementById('confirmTitle').textContent = title;
-            document.getElementById('confirmMessage').textContent = message;
-            confirmCallback = callback;
-            document.getElementById('confirmDialog').classList.add('show');
-        }
-        function closeConfirm() {
-            document.getElementById('confirmDialog').classList.remove('show');
-            confirmCallback = null;
-        }
-        document.getElementById('confirmYesBtn').addEventListener('click', function() {
-            if (confirmCallback) confirmCallback();
-            closeConfirm();
-        });
+        function applyTheme() { document.body.classList.remove('dark','elite-dark','elite-light'); if(theme==='dark')document.body.classList.add('dark'); else if(theme==='elite-dark')document.body.classList.add('elite-dark'); else if(theme==='elite-light')document.body.classList.add('elite-light'); else if(theme==='auto'){if(window.matchMedia('(prefers-color-scheme:dark)').matches)document.body.classList.add('elite-dark');} document.getElementById('themeSelect').value=theme; }
+        function changeTheme(t) { theme=t; localStorage.setItem('theme',t); applyTheme(); }
+        applyTheme(); window.matchMedia('(prefers-color-scheme:dark)').addEventListener('change',applyTheme);
+        function changeCurrency(s) { C=s; localStorage.setItem('currency',s); updateUI(); }
+        function changeLanguage(l) { L=l; localStorage.setItem('language',l); updateUI(); }
+        function toggleNavDropdown() { document.getElementById('navDropdown').classList.toggle('show'); document.getElementById('navMoreBtn').classList.toggle('open'); }
 
-        // ===== INPUT DIALOG =====
-        function showInput(title, placeholder1, placeholder2, callback) {
-            document.getElementById('inputTitle').textContent = title;
-            const f1 = document.getElementById('inputField1');
-            const f2 = document.getElementById('inputField2');
-            f1.value = '';
-            f1.placeholder = placeholder1;
-            f1.style.display = 'block';
-            if (placeholder2) {
-                f2.value = '';
-                f2.placeholder = placeholder2;
-                f2.style.display = 'block';
-            } else {
-                f2.style.display = 'none';
-            }
-            inputCallback = callback;
-            document.getElementById('inputDialog').classList.add('show');
-            setTimeout(() => f1.focus(), 100);
-        }
-        function closeInputDialog() {
-            document.getElementById('inputDialog').classList.remove('show');
-            inputCallback = null;
-        }
-        document.getElementById('inputOkBtn').addEventListener('click', function() {
-            if (inputCallback) {
-                const v1 = document.getElementById('inputField1').value.trim();
-                const v2 = document.getElementById('inputField2').style.display !== 'none' ? document.getElementById('inputField2').value.trim() : null;
-                inputCallback(v1, v2);
-            }
-            closeInputDialog();
-        });
-
-        // ===== THEME =====
-        function applyTheme() {
-            if (theme === 'dark') document.body.classList.add('dark');
-            else if (theme === 'light') document.body.classList.remove('dark');
-            else {
-                if (window.matchMedia('(prefers-color-scheme: dark)').matches) document.body.classList.add('dark');
-                else document.body.classList.remove('dark');
-            }
-            document.getElementById('themeSelect').value = theme;
-        }
-        function changeTheme(t) { theme = t; localStorage.setItem('theme', t); applyTheme(); }
-        applyTheme();
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', applyTheme);
-
-        // ===== CURRENCY & LANGUAGE =====
-        function changeCurrency(s) { C = s; localStorage.setItem('currency', s); updateUI(); }
-        function changeLanguage(l) { L = l; localStorage.setItem('language', l); updateUI(); }
-
-        // ===== NAVIGATION =====
-        function toggleNavDropdown() {
-            const dd = document.getElementById('navDropdown');
-            const btn = document.getElementById('navMoreBtn');
-            dd.classList.toggle('show');
-            btn.classList.toggle('open');
-        }
-
-        function switchTab(tab) {
-            if (isImporting && tab !== 'scan') {
-                isImporting = false;
-                document.getElementById('scannerTitle').textContent = 'Сканер штрихкодов';
-            }
-            document.querySelectorAll('[id^="tab-"]').forEach(el => el.classList.add('hidden'));
-            const target = document.getElementById('tab-' + tab);
-            if (target) target.classList.remove('hidden');
-            
-            document.querySelectorAll('.nav-main .tab').forEach(t => t.classList.remove('active'));
-            const mainTab = document.querySelector(`.nav-main .tab[data-tab="${tab}"]`);
-            if (mainTab) mainTab.classList.add('active');
-            
-            document.querySelectorAll('.nav-dropdown .tab').forEach(t => t.classList.remove('active'));
-            const dropTab = document.querySelector(`.nav-dropdown .tab[data-tab="${tab}"]`);
-            if (dropTab) dropTab.classList.add('active');
-            
-            const moreBtn = document.getElementById('navMoreBtn');
-            document.getElementById('navDropdown').classList.remove('show');
-            moreBtn.classList.remove('open');
-            
-            if (tab !== 'scan') stopScanner();
-            updateUI();
-        }
+        function switchTab(tab) { if(isImporting&&tab!=='scan'){isImporting=false;document.getElementById('scannerTitle').textContent='Сканер штрихкодов';} document.querySelectorAll('[id^="tab-"]').forEach(e=>e.classList.add('hidden')); const t=document.getElementById('tab-'+tab); if(t)t.classList.remove('hidden'); document.querySelectorAll('.nav-main .tab').forEach(e=>e.classList.remove('active')); const m=document.querySelector(`.nav-main .tab[data-tab="${tab}"]`); if(m)m.classList.add('active'); document.querySelectorAll('.nav-dropdown .tab').forEach(e=>e.classList.remove('active')); const d=document.querySelector(`.nav-dropdown .tab[data-tab="${tab}"]`); if(d)d.classList.add('active'); document.getElementById('navDropdown').classList.remove('show'); document.getElementById('navMoreBtn').classList.remove('open'); if(tab!=='scan')stopScanner(); updateUI(); }
 
         function updateUI() {
-            document.getElementById('profileCurrency').value = C;
-            document.getElementById('langSelect').value = L;
-            document.getElementById('themeSelect').value = theme;
-            document.getElementById('monthlyBudget').value = monthlyBudget || '';
-            
-            const bal = getBalance();
-            document.getElementById('totalDisplay').textContent = f(bal);
-            document.getElementById('totalDisplay').style.color = bal >= 0 ? '#36855B' : '#dc3545';
-            
-            const today = new Date().toDateString();
-            document.getElementById('todayDisplay').textContent = f(expenses.filter(e => new Date(e.date).toDateString() === today).reduce((s,e)=>s+e.amount,0));
+            document.getElementById('profileCurrency').value=C; document.getElementById('langSelect').value=L; document.getElementById('themeSelect').value=theme;
+            document.getElementById('monthlyBudget').value=monthlyBudget||'';
+            document.getElementById('profileName').value = profileName;
+            updateAvatar();
+            // Приветствие
+            const greet = document.getElementById('greetingText');
+            if (profileName) {
+                const hours = new Date().getHours();
+                let timeGreet = 'Доброе утро'; if (hours >= 12 && hours < 17) timeGreet = 'Добрый день'; else if (hours >= 17 && hours < 23) timeGreet = 'Добрый вечер'; else if (hours >= 23 || hours < 5) timeGreet = 'Доброй ночи';
+                greet.textContent = timeGreet + ', ' + profileName + '!';
+            } else { greet.textContent = 'Добро пожаловать'; }
+            const pTitle = document.getElementById('profileTitle'); if (pTitle) pTitle.textContent = profileName ? profileName + ' · MoneyKo' : 'MoneyKo';
 
-            const wa = new Date(); wa.setDate(wa.getDate()-7);
-            const we = expenses.filter(e => new Date(e.date) >= wa);
-            const wi = incomes.filter(e => new Date(e.date) >= wa);
-            document.getElementById('weekTotal').textContent = f(we.reduce((s,e)=>s+e.amount,0));
-            document.getElementById('weekIncome').textContent = f(wi.reduce((s,i)=>s+i.amount,0));
-            document.getElementById('weekDays').textContent = new Set([...we,...wi].map(e => new Date(e.date).toDateString())).size;
+            const bal=getBalance(); document.getElementById('totalDisplay').textContent=f(bal); document.getElementById('totalDisplay').style.color=bal>=0?'var(--accent)':'var(--red)';
+            const today=new Date().toDateString(); document.getElementById('todayDisplay').textContent=f(expenses.filter(e=>new Date(e.date).toDateString()===today).reduce((s,e)=>s+e.amount,0));
+            const wa=new Date();wa.setDate(wa.getDate()-7); const we=expenses.filter(e=>new Date(e.date)>=wa); const wi=incomes.filter(e=>new Date(e.date)>=wa);
+            document.getElementById('weekTotal').textContent=f(we.reduce((s,e)=>s+e.amount,0)); document.getElementById('weekIncome').textContent=f(wi.reduce((s,i)=>s+i.amount,0)); document.getElementById('weekDays').textContent=new Set([...we,...wi].map(e=>new Date(e.date).toDateString())).size;
+            const ms=new Date();ms.setDate(1);ms.setHours(0,0,0,0); const me=expenses.filter(e=>new Date(e.date)>=ms).reduce((s,e)=>s+e.amount,0);
+            const bb=document.getElementById('monthlyBudgetBar'); if(monthlyBudget>0){const pct=Math.min(100,(me/monthlyBudget)*100);const cls=pct<70?'safe':pct<100?'warn':'danger';bb.innerHTML=`<div class="text-muted" style="font-size:11px;">Бюджет: ${f(me)} / ${f(monthlyBudget)}</div><div class="progress-bar"><div class="progress-fill ${cls}" style="width:${pct}%"></div></div>`;}else{bb.innerHTML='';}
 
-            const monthStart = new Date(); monthStart.setDate(1); monthStart.setHours(0,0,0,0);
-            const monthExp = expenses.filter(e => new Date(e.date) >= monthStart).reduce((s,e)=>s+e.amount,0);
-            const budgetBar = document.getElementById('monthlyBudgetBar');
-            if (monthlyBudget > 0) {
-                const pct = Math.min(100, (monthExp / monthlyBudget) * 100);
-                const cls = pct < 70 ? 'safe' : pct < 100 ? 'warn' : 'danger';
-                budgetBar.innerHTML = `<div class="text-muted" style="font-size:12px;">Месячный бюджет: ${f(monthExp)} / ${f(monthlyBudget)}</div><div class="progress-bar"><div class="progress-fill ${cls}" style="width:${pct}%"></div></div>`;
-            } else { budgetBar.innerHTML = ''; }
+            // Сегодня vs Вчера
+            const yesterday = new Date(); yesterday.setDate(yesterday.getDate()-1);
+            const todayExp = expenses.filter(e=>new Date(e.date).toDateString()===today).reduce((s,e)=>s+e.amount,0);
+            const yesterdayExp = expenses.filter(e=>new Date(e.date).toDateString()===yesterday.toDateString()).reduce((s,e)=>s+e.amount,0);
+            const vs = document.getElementById('vsYesterday');
+            if (yesterdayExp > 0) {
+                const diff = todayExp - yesterdayExp;
+                const pct = Math.abs((diff / yesterdayExp) * 100).toFixed(0);
+                if (diff > 0) vs.innerHTML = `На ${pct}% больше, чем вчера`;
+                else if (diff < 0) vs.innerHTML = `На ${pct}% меньше, чем вчера`;
+                else vs.innerHTML = `Как вчера`;
+            } else { vs.innerHTML = ''; }
 
-            const all = [...expenses.map(e=>({...e,type:'exp'})),...incomes.map(i=>({...i,type:'inc'}))].sort((a,b)=>new Date(b.date)-new Date(a.date));
-            const lst = document.getElementById('expenseList');
-            if (!all.length) lst.innerHTML = '<div class="text-muted text-center" style="padding:20px 0;">Пока нет операций</div>';
-            else lst.innerHTML = all.slice(0,30).map(o => {
-                const d = new Date(o.date).toLocaleDateString(L==='ru'?'ru-RU':'en-US',{day:'numeric',month:'short'});
-                if (o.type==='inc') return `<div class="row"><span>+ ${o.source||'Доход'}<br><small class="text-muted">${d}</small></span><span class="price green">+${f(o.amount)}</span></div>`;
-                return `<div class="row"><span>${o.category||'Трата'}${o.comment?' ('+o.comment+')':''}<br><small class="text-muted">${d}</small></span><span class="price">-${f(o.amount)}</span></div>`;
-            }).join('');
-            document.getElementById('mainTotal').textContent = 'Баланс: ' + f(bal);
+            // Быстрые кнопки на главной
+            const miniGrid = document.getElementById('quickMiniGrid');
+            if (quickBtns.length) { miniGrid.innerHTML = quickBtns.slice(0, 6).map((b,i) => `<div class="quick-mini-btn" onclick="quickExpense(${i})">${b.name}<br><small>${b.price?f(b.price):'--'}</small></div>`).join(''); } else { miniGrid.innerHTML = ''; }
 
-            // Quick buttons
-            const grid = document.getElementById('quickButtonsGrid');
-            if (!quickBtns.length) grid.innerHTML = '<div class="text-muted text-center" style="padding:10px;grid-column:1/-1;">Нет быстрых кнопок</div>';
-            else grid.innerHTML = quickBtns.map((b,i) => `
-                <div class="quick-btn" onclick="quickExpense(${i})" oncontextmenu="event.preventDefault();editQuickBtn(${i})">
-                    <div style="font-weight:bold;">${b.name}</div>
-                    <div class="text-muted" style="font-size:12px;">${b.price?f(b.price):'--'}</div>
-                    <button class="delete-quick" onclick="event.stopPropagation();deleteQuickBtn(${i})">&times;</button>
-                </div>`).join('');
+            // Чипсы сумм
+            const chipRow = document.getElementById('amountChips');
+            chipRow.innerHTML = ['50','100','200','500','1000'].map(v => `<div class="amount-chip" onclick="document.getElementById('manualAmount').value='${v}'">+${v}</div>`).join('');
 
-            // Income list
-            const il = document.getElementById('incomeList');
-            if (!incomes.length) il.innerHTML = '<div class="text-muted text-center" style="padding:20px 0;">Нет доходов</div>';
-            else il.innerHTML = incomes.slice().reverse().slice(0,20).map(i => `<div class="row"><span>${i.source||'Доход'}<br><small class="text-muted">${new Date(i.date).toLocaleDateString(L==='ru'?'ru-RU':'en-US',{day:'numeric',month:'short'})}</small></span><span class="price green">+${f(i.amount)}</span></div>`).join('');
-            document.getElementById('incomeTotal').textContent = 'Всего доходов: ' + f(incomes.reduce((s,i)=>s+i.amount,0));
+            // Кнопка Повторить
+            const lastExp = expenses[expenses.length-1];
+            const repeatBtn = document.getElementById('repeatLastBtn');
+            if (lastExp) { repeatBtn.style.display = 'block'; repeatBtn.textContent = 'Повторить ' + f(lastExp.amount); } else { repeatBtn.style.display = 'none'; }
 
-            // Cart
-            const cl = document.getElementById('cartList');
-            if (!cart.length) cl.innerHTML = '<div class="text-muted text-center" style="padding:15px 0;">Корзина пуста</div>';
-            else cl.innerHTML = cart.map((it,i) => `<div class="row"><span>${it.name}</span><span><span class="price">-${f(it.price)}</span> <span style="cursor:pointer;color:var(--muted);margin-left:8px;font-size:18px;" onclick="removeFromCart(${i})">&times;</span></span></div>`).join('');
-            document.getElementById('cartTotal').textContent = 'Итого: ' + f(cart.reduce((s,i)=>s+i.price,0));
-            document.getElementById('cartCount').textContent = cart.length + ' товаров';
+            const filterRow = document.getElementById('filterRow');
+            const cats = ['all','food','transport','entertainment','home','health','gifts','clothing','other','income'];
+            const catNames = {all:'Все',food:'Еда',transport:'Транспорт',entertainment:'Развлечения',home:'Дом',health:'Здоровье',gifts:'Подарки',clothing:'Одежда',other:'Другое',income:'Доходы'};
+            filterRow.innerHTML = cats.map(c => `<div class="filter-chip ${opsFilter===c?'active':''}" onclick="opsFilter='${c}';renderOps();updateUI();">${catNames[c]}</div>`).join('');
+            renderOps();
+            document.getElementById('mainTotal').textContent='Баланс: '+f(bal);
 
-            // Regular
-            const rl = document.getElementById('regularList');
-            if (!regularPayments.length) rl.innerHTML = '<div class="text-muted text-center" style="padding:20px 0;">Нет платежей</div>';
-            else rl.innerHTML = regularPayments.map((p,i) => `<div style="background:var(--card2);padding:14px;border-radius:10px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;"><div><strong>${p.name}</strong><div class="text-muted">${f(p.amount)} &middot; ${p.day}</div></div><div style="display:flex;gap:6px;"><button class="btn-small" style="background:#36855B;color:#fff;" onclick="payRegular(${i})">Оплатить</button><button class="btn-small" onclick="deleteRegular(${i})">&times;</button></div></div>`).join('');
+            const grid=document.getElementById('quickButtonsGrid'); if(!quickBtns.length)grid.innerHTML='<div class="text-muted text-center" style="padding:10px;grid-column:1/-1;">Нет кнопок</div>';
+            else grid.innerHTML=quickBtns.map((b,i)=>`<div class="quick-btn" onclick="quickExpense(${i})"><div style="font-weight:600;">${b.name}</div><div class="text-muted" style="font-size:11px;">${b.price?f(b.price):'--'}</div><button class="delete-quick" onclick="event.stopPropagation();deleteQuickBtn(${i})">&times;</button></div>`).join('');
 
-            // Monthly budget status
-            const mbs = document.getElementById('monthlyBudgetStatus');
-            if (monthlyBudget > 0) {
-                const pct = Math.min(100, (monthExp / monthlyBudget) * 100);
-                const cls = pct < 70 ? 'safe' : pct < 100 ? 'warn' : 'danger';
-                const label = pct >= 100 ? 'ПЕРЕРАСХОД!' : pct >= 70 ? 'Внимание!' : 'Норма';
-                mbs.innerHTML = `<div>Потрачено: ${f(monthExp)} из ${f(monthlyBudget)} (${pct.toFixed(0)}%)</div><div class="progress-bar"><div class="progress-fill ${cls}" style="width:${pct}%"></div></div><div class="text-muted" style="color:${pct>=100?'#dc3545':pct>=70?'#f39c12':'#36855B'}">${label}</div>`;
-            } else { mbs.innerHTML = '<div class="text-muted">Бюджет не установлен</div>'; }
+            const il=document.getElementById('incomeList'); if(!incomes.length)il.innerHTML='<div class="text-muted text-center" style="padding:20px 0;">Нет доходов</div>';
+            else il.innerHTML=incomes.slice().reverse().slice(0,20).map(i=>`<div class="row"><span>${i.source||'Доход'}<br><small class="text-muted">${new Date(i.date).toLocaleDateString('ru-RU',{day:'numeric',month:'short'})}</small></span><span class="price green">+${f(i.amount)}</span></div>`).join('');
+            document.getElementById('incomeTotal').textContent='Всего доходов: '+f(incomes.reduce((s,i)=>s+i.amount,0));
 
-            // Category limits
-            const cats = ['food','transport','entertainment','home','health','gifts','clothing','other'];
-            const catNames = {food:'Еда',transport:'Транспорт',entertainment:'Развлечения',home:'Дом',health:'Здоровье',gifts:'Подарки',clothing:'Одежда',other:'Другое'};
-            document.getElementById('categoryLimits').innerHTML = cats.map(cat => {
-                const limit = categoryLimits[cat] || 0;
-                const spent = expenses.filter(e => new Date(e.date) >= monthStart && e.category === cat).reduce((s,e)=>s+e.amount,0);
-                const pct = limit > 0 ? Math.min(100, (spent/limit)*100) : 0;
-                const cls = limit > 0 ? (pct >= 100 ? 'danger' : pct >= 70 ? 'warn' : 'safe') : 'safe';
-                return `<div style="margin-bottom:10px;"><div style="display:flex;justify-content:space-between;font-size:13px;"><span>${catNames[cat]}</span><span>${f(spent)}${limit>0?' / '+f(limit):''}</span></div><div style="display:flex;gap:6px;align-items:center;"><div class="progress-bar" style="flex:1;margin:0;"><div class="progress-fill ${cls}" style="width:${pct}%"></div></div><input type="number" value="${limit||''}" placeholder="Лимит" step="0.01" onchange="saveCategoryLimit('${cat}', this.value)" style="width:80px;margin:0;padding:4px 8px;font-size:13px;"></div></div>`;
-            }).join('');
+            const cl=document.getElementById('cartList'); if(!cart.length)cl.innerHTML='<div class="text-muted text-center" style="padding:15px 0;">Корзина пуста</div>';
+            else cl.innerHTML=cart.map((it,i)=>`<div class="row"><span>${it.name}</span><span><span class="price">-${f(it.price)}</span> <span style="cursor:pointer;color:var(--muted);margin-left:8px;font-size:18px;" onclick="removeFromCart(${i})">&times;</span></span></div>`).join('');
+            document.getElementById('cartTotal').textContent='Итого: '+f(cart.reduce((s,i)=>s+i.price,0)); document.getElementById('cartCount').textContent=cart.length+' товаров';
 
-            // Goals
-            const gl = document.getElementById('goalsList');
-            if (!goals.length) gl.innerHTML = '<div class="text-muted text-center" style="padding:20px 0;">Нет целей</div>';
-            else gl.innerHTML = goals.map((g,i) => {
-                const pct = Math.min(100, (g.saved / g.amount) * 100);
-                const cls = pct >= 100 ? 'safe' : pct >= 50 ? 'warn' : 'danger';
-                return `<div class="goal-card"><div style="display:flex;justify-content:space-between;align-items:center;"><strong>${g.name}</strong><span>${f(g.saved)} / ${f(g.amount)}</span></div><div class="progress-bar"><div class="progress-fill ${cls}" style="width:${pct}%"></div></div><div class="flex mt-8"><input type="number" id="goalAdd_${i}" placeholder="Сумма" step="0.01" inputmode="decimal" class="flex-1" style="margin:0;padding:8px;"><button class="btn btn-green" onclick="addToGoal(${i})" style="width:auto;padding:8px 16px;">Отложить</button><button class="btn-small" onclick="deleteGoal(${i})">&times;</button></div></div>`;
-            }).join('');
+            const rl=document.getElementById('regularList'); if(!regularPayments.length)rl.innerHTML='<div class="text-muted text-center" style="padding:20px 0;">Нет платежей</div>';
+            else rl.innerHTML=regularPayments.map((p,i)=>`<div style="background:rgba(0,0,0,0.03);padding:14px;border-radius:18px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;"><div><strong>${p.name}</strong><div class="text-muted">${f(p.amount)} &middot; ${p.day} числа</div></div><div style="display:flex;gap:6px;"><button class="btn-small" style="background:var(--accent);color:#fff;" onclick="payRegular(${i})">Оплатить</button><button class="btn-small" onclick="deleteRegular(${i})">&times;</button></div></div>`).join('');
 
-            updateProductList();
+            const mbs=document.getElementById('monthlyBudgetStatus'); if(monthlyBudget>0){const pct=Math.min(100,(me/monthlyBudget)*100);const cls=pct<70?'safe':pct<100?'warn':'danger';mbs.innerHTML=`<div>Потрачено: ${f(me)} из ${f(monthlyBudget)}</div><div class="progress-bar"><div class="progress-fill ${cls}" style="width:${pct}%"></div></div>`;}else{mbs.innerHTML='<div class="text-muted">Не установлен</div>';}
+            const catsL=['food','transport','entertainment','home','health','gifts','clothing','other']; const cn={food:'Еда',transport:'Транспорт',entertainment:'Развлечения',home:'Дом',health:'Здоровье',gifts:'Подарки',clothing:'Одежда',other:'Другое'};
+            document.getElementById('categoryLimits').innerHTML=catsL.map(cat=>{const limit=categoryLimits[cat]||0;const spent=expenses.filter(e=>new Date(e.date)>=ms&&e.category===cat).reduce((s,e)=>s+e.amount,0);const pct=limit>0?Math.min(100,(spent/limit)*100):0;const cls=limit>0?(pct>=100?'danger':pct>=70?'warn':'safe'):'safe';return`<div style="margin-bottom:10px;"><div style="display:flex;justify-content:space-between;font-size:13px;"><span>${cn[cat]}</span><span>${f(spent)}${limit>0?' / '+f(limit):''}</span></div><div style="display:flex;gap:6px;align-items:center;"><div class="progress-bar" style="flex:1;margin:0;"><div class="progress-fill ${cls}" style="width:${pct}%"></div></div><input type="number" value="${limit||''}" placeholder="Лимит" step="0.01" onchange="saveCategoryLimit('${cat}',this.value)" style="width:80px;margin:0;padding:4px 8px;font-size:12px;"></div></div>`;}).join('');
+
+            document.getElementById('statTotalExp').textContent = f(expenses.reduce((s,e)=>s+e.amount,0));
+            document.getElementById('statTotalInc').textContent = f(incomes.reduce((s,i)=>s+i.amount,0));
+            const monthOps = [...expenses.filter(e=>new Date(e.date)>=ms), ...incomes.filter(e=>new Date(e.date)>=ms)];
+            document.getElementById('statMonthOps').textContent = monthOps.length;
+            const catCount = {}; expenses.forEach(e=>{catCount[e.category]=(catCount[e.category]||0)+1;});
+            const topCat = Object.entries(catCount).sort((a,b)=>b[1]-a[1])[0];
+            document.getElementById('statTopCat').textContent = topCat ? (cn[topCat[0]]||topCat[0]) : '—';
+            const avgCheck = expenses.length ? expenses.reduce((s,e)=>s+e.amount,0)/expenses.length : 0;
+            document.getElementById('statAvgCheck').textContent = f(avgCheck);
         }
 
-        function updateProductList() {
-            const s = (document.getElementById('productSearch')?.value||'').toLowerCase();
-            const ent = Object.entries(productDB);
-            const flt = ent.filter(([b,p]) => {
-                const n = (typeof p==='object'?(p.name||''):p).toLowerCase();
-                const bc = (typeof p==='object'&&p.barcodes)?p.barcodes:[b];
-                return bc.some(x=>x.includes(s)) || n.includes(s);
-            });
-            document.getElementById('productCount').textContent = flt.length + ' товаров';
-            const lst = document.getElementById('productList');
-            if (!flt.length) { lst.innerHTML = '<div class="text-muted text-center" style="padding:20px 0;">Нет товаров</div>'; return; }
-            lst.innerHTML = flt.map(([b,p]) => {
-                const n = typeof p==='object'?(p.name||''):p, pr = typeof p==='object'?(p.price||0):0;
-                const bc = (typeof p==='object'&&p.barcodes)?p.barcodes:[b];
-                return `<div class="product-card" style="display:flex;justify-content:space-between;align-items:center;"><div><strong>${n}</strong><div style="font-size:10px;color:var(--muted);">${bc.map(x=>'<span class="tag">'+x+'</span>').join(' ')}</div></div><div style="display:flex;align-items:center;gap:8px;"><span style="font-weight:600;">${f(pr)}</span><button class="btn-small" onclick="editProduct('${b}')">Изм.</button><button class="btn-small" onclick="deleteProduct('${b}')">&times;</button></div></div>`;
-            }).join('');
+        function renderOps() {
+            const search = (document.getElementById('searchOps')?.value || '').toLowerCase();
+            let all = [...expenses.map(e=>({...e,type:'exp'})),...incomes.map(i=>({...i,type:'inc'}))].sort((a,b)=>new Date(b.date)-new Date(a.date));
+            if (opsFilter === 'income') all = all.filter(o=>o.type==='inc');
+            else if (opsFilter !== 'all') all = all.filter(o=>o.category===opsFilter);
+            if (search) all = all.filter(o=> (o.category||'').toLowerCase().includes(search) || (o.comment||'').toLowerCase().includes(search) || (o.source||'').toLowerCase().includes(search));
+            const lst=document.getElementById('expenseList');
+            if(!all.length)lst.innerHTML='<div class="text-muted text-center" style="padding:20px 0;">Нет операций</div>';
+            else lst.innerHTML=all.slice(0,30).map((o,i)=>{const d=new Date(o.date).toLocaleDateString('ru-RU',{day:'numeric',month:'short'});if(o.type==='inc')return`<div class="op-row" data-index="${i}"><span>+ ${o.source||'Доход'}<br><small class="text-muted">${d}</small></span><span class="price green">+${f(o.amount)}</span></div>`;return`<div class="op-row" data-index="${i}" data-id="${o.date}"><span>${o.category||'Трата'}${o.comment?' ('+o.comment+')':''}<br><small class="text-muted">${d}</small></span><span class="price">-${f(o.amount)}</span></div>`;}).join('');
+            attachSwipe();
         }
 
-        // ===== QUICK BUTTONS =====
-        function addQuickBtn() {
-            editingQuickIndex = -1;
-            document.getElementById('quickEditName').value = '';
-            document.getElementById('quickEditPrice').value = '';
-            document.getElementById('quickEditCat').value = 'transport';
-            document.getElementById('quickEditDialog').classList.add('show');
-            setTimeout(() => document.getElementById('quickEditName').focus(), 100);
-        }
-        function editQuickBtn(i) {
-            editingQuickIndex = i;
-            document.getElementById('quickEditName').value = quickBtns[i].name || '';
-            document.getElementById('quickEditPrice').value = quickBtns[i].price || '';
-            document.getElementById('quickEditCat').value = quickBtns[i].category || 'transport';
-            document.getElementById('quickEditDialog').classList.add('show');
-            setTimeout(() => document.getElementById('quickEditName').focus(), 100);
-        }
-        function saveQuickEdit() {
-            const name = document.getElementById('quickEditName').value.trim();
-            const price = parseFloat(document.getElementById('quickEditPrice').value) || 0;
-            const category = document.getElementById('quickEditCat').value || 'transport';
-            if (!name) { showToast('Введите название'); return; }
-            if (!price || price <= 0) { showToast('Введите цену'); return; }
-            if (editingQuickIndex >= 0 && editingQuickIndex < quickBtns.length) {
-                quickBtns[editingQuickIndex] = { name, price, category };
-            } else {
-                quickBtns.push({ name, price, category });
-            }
-            saveAll();
-            document.getElementById('quickEditDialog').classList.remove('show');
-            editingQuickIndex = -1;
-            updateUI();
-            showToast('Сохранено!');
-        }
-        function cancelQuickEdit() {
-            document.getElementById('quickEditDialog').classList.remove('show');
-            editingQuickIndex = -1;
-        }
-        function deleteQuickBtn(i) {
-            showConfirm('Удалить?', 'Удалить быструю кнопку "' + quickBtns[i].name + '"?', function() {
-                quickBtns.splice(i, 1);
-                saveAll();
-                if (editingQuickIndex === i) cancelQuickEdit();
-                updateUI();
-            });
-        }
-        function quickExpense(i) {
-            const b = quickBtns[i];
-            if (!b || !b.price) { showToast('Настройте цену'); return; }
-            const cat = b.category || 'transport';
-            checkCategoryLimit(cat, b.price);
-            expenses.push({ amount: b.price, category: cat, comment: b.name, date: new Date().toISOString() });
-            saveAll();
-            updateUI();
-            showToast(b.name + ': ' + f(b.price));
-        }
-
-        // ===== LIMITS =====
-        function saveMonthlyBudget() { monthlyBudget = parseFloat(document.getElementById('monthlyBudget').value) || 0; saveAll(); updateUI(); showToast('Бюджет сохранён'); }
-        function saveCategoryLimit(cat, val) { categoryLimits[cat] = parseFloat(val) || 0; saveAll(); updateUI(); }
-        function checkCategoryLimit(cat, amount) {
-            const limit = categoryLimits[cat] || 0;
-            if (!limit) return;
-            const monthStart = new Date(); monthStart.setDate(1); monthStart.setHours(0,0,0,0);
-            const spent = expenses.filter(e => new Date(e.date) >= monthStart && e.category === cat).reduce((s,e)=>s+e.amount,0);
-            if (spent + amount > limit) showToast('Внимание! Лимит превышен (' + f(spent+amount) + ' / ' + f(limit) + ')');
-        }
-
-        // ===== GOALS =====
-        function addGoal() {
-            editingGoalIndex = -1;
-            document.getElementById('goalEditName').value = '';
-            document.getElementById('goalEditAmount').value = '';
-            document.getElementById('goalEditDialog').classList.add('show');
-            setTimeout(() => document.getElementById('goalEditName').focus(), 100);
-        }
-        function saveGoalEdit() {
-            const name = document.getElementById('goalEditName').value.trim();
-            const amount = parseFloat(document.getElementById('goalEditAmount').value) || 0;
-            if (!name) { showToast('Введите название'); return; }
-            if (!amount || amount <= 0) { showToast('Введите сумму'); return; }
-            if (editingGoalIndex >= 0) { goals[editingGoalIndex].name = name; goals[editingGoalIndex].amount = amount; }
-            else { goals.push({ name, amount, saved: 0 }); }
-            saveAll(); document.getElementById('goalEditDialog').classList.remove('show'); editingGoalIndex = -1; updateUI();
-            showToast('Цель создана!');
-        }
-        function cancelGoalEdit() { document.getElementById('goalEditDialog').classList.remove('show'); editingGoalIndex = -1; }
-        function deleteGoal(i) {
-            showConfirm('Удалить цель?', 'Удалить цель "' + goals[i].name + '"?', function() {
-                goals.splice(i,1); saveAll(); updateUI();
-            });
-        }
-        function addToGoal(i) {
-            const val = parseFloat(document.getElementById('goalAdd_'+i)?.value) || 0;
-            if (!val || val <= 0) { showToast('Введите сумму'); return; }
-            const bal = getBalance();
-            if (val > bal) { showToast('Недостаточно средств! Баланс: ' + f(bal)); return; }
-            goals[i].saved += val;
-            expenses.push({ amount: val, category: 'other', comment: 'В цель: ' + goals[i].name, date: new Date().toISOString() });
-            saveAll(); updateUI();
-            showToast('Отложено в цель: ' + f(val));
-        }
-
-        // ===== EXPENSES & INCOME =====
-        function selectCategory(c){selectedCategory=c;document.querySelectorAll('.cat-item').forEach(el=>el.classList.remove('active'));event?.target?.closest('.cat-item')?.classList.add('active');}
-        function addManualExpense(){
-            const a=parseFloat(document.getElementById('manualAmount').value);
-            if(!a||a<=0){showToast('Введите сумму');return;}
-            if(!selectedCategory){showToast('Выберите категорию');return;}
-            checkCategoryLimit(selectedCategory, a);
-            expenses.push({amount:a,category:selectedCategory,comment:document.getElementById('manualComment').value.trim(),date:new Date().toISOString()});
-            saveAll();document.getElementById('manualAmount').value='';document.getElementById('manualComment').value='';selectedCategory='';
-            document.querySelectorAll('.cat-item').forEach(el=>el.classList.remove('active'));updateUI();
-            showToast('Добавлено: ' + f(a));
-        }
-        function addIncome(){
-            const a=parseFloat(document.getElementById('incomeAmount').value);
-            if(!a||a<=0){showToast('Введите сумму');return;}
-            incomes.push({amount:a,source:document.getElementById('incomeSource').value.trim()||'Доход',date:new Date().toISOString()});
-            saveAll();document.getElementById('incomeAmount').value='';document.getElementById('incomeSource').value='';updateUI();
-            showToast('Доход добавлен: +' + f(a));
-        }
-
-        // ===== QR SYNC =====
-        function exportQR() {
-            closeProfile();
-            const data = JSON.stringify({
-                expenses, incomes, regularPayments, productDB, quickBtns,
-                monthlyBudget, categoryLimits, goals
-            });
-            
-            if (data.length > 2000) {
-                showToast('Данных много, создаю компактный QR...');
-            }
-            
-            const modal = document.getElementById('profileModal');
-            const qrDiv = document.getElementById('qrDisplay');
-            qrDiv.innerHTML = '';
-            
-            const encoded = encodeURIComponent(data);
-            const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encoded}`;
-            
-            const img = document.createElement('img');
-            img.src = qrUrl;
-            img.style.maxWidth = '100%';
-            img.style.borderRadius = '8px';
-            img.onerror = function() {
-                qrDiv.innerHTML = '<div class="text-muted">Не удалось загрузить QR. Попробуйте другой метод.</div>';
-                showToast('Ошибка генерации QR');
-            };
-            qrDiv.appendChild(img);
-            
-            modal.classList.add('show');
-            document.getElementById('syncStatus').textContent = 'QR-код создан. Наведите камеру другого устройства.';
-            
-            setTimeout(() => {
-                qrDiv.innerHTML = '';
-                document.getElementById('syncStatus').textContent = 'Готов к синхронизации';
-            }, 120000);
-        }
-
-        function importQR() {
-            closeProfile();
-            isImporting = true;
-            switchTab('scan');
-            document.getElementById('scannerTitle').textContent = 'Сканируйте QR-код для импорта';
-            document.getElementById('scanStatus').textContent = 'Ожидание QR...';
-            startScanner();
-        }
-
-        // ===== SCANNER =====
-        function startScanner(){if(scanner){scanner.stop().then(()=>{scanner.clear();document.getElementById('reader').innerHTML='';scanner=null;initScanner();}).catch(()=>{scanner=null;document.getElementById('reader').innerHTML='';initScanner();});return;}initScanner();}
-        function initScanner(){document.getElementById('reader').innerHTML='';document.getElementById('scanStatus').textContent='Запуск...';scanner=new Html5Qrcode("reader");scanner.start({facingMode:"environment"},{fps:10,qrbox:{width:250,height:150}},onScanSuccess,()=>{}).then(()=>{document.getElementById('scanStatus').textContent='Сканирует...';document.getElementById('scanStatus').style.background='#d4edda';}).catch(()=>{scanner=new Html5Qrcode("reader");scanner.start({facingMode:"user"},{fps:10,qrbox:{width:250,height:150}},onScanSuccess,()=>{}).then(()=>{document.getElementById('scanStatus').textContent='Фронт. камера';}).catch(()=>{showToast('Нет доступа к камере');scanner=null;});});}
-        function onScanSuccess(d){
-            if(navigator.vibrate)navigator.vibrate(100);
-            
-            if (isImporting) {
-                try {
-                    const data = JSON.parse(d);
-                    if (data.expenses !== undefined) {
-                        expenses = data.expenses || [];
-                        incomes = data.incomes || [];
-                        regularPayments = data.regularPayments || [];
-                        productDB = data.productDB || {};
-                        quickBtns = data.quickBtns || quickBtns;
-                        monthlyBudget = data.monthlyBudget || 0;
-                        categoryLimits = data.categoryLimits || {};
-                        goals = data.goals || [];
-                        cart = [];
-                        saveAll();
-                        updateUI();
-                        isImporting = false;
-                        stopScanner();
-                        document.getElementById('scannerTitle').textContent = 'Сканер штрихкодов';
-                        showToast('Данные импортированы!');
-                        switchTab('main');
-                        return;
+        function attachSwipe() {
+            document.querySelectorAll('.op-row').forEach(row => {
+                row.addEventListener('touchstart', function(e) { swipeStartX = e.touches[0].clientX; swipeRow = this; });
+                row.addEventListener('touchend', function(e) {
+                    if (!swipeRow) return;
+                    const diff = swipeStartX - e.changedTouches[0].clientX;
+                    if (diff > 80) {
+                        swipeRow.classList.add('swiped');
+                        const dateId = swipeRow.dataset.id;
+                        if (dateId) {
+                            const idx = expenses.findIndex(e=>e.date===dateId);
+                            if (idx >= 0) { expenses.splice(idx,1); saveAll(); updateUI(); showToast('Удалено'); }
+                        }
                     }
-                } catch(e) {}
-                isImporting = false;
-                document.getElementById('scannerTitle').textContent = 'Сканер штрихкодов';
-                showToast('QR-код не распознан как данные MoneyKo');
-                return;
-            }
-            
-            stopScanner();
-            scannedBarcode=d;
-            const p=findProduct(d);
-            document.getElementById('scannedProduct').style.display='block';
-            const c=document.getElementById('scanResult');
-            if(p){
-                const n=typeof p==='object'?(p.name||''):p,pr=typeof p==='object'?(p.price||0):0;
-                c.innerHTML=`<div style="font-weight:bold;color:#36855B;">Товар найден</div><div style="font-size:22px;margin:6px 0;">${n}</div><div class="text-muted">${d}</div><div class="flex" style="margin-top:10px;"><input type="number" id="scannedPrice" placeholder="Цена" step="0.01" class="flex-1" value="${pr}"><button class="btn btn-green" onclick="addScanned('${n}')" style="width:auto;padding:12px 20px;">В корзину</button></div>`;
-            }else{
-                const s=findSimilar(d);
-                if(s){
-                    const n=typeof s.product==='object'?(s.product.name||''):s.product,pr=typeof s.product==='object'?(s.product.price||0):0;
-                    c.innerHTML=`<div class="match-box"><strong>Похожий товар: "${n}"?</strong><div class="text-muted">${d}</div><div class="flex" style="margin-top:10px;"><button class="btn btn-green flex-1" onclick="mergeBarcode('${s.key}','${d}','${n}',${pr})">Да, добавить</button><button class="btn btn-gray flex-1" onclick="showNew()">Нет, новый</button></div></div>`;
-                }else{showNew();}
-            }
+                    swipeRow = null;
+                });
+            });
         }
-        function showNew(){document.getElementById('scanResult').innerHTML=`<div style="font-weight:bold;color:#dc3545;">Неизвестный товар</div><div class="text-muted">${scannedBarcode}</div><div class="flex" style="margin-top:10px;"><input type="number" id="scannedPriceNew" placeholder="Цена" step="0.01" class="flex-1"><button class="btn btn-green" onclick="addUnknownToCart()" style="width:auto;padding:12px 20px;">В корзину</button></div><button class="btn btn-gray mt-8" onclick="addUnknownToDB()">Добавить в базу</button>`;}
+
+        function changeAvatar(input) { if(input.files&&input.files[0]){const reader=new FileReader();reader.onload=function(e){profileAvatar=e.target.result;localStorage.setItem('profileAvatar',profileAvatar);updateAvatar();};reader.readAsDataURL(input.files[0]);} }
+        function updateAvatar() { const av=document.getElementById('profileAvatar'); if(profileAvatar){av.innerHTML=`<img src="${profileAvatar}" alt="">`;}else{av.textContent='MK';} }
+        function saveProfileName() { profileName=document.getElementById('profileName').value.trim(); localStorage.setItem('profileName',profileName); updateUI(); }
+
+        function addQuickBtn(){editingQuickIndex=-1;document.getElementById('quickEditName').value='';document.getElementById('quickEditPrice').value='';document.getElementById('quickEditCat').value='transport';document.getElementById('quickEditDialog').classList.add('show');setTimeout(()=>document.getElementById('quickEditName').focus(),100);}
+        function saveQuickEdit(){const n=document.getElementById('quickEditName').value.trim();const p=parseFloat(document.getElementById('quickEditPrice').value)||0;const c=document.getElementById('quickEditCat').value;if(!n){showToast('Введите название');return;}if(!p||p<=0){showToast('Введите цену');return;}if(editingQuickIndex>=0)quickBtns[editingQuickIndex]={name:n,price:p,category:c};else quickBtns.push({name:n,price:p,category:c});saveAll();document.getElementById('quickEditDialog').classList.remove('show');editingQuickIndex=-1;updateUI();showToast('Сохранено!');}
+        function cancelQuickEdit(){document.getElementById('quickEditDialog').classList.remove('show');editingQuickIndex=-1;}
+        function deleteQuickBtn(i){showConfirm('Удалить?','Удалить кнопку?',()=>{quickBtns.splice(i,1);saveAll();updateUI();});}
+        function quickExpense(i){const b=quickBtns[i];if(!b||!b.price){showToast('Настройте цену');return;}checkCategoryLimit(b.category,b.price);expenses.push({amount:b.price,category:b.category||'transport',comment:b.name,date:new Date().toISOString()});saveAll();updateUI();showToast(b.name+': '+f(b.price));}
+        function repeatLastExpense(){const last=expenses[expenses.length-1];if(!last)return;expenses.push({amount:last.amount,category:last.category,comment:last.comment,date:new Date().toISOString()});saveAll();updateUI();showToast('Повторено: '+f(last.amount));}
+
+        function saveMonthlyBudget(){monthlyBudget=parseFloat(document.getElementById('monthlyBudget').value)||0;saveAll();updateUI();showToast('Сохранено');}
+        function saveCategoryLimit(cat,val){categoryLimits[cat]=parseFloat(val)||0;saveAll();updateUI();}
+        function checkCategoryLimit(cat,amount){const limit=categoryLimits[cat]||0;if(!limit)return;const ms=new Date();ms.setDate(1);ms.setHours(0,0,0,0);const spent=expenses.filter(e=>new Date(e.date)>=ms&&e.category===cat).reduce((s,e)=>s+e.amount,0);if(spent+amount>limit)showToast('Лимит превышен!');}
+
+        function selectCategory(c){selectedCategory=c;document.querySelectorAll('.cat-item').forEach(e=>e.classList.remove('active'));event?.target?.closest('.cat-item')?.classList.add('active');}
+        function addManualExpense(){const a=parseFloat(document.getElementById('manualAmount').value);if(!a||a<=0){showToast('Введите сумму');return;}if(!selectedCategory){showToast('Выберите категорию');return;}checkCategoryLimit(selectedCategory,a);expenses.push({amount:a,category:selectedCategory,comment:document.getElementById('manualComment').value.trim(),date:new Date().toISOString()});saveAll();document.getElementById('manualAmount').value='';document.getElementById('manualComment').value='';selectedCategory='';document.querySelectorAll('.cat-item').forEach(e=>e.classList.remove('active'));updateUI();showToast('Добавлено: '+f(a));}
+        function addIncome(){const a=parseFloat(document.getElementById('incomeAmount').value);if(!a||a<=0){showToast('Введите сумму');return;}incomes.push({amount:a,source:document.getElementById('incomeSource').value.trim()||'Доход',date:new Date().toISOString()});saveAll();document.getElementById('incomeAmount').value='';document.getElementById('incomeSource').value='';updateUI();showToast('+'+f(a));}
+
+        function exportQR(){closeProfile();const d=JSON.stringify({expenses,incomes,regularPayments,productDB,quickBtns,monthlyBudget,categoryLimits});const qr=document.getElementById('qrDisplay');qr.innerHTML='';const img=document.createElement('img');img.src=`https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(d)}`;img.style.maxWidth='100%';img.style.borderRadius='16px';qr.appendChild(img);document.getElementById('profileModal').classList.add('show');document.getElementById('syncStatus').textContent='QR-код создан';setTimeout(()=>{qr.innerHTML='';document.getElementById('syncStatus').textContent='Готов';},120000);}
+        function importQR(){closeProfile();isImporting=true;switchTab('scan');document.getElementById('scannerTitle').textContent='Сканируйте QR';startScanner();}
+        function exportCSV(){
+            let csv = 'Тип,Сумма,Категория,Комментарий,Дата\n';
+            [...expenses.map(e=>({...e,type:'Расход'})),...incomes.map(i=>({...i,type:'Доход'}))].sort((a,b)=>new Date(b.date)-new Date(a.date)).forEach(o=>{
+                csv += `${o.type},${o.amount},${o.category||o.source||''},${o.comment||''},${new Date(o.date).toLocaleDateString('ru-RU')}\n`;
+            });
+            const blob = new Blob([csv], {type:'text/csv;charset=utf-8;'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a'); a.href=url; a.download='moneyko_export.csv'; a.click();
+            URL.revokeObjectURL(url); showToast('CSV скачан!');
+        }
+
+        function startScanner(){if(scanner){scanner.stop().then(()=>{scanner.clear();document.getElementById('reader').innerHTML='';scanner=null;initScanner();});return;}initScanner();}
+        function initScanner(){document.getElementById('reader').innerHTML='';scanner=new Html5Qrcode("reader");scanner.start({facingMode:"environment"},{fps:10,qrbox:{width:250,height:150}},(d)=>{if(navigator.vibrate)navigator.vibrate(100);if(isImporting){try{const data=JSON.parse(d);if(data.expenses){expenses=data.expenses;incomes=data.incomes||[];regularPayments=data.regularPayments||[];productDB=data.productDB||{};quickBtns=data.quickBtns||quickBtns;monthlyBudget=data.monthlyBudget||0;categoryLimits=data.categoryLimits||{};cart=[];saveAll();updateUI();isImporting=false;stopScanner();document.getElementById('scannerTitle').textContent='Сканер штрихкодов';showToast('Импортировано!');switchTab('main');return;}}catch(e){}isImporting=false;document.getElementById('scannerTitle').textContent='Сканер штрихкодов';showToast('Ошибка данных');return;}stopScanner();scannedBarcode=d;const p=findProduct(d);document.getElementById('scannedProduct').style.display='block';const c=document.getElementById('scanResult');if(p){const n=typeof p==='object'?(p.name||''):p,pr=typeof p==='object'?(p.price||0):0;c.innerHTML=`<div style="font-weight:600;color:var(--accent);">Найден: ${n}</div><div class="text-muted">${d}</div><div class="flex mt-8"><input type="number" id="scannedPrice" value="${pr}" step="0.01" class="flex-1"><button class="btn btn-accent" onclick="addScanned('${n}')" style="width:auto;">В корзину</button></div>`;}else{const s=findSimilar(d);if(s){const n=typeof s.product==='object'?(s.product.name||''):s.product,pr=typeof s.product==='object'?(s.product.price||0):0;c.innerHTML=`<div class="match-box"><strong>Похоже на "${n}"?</strong><div class="flex mt-8"><button class="btn btn-accent flex-1" onclick="mergeBarcode('${s.key}','${d}','${n}',${pr})">Да</button><button class="btn btn-gray flex-1" onclick="showNew()">Нет</button></div></div>`;}else showNew();}},()=>{}).then(()=>{document.getElementById('scanStatus').textContent='Сканирует...';document.getElementById('scanStatus').style.background='var(--accent)';document.getElementById('scanStatus').style.color='#fff';}).catch(()=>{scanner=new Html5Qrcode("reader");scanner.start({facingMode:"user"},{fps:10,qrbox:{width:250,height:150}},(d)=>{stopScanner();scannedBarcode=d;onScanSuccess(d);},()=>{});});}
+        function onScanSuccess(d){}
+        function showNew(){document.getElementById('scanResult').innerHTML=`<div style="font-weight:600;color:var(--red);">Неизвестный товар</div><div class="text-muted">${scannedBarcode}</div><div class="flex mt-8"><input type="number" id="scannedPriceNew" placeholder="Цена" step="0.01" class="flex-1"><button class="btn btn-accent" onclick="addUnknownToCart()" style="width:auto;">В корзину</button></div><button class="btn btn-gray mt-8" onclick="addUnknownToDB()">Добавить в базу</button>`;}
         function findProduct(b){for(const[k,p]of Object.entries(productDB)){if((typeof p==='object'&&p.barcodes?p.barcodes:[k]).includes(b))return p;}return null;}
-        function findSimilar(b){const m=[];for(const[k,p]of Object.entries(productDB)){for(const eb of(typeof p==='object'&&p.barcodes?p.barcodes:[k])){let c=0;for(let i=0;i<Math.min(b.length,eb.length);i++)if(b[i]===eb[i])c++;if(c>=7&&b!==eb){m.push({product:p,key:k,existingBc:eb,matchCount:c});break;}}}return m.sort((a,b)=>b.matchCount-a.matchCount)[0]||null;}
-        function mergeBarcode(k,nb,nm,pr){if(typeof productDB[k]==='object'){if(!productDB[k].barcodes)productDB[k].barcodes=[k];if(!productDB[k].barcodes.includes(nb))productDB[k].barcodes.push(nb);}else{productDB[k]={name:nm,price:pr,barcodes:[k,nb]};}saveAll();updateUI();document.getElementById('scanResult').innerHTML=`<div style="font-weight:bold;color:#36855B;">Штрихкод добавлен!</div><div style="font-size:22px;">${nm}</div><div class="flex" style="margin-top:10px;"><input type="number" id="scannedPrice" placeholder="Цена" step="0.01" class="flex-1" value="${pr}"><button class="btn btn-green" onclick="addScanned('${nm}')" style="width:auto;padding:12px 20px;">В корзину</button></div>`;}
-        function stopScanner(){
-            if (isImporting) {
-                isImporting = false;
-                document.getElementById('scannerTitle').textContent = 'Сканер штрихкодов';
-            }
-            if(scanner){scanner.stop().then(()=>{scanner.clear();scanner=null;document.getElementById('scanStatus').textContent='Остановлен';document.getElementById('scanStatus').style.background='#f0f0f0';}).catch(()=>{scanner=null;});}
-        }
-        function addScanned(nm){
-            const el = document.getElementById('scannedPrice');
-            const p = el ? parseFloat(el.value) : parseFloat(document.getElementById('scannedPriceNew')?.value);
-            if(!p||p<=0){showToast('Введите цену');return;}
-            cart.push({name:nm,barcode:scannedBarcode,price:p});saveAll();updateUI();document.getElementById('scannedProduct').style.display='none';showToast('Добавлено в корзину');
-        }
-        function addUnknownToCart(){
-            const el = document.getElementById('scannedPriceNew') || document.getElementById('scannedPrice');
-            const p=parseFloat(el?.value);
-            if(!p||p<=0){showToast('Введите цену');return;}
-            cart.push({name:'Неизвестный товар',barcode:scannedBarcode,price:p});saveAll();updateUI();document.getElementById('scannedProduct').style.display='none';showToast('Добавлено в корзину');
-        }
-        function addUnknownToDB(){
-            const el = document.getElementById('scannedPriceNew') || document.getElementById('scannedPrice');
-            const p = parseFloat(el?.value);
-            if(!p||p<=0){showToast('Сначала введите цену');return;}
-            showInput('Название товара', 'Название', null, function(name) {
-                if (!name) return;
-                productDB[scannedBarcode]={name:name,price:p,barcodes:[scannedBarcode]};saveAll();updateUI();
-                document.getElementById('scanResult').innerHTML=`<div style="font-weight:bold;color:#36855B;">Добавлено!</div><div style="font-size:22px;">${name}</div><div class="flex" style="margin-top:10px;"><input type="number" id="scannedPrice" value="${p}" step="0.01" class="flex-1"><button class="btn btn-green" onclick="addScanned('${name}')" style="width:auto;padding:12px 20px;">В корзину</button></div>`;
-                showToast('Товар добавлен в базу!');
-            });
-        }
+        function findSimilar(b){const m=[];for(const[k,p]of Object.entries(productDB)){for(const eb of(typeof p==='object'&&p.barcodes?p.barcodes:[k])){let c=0;for(let i=0;i<Math.min(b.length,eb.length);i++)if(b[i]===eb[i])c++;if(c>=7&&b!==eb){m.push({product:p,key:k,matchCount:c});break;}}}return m.sort((a,b)=>b.matchCount-a.matchCount)[0]||null;}
+        function mergeBarcode(k,nb,nm,pr){if(typeof productDB[k]==='object'){if(!productDB[k].barcodes)productDB[k].barcodes=[k];if(!productDB[k].barcodes.includes(nb))productDB[k].barcodes.push(nb);}else{productDB[k]={name:nm,price:pr,barcodes:[k,nb]};}saveAll();updateUI();document.getElementById('scanResult').innerHTML=`<div style="font-weight:600;color:var(--accent);">Добавлен!</div><div class="flex mt-8"><input type="number" id="scannedPrice" value="${pr}" step="0.01" class="flex-1"><button class="btn btn-accent" onclick="addScanned('${nm}')" style="width:auto;">В корзину</button></div>`;}
+        function stopScanner(){if(isImporting){isImporting=false;document.getElementById('scannerTitle').textContent='Сканер штрихкодов';}if(scanner){scanner.stop().then(()=>{scanner.clear();scanner=null;document.getElementById('scanStatus').textContent='Остановлен';document.getElementById('scanStatus').style.background='';document.getElementById('scanStatus').style.color='';});}}
+        function addScanned(nm){const el=document.getElementById('scannedPrice');const p=el?parseFloat(el.value):parseFloat(document.getElementById('scannedPriceNew')?.value);if(!p||p<=0){showToast('Введите цену');return;}cart.push({name:nm,barcode:scannedBarcode,price:p});saveAll();updateUI();document.getElementById('scannedProduct').style.display='none';}
+        function addUnknownToCart(){const p=parseFloat(document.getElementById('scannedPriceNew')?.value);if(!p||p<=0){showToast('Введите цену');return;}cart.push({name:'Товар',barcode:scannedBarcode,price:p});saveAll();updateUI();document.getElementById('scannedProduct').style.display='none';}
+        function addUnknownToDB(){const p=parseFloat(document.getElementById('scannedPriceNew')?.value);if(!p||p<=0){showToast('Введите цену');return;}const n=prompt('Название товара:');if(!n)return;productDB[scannedBarcode]={name:n,price:p,barcodes:[scannedBarcode]};saveAll();updateUI();showToast('Добавлен!');}
         function removeFromCart(i){cart.splice(i,1);saveAll();updateUI();}
-        function saveCart(){if(!cart.length){showToast('Корзина пуста');return;}const total=cart.reduce((s,i)=>s+i.price,0);cart.forEach(i=>expenses.push({amount:i.price,category:'purchase',comment:i.name,date:new Date().toISOString()}));cart=[];saveAll();updateUI();showToast('Сохранено: ' + f(total));}
+        function saveCart(){if(!cart.length){showToast('Пусто');return;}cart.forEach(i=>expenses.push({amount:i.price,category:'purchase',comment:i.name,date:new Date().toISOString()}));cart=[];saveAll();updateUI();showToast('Сохранено');}
 
-        // ===== REGULAR =====
-        function toggleRegularForm(){const f=document.getElementById('regularAddForm');f.style.display=f.style.display==='none'?'block':'none';if(f.style.display==='block')document.getElementById('regularName').focus();}
-        function cancelRegularPayment(){document.getElementById('regularAddForm').style.display='none';document.getElementById('regularName').value='';document.getElementById('regularAmount').value='';document.getElementById('regularDay').value='';}
-        function saveRegularPayment(){const n=document.getElementById('regularName').value.trim(),a=parseFloat(document.getElementById('regularAmount').value),d=parseInt(document.getElementById('regularDay').value);if(!n||!a||a<=0||!d||d<1||d>31){showToast('Заполните все поля');return;}regularPayments.push({name:n,amount:a,day:d});saveAll();cancelRegularPayment();updateUI();showToast('Добавлено!');}
-        function payRegular(i){
-            const p=regularPayments[i];
-            showInput('Сумма для "' + p.name + '"', 'Сумма', null, function(val) {
-                const a = parseFloat(val);
-                if (!a || a <= 0) return;
-                expenses.push({amount:a,category:'regular',comment:p.name,date:new Date().toISOString()});
-                saveAll();updateUI();
-                showToast('Оплачено: ' + f(a));
-            });
-            document.getElementById('inputField1').value = p.amount;
-        }
-        function deleteRegular(i){showConfirm('Удалить?','Удалить платёж "'+regularPayments[i].name+'"?',function(){regularPayments.splice(i,1);saveAll();updateUI();});}
+        function toggleRegularForm(){const f=document.getElementById('regularAddForm');f.style.display=f.style.display==='none'?'block':'none';}
+        function cancelRegularPayment(){document.getElementById('regularAddForm').style.display='none';}
+        function saveRegularPayment(){const n=document.getElementById('regularName').value.trim();const a=parseFloat(document.getElementById('regularAmount').value);const d=parseInt(document.getElementById('regularDay').value);if(!n||!a||!d){showToast('Заполните');return;}regularPayments.push({name:n,amount:a,day:d});saveAll();cancelRegularPayment();updateUI();}
+        function payRegular(i){const p=regularPayments[i];const a=parseFloat(prompt('Сумма для "'+p.name+'":',p.amount));if(!a||a<=0)return;expenses.push({amount:a,category:'regular',comment:p.name,date:new Date().toISOString()});saveAll();updateUI();showToast('Оплачено: '+f(a));}
+        function deleteRegular(i){showConfirm('Удалить?','Удалить?',()=>{regularPayments.splice(i,1);saveAll();updateUI();});}
 
-        // ===== PRODUCTS =====
-        function editProduct(b){
-            const p=productDB[b];if(!p)return;
-            const name = typeof p==='object' ? (p.name||'') : p;
-            const price = typeof p==='object' ? (p.price||0) : 0;
-            showInput('Изменить товар', 'Название', 'Цена', function(n, pr) {
-                if (!n) return;
-                const newPrice = parseFloat(pr);
-                if (!newPrice || newPrice <= 0) { showToast('Введите цену'); return; }
-                if (typeof p==='object') { p.name = n; p.price = newPrice; }
-                else { productDB[b] = { name: n, price: newPrice, barcodes: [b] }; }
-                saveAll(); updateUI();
-                showToast('Товар обновлён!');
-            });
-            document.getElementById('inputField1').value = name;
-            document.getElementById('inputField2').value = price;
-        }
-        function deleteProduct(b){showConfirm('Удалить?','Удалить товар?',function(){delete productDB[b];saveAll();updateUI();});}
-        function addProductManually(){const b=document.getElementById('newProductBarcode').value.trim(),n=document.getElementById('newProductName').value.trim(),p=parseFloat(document.getElementById('newProductPrice').value);if(!b||!n||!p||p<=0){showToast('Заполните все поля');return;}const bc=b.split(',').map(s=>s.trim()).filter(s=>s.length>0);productDB[bc[0]]={name:n,price:p,barcodes:bc};saveAll();updateUI();document.getElementById('newProductBarcode').value='';document.getElementById('newProductName').value='';document.getElementById('newProductPrice').value='';showToast('Товар добавлен!');}
-
-        function clearAll(){
-            showConfirm('Очистить всё?', 'Удалить ВСЕ операции, цели и доходы?', function() {
-                expenses=[];incomes=[];goals=[];saveAll();updateUI();
-                showToast('Все данные очищены');
-            });
-        }
+        function clearAll(){showConfirm('Очистить всё?','Все данные будут удалены',()=>{expenses=[];incomes=[];saveAll();updateUI();showToast('Очищено');});}
         function openProfile(){document.getElementById('profileModal').classList.add('show');updateUI();}
         function closeProfile(){document.getElementById('profileModal').classList.remove('show');}
 
-        // PWA
         let dp;window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();dp=e;document.getElementById('installBanner').classList.add('show');});
         window.addEventListener('appinstalled',()=>{document.getElementById('installBanner').classList.remove('show');dp=null;});
-        function installApp(){if(!dp){showToast('Установка недоступна');return;}dp.prompt();dp.userChoice.then(()=>{dp=null;document.getElementById('installBanner').classList.remove('show');});}
-        if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register(URL.createObjectURL(new Blob(['self.addEventListener("install",e=>self.skipWaiting());self.addEventListener("activate",e=>e.waitUntil(clients.claim()));self.addEventListener("fetch",e=>e.respondWith(fetch(e.request).catch(()=>new Response("Offline",{status:503}))));'],{type:'application/javascript'}))).catch(()=>{});});}
+        function installApp(){if(!dp)return;dp.prompt();}
+        if('serviceWorker'in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register(URL.createObjectURL(new Blob(['self.addEventListener("install",e=>self.skipWaiting());self.addEventListener("activate",e=>e.waitUntil(clients.claim()));self.addEventListener("fetch",e=>e.respondWith(fetch(e.request).catch(()=>new Response("Offline",{status:503}))));'],{type:'application/javascript'}))).catch(()=>{});});}
 
         updateUI();
     </script>
